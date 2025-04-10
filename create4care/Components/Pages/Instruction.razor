@@ -1,0 +1,289 @@
+﻿@page "/instruction"
+@inject NavigationManager Navigation
+
+<NavMenu Name="Instruction"/>
+
+<main style="
+    --ani-fade: @AniFade; 
+    --ani-slide-offset: @AniSlideOffset; 
+    --indicator-width: @($"{DotWidth}px"); 
+    --indicator-active-width:@($"{IndicatorActiveWidth}px"); 
+    --indicator-gap: @($"{IndicatorGap}px");
+    ">
+    <div class="slider-container">
+        <div class="slider-background">
+            <IconBackgroundShape />
+            <div class="slider-page @AnimationClass">@Pages[CurrentPageIndex].Image</div>
+        </div>
+        <div class="slider-content">
+            <h2 class="slider-page @AnimationClass">@Pages[CurrentPageIndex].Title</h2>
+            <p class="slider-page @AnimationClass">@Pages[CurrentPageIndex].Content</p>
+        </div>
+    </div>
+
+    <div class="actions">
+        @* <div class="indicators">
+            @for (int i = 0; i < Pages.Count; i++)
+            {
+                <span class="indicator @(i == CurrentPageIndex ? "active" : "")"></span>
+            }
+        </div> *@
+
+        <div class="indicators">
+            <span class="active-indicator" style="@($"left: {ComputeIndicatorLeft()}px;")"></span>
+            @for (int i = 0; i < Pages.Count; i++)
+            {
+                <span class="indicator @(i == CurrentPageIndexAnimation ? $"active {(isReversedTransition ? "back" : "next")}" : "")"></span>
+            }
+        </div>
+
+        <div class="buttons">
+            <button @onclick="PreviousPage" disabled="@(CurrentPageIndexAnimation == 0)" class="btn btn-secondary btn-back @(CurrentPageIndexAnimation != 0 ? "btn-back-active" : "")">
+                Back
+            </button>
+            <button @onclick="NextPage" class="btn">Next</button>
+        </div>
+    </div>
+</main>
+
+@code {
+    private List<SlidePage> Pages = new List<SlidePage>
+    {
+        new SlidePage
+        {
+            Image = @<IconPerson />,
+            Title = "Step 1: This is the title of the onboarding", 
+            Content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis"
+        },
+        new SlidePage
+        {
+            Image = @<IconCamera />,
+            Title = "Step 2: This is the title of the onboarding",
+            Content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis"
+        },
+        new SlidePage
+        {
+            Image = @<IconPerson />,
+            Title = "Step 3: This is the title of the onboarding",
+            Content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis"
+        },
+        new SlidePage
+        {
+            Image = @<IconPerson />,
+            Title = "Step 4: This is the title of the onboarding",
+            Content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis"
+        }
+    };
+
+    private int CurrentPageIndex = 0;
+    private int CurrentPageIndexAnimation = 0;
+    private bool IsAnimating = false;
+    private string AnimationClass = "";
+    private int FadeDuration = 500;
+    private int WaitDuration = 0;
+    private bool isReversedTransition = false;
+
+    private string AniFade => $"{FadeDuration / 1000.0}s";
+    private string AniSlideOffset => "20px";
+    private const double IndicatorGap = 15;
+    private const double IndicatorActiveWidth = 28;
+    private const double DotWidth = 6;
+
+    private async Task AnimateTransition(Func<int, int> updatePage)
+    {
+        CurrentPageIndexAnimation = updatePage(CurrentPageIndex);
+        AnimationClass = isReversedTransition ? "fade-out-reverse" : "fade-out";
+        StateHasChanged();
+        await Task.Delay(FadeDuration + WaitDuration);
+
+        CurrentPageIndex = updatePage(CurrentPageIndex);
+
+        AnimationClass = isReversedTransition ? "fade-in-reverse" : "fade-in";
+        StateHasChanged();
+        await Task.Delay(FadeDuration);
+
+        AnimationClass = "";
+        IsAnimating = false;
+    }
+
+    private async Task NextPage()
+    {
+        if (IsAnimating) return;
+        if (CurrentPageIndex == Pages.Count - 1)
+        {
+            Navigation.NavigateTo("/");
+            return;
+        }
+        IsAnimating = true;
+        isReversedTransition = false;
+        await AnimateTransition(i => i + 1);
+    }
+
+    private async Task PreviousPage()
+    {
+        if (IsAnimating) return;
+        IsAnimating = true;
+        isReversedTransition = true;
+        await AnimateTransition(i => i > 0 ? i - 1 : i);
+    }
+
+    private double ComputeIndicatorLeft() => CurrentPageIndexAnimation * (DotWidth + IndicatorGap);
+}
+
+<style>
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.slider-container {
+    width: 100%;
+    position: relative;
+    display: flex;
+    gap: 40px;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.slider-background {
+    position: relative;
+    height: max-content;
+    width: max-content;
+}
+
+.slider-background > svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-58%, -46%);
+    fill: var(--clr-primary);
+    width: fit-content;
+    z-index: -1;
+}
+
+.slider-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+}
+
+.slider-content > h1 {
+    color: var(--clr-text);
+    font-size: 26px;
+}
+
+.slider-content > p {
+    color: var(--clr-text-tint);
+    font-size: 15px;
+}
+
+/* Base state for slider pages */
+.slider-page {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+
+@@keyframes fadeOutSlide {
+    from { opacity: 1; transform: translateX(0); }
+    to { opacity: 0; transform: translateX(calc(0px - var(--ani-slide-offset))); }
+}
+.slider-page.fade-out {
+    animation: fadeOutSlide var(--ani-fade) ease forwards;
+}
+
+@@keyframes fadeInSlide {
+    from { opacity: 0; transform: translateX(var(--ani-slide-offset)); }
+    to { opacity: 1; transform: translateX(0); }
+}
+.slider-page.fade-in {
+    animation: fadeInSlide var(--ani-fade) ease forwards;
+}
+
+@@keyframes fadeOutSlideReverse {
+    from { opacity: 1; transform: translateX(0); }
+    to { opacity: 0; transform: translateX(var(--ani-slide-offset)); }
+}
+.slider-page.fade-out-reverse {
+    animation: fadeOutSlideReverse var(--ani-fade) ease forwards;
+}
+
+@@keyframes fadeInSlideReverse {
+    from { opacity: 0; transform: translateX(calc(0px - var(--ani-slide-offset))); }
+    to { opacity: 1; transform: translateX(0); }
+}
+.slider-page.fade-in-reverse {
+    animation: fadeInSlideReverse var(--ani-fade) ease forwards;
+}
+
+.actions {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+}
+
+.indicators {
+    display: flex;
+    flex-direction: row;
+    gap: var(--indicator-gap);
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.indicator {
+    width: var(--indicator-width);
+    height: var(--indicator-width);
+    border-radius: 10px;
+    background-color: var(--clr-indicator);
+}
+
+@* .indicator.active {
+    width: var(--indicator-active-width);
+} *@
+
+.indicator.active.back {
+    margin-right: calc(var(--indicator-active-width) / 2 + var(--indicator-width));
+}
+
+.indicator.active.next {
+    margin-left: calc(var(--indicator-active-width) / 2 + var(--indicator-width));
+}
+
+.active-indicator {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: var(--indicator-width);
+    width: var(--indicator-active-width);
+    background-color: var(--clr-primary);
+    border-radius: 10px;
+    transition: left var(--ani-fade) ease, transform var(--ani-fade) ease;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    max-width: 500px;
+}
+
+.btn-back {
+    opacity: 0;
+    transition: opacity var(--ani-fade) ease;
+}
+
+.btn-back-active {
+    opacity: 1;
+}
+</style>

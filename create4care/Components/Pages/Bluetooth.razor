@@ -1,0 +1,71 @@
+﻿@page "/bluetooth"
+@inject BluetoothService BluetoothService
+
+<NavMenu Name="Bluetooth"/>
+
+<main>
+    <label>Connect to Arduino BLE:</label>
+    <button class="btn" @onclick="ConnectToDevice" disabled="@(isConnecting || isConnected)">
+        @(isConnected ? "Connected" : (isConnecting ? "Connecting..." : "Connect"))
+    </button>
+
+    <p>@statusMessage</p>
+    <p>@dataMessage</p>
+</main>
+
+@code {
+    private bool isConnecting = false;
+    private bool isConnected = false;
+    private string statusMessage = "Status: Not connected";
+    private string dataMessage = "No data yet";
+
+    protected override void OnInitialized()
+    {
+        BluetoothService.OnStatusChanged += UpdateStatus;
+        BluetoothService.OnDataReceived += UpdateData;
+    }
+
+    private async Task ConnectToDevice()
+    {
+        if (isConnected) return;
+
+        isConnecting = true;
+        statusMessage = "Scanning for devices...";
+        StateHasChanged();
+
+        await BluetoothService.ConnectAsync();
+
+        isConnecting = false;
+        StateHasChanged();
+    }
+
+    private void UpdateStatus(string status)
+    {
+        statusMessage = status;
+
+        if (status.Contains("Connected"))
+        {
+            isConnected = true;
+        }
+        else if (status.Contains("not found") || status.Contains("Error"))
+        {
+            isConnected = false;
+        }
+
+        InvokeAsync(StateHasChanged);
+    }
+
+    private void UpdateData(string data)
+    {
+        dataMessage = data;
+        InvokeAsync(StateHasChanged);
+    }
+}
+
+<style>
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+</style>

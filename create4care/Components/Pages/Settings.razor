@@ -1,0 +1,58 @@
+﻿@page "/settings"
+@using Microsoft.Maui.Storage
+
+<NavMenu Name="Settings"/>
+
+<main>
+    <label>Enter api url:</label>
+        <input class="inp"
+            type="text"
+            placeholder="https://dummyjson.com/users/1"
+            @bind="apiUrl"
+            disabled="@isSaving" />
+
+    <button class="btn"
+            disabled="@isSaving"
+            @onclick="SaveApiUrl">
+        @(isSaving ? "Saving..." : "Save")
+    </button>
+
+    @if (!string.IsNullOrEmpty(feedbackMessage))
+    {
+        <p>@feedbackMessage</p>
+    }
+</main>
+
+@code {
+    private string apiUrl { get; set; }
+    private bool isSaving = false;
+    private string feedbackMessage;
+
+    protected override void OnInitialized()
+    {
+        apiUrl = Preferences.Get("ApiUrl", "");
+    }
+
+    private async Task SaveApiUrl()
+    {
+        isSaving = true;
+        feedbackMessage = string.Empty;
+        StateHasChanged();
+
+        await Task.Delay(500);
+
+        Preferences.Set("ApiUrl", apiUrl);
+
+        isSaving = false;
+        feedbackMessage = "API URL saved successfully!";
+        StateHasChanged();
+    }
+}
+
+<style>
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+</style>
