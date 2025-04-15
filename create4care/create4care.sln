@@ -1,8 +1,9 @@
+﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.5.2.0
+VisualStudioVersion = 17.13.35825.156
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "create4care", "create4care.csproj", "{48A4972E-2DB8-D0A8-E0D5-E4634A9C672A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "create4care", "create4care\create4care.csproj", "{FAD9E782-47AE-4798-A7CF-EDB07BBBC91D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -10,15 +11,17 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{48A4972E-2DB8-D0A8-E0D5-E4634A9C672A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{48A4972E-2DB8-D0A8-E0D5-E4634A9C672A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{48A4972E-2DB8-D0A8-E0D5-E4634A9C672A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{48A4972E-2DB8-D0A8-E0D5-E4634A9C672A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FAD9E782-47AE-4798-A7CF-EDB07BBBC91D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FAD9E782-47AE-4798-A7CF-EDB07BBBC91D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FAD9E782-47AE-4798-A7CF-EDB07BBBC91D}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{FAD9E782-47AE-4798-A7CF-EDB07BBBC91D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FAD9E782-47AE-4798-A7CF-EDB07BBBC91D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FAD9E782-47AE-4798-A7CF-EDB07BBBC91D}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {D6FC5695-3FFC-4BAE-A5FA-CF9767E3221B}
+		SolutionGuid = {52604727-1D94-45E2-A299-0E2ECF1AA0E4}
 	EndGlobalSection
 EndGlobal

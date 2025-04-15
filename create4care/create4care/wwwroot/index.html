@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- existing meta tags, title, links, etc. -->
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+        <title>create4care</title>
+        <base href="/" />
+
+        <link rel="stylesheet" href="css/app.css" />
+        <link rel="icon" href="data:,">
+        
+        <!-- MediaPipe Scripts -->
+        <script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils/control_utils.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@mediapipe/pose/pose.js" crossorigin="anonymous"></script>
+        
+        <!-- Your custom JS for starting MediaPipe Pose -->
+        <script src="js/mediapipePose.js"></script>
+        <script src="_framework/blazor.webview.js" autostart="false" defer></script>
+    </head>
+    <body id="app">
+        <div class="status-bar-safe-area"></div>
+        <div>Loading...</div>
+        <div id="blazor-error-ui">
+        An unhandled error has occurred.
+        <a href="" class="reload">Reload</a>
+        <a class="dismiss">🗙</a>
+        </div>
+    </body>
+</html>

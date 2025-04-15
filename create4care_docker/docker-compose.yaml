@@ -1,0 +1,74 @@
+version: '3'
+
+services:
+  postgres:
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    networks:
+      - mynetwork
+    environment:
+      POSTGRES_DB: create4care
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: admin
+    volumes:
+      - postgres_volume:/var/lib/postgresql/data
+    logging:
+      driver: none
+
+  api:
+    build:
+      context: .
+      dockerfile: api/Dockerfile
+    ports:
+      - "8000:8000"
+    networks:
+      - mynetwork
+    environment:
+      PORT: 8000
+      DOMAIN: api
+      IMAGE_DIR: "images"
+      DATABASE_URL: "postgresql+psycopg2://root:admin@postgres/create4care"
+      PATIENT_IMAGES_URL: "/patient_images"
+    volumes:
+      - api_volume:/app/patient_images
+
+  web:
+    build:
+      context: .
+      dockerfile: web/Dockerfile
+    ports:
+      - "8001:8001"
+    networks:
+      - mynetwork
+    environment:
+      PORT: 8001
+
+  npm:
+    image: 'jc21/nginx-proxy-manager:latest'
+    ports:
+      - '8999:81'
+      - '80:80'
+      - '443:443'
+    networks:
+      - mynetwork
+    volumes:
+      - npm-data_volume:/data
+      - npm-letsencrypt_volume:/etc/letsencrypt
+    restart: unless-stopped
+
+  # dig TXT _acme-challenge.blokk.duckdns.org
+  # https://www.duckdns.org/update?domains=blokk&token=4b85a11b-3508-47fc-b58e-b4e980882d78&clear=true&verbose=true
+
+  # docker volume create portainer_data
+  # docker run -d -p 9000:9000 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:lts
+
+volumes:
+  postgres_volume:
+  api_volume:
+  npm-data_volume:
+  npm-letsencrypt_volume:
+
+networks:
+  mynetwork:
+    driver: bridge

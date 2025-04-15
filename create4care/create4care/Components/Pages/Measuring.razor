@@ -1,0 +1,86 @@
+﻿@page "/measuring"
+@inject IJSRuntime JS
+
+<NavMenu Name="Measuring" />
+
+<main>
+    @* <h1>Pose Measuring</h1> *@
+
+    <span id="loading" style="display: block; text-align: center;">Loading camera...</span>
+    <span id="error" style="display: none; color: red; text-align: center;"></span>
+    <div id="container">
+        <span id="notification"></span>
+        <video id="videoInput" muted autoplay playsinline></video>
+        <canvas id="output"></canvas>
+        <button id="snapshotButton" class="btn">Take Picture</button>
+    </div>
+</main>
+
+@code {
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JS.InvokeVoidAsync("startMediapipePose");
+        }
+    }
+}
+
+<style>
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow: auto;
+}
+
+#container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    flex-grow: 1;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+#notification {
+    z-index: 10;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10px;
+    font-size: 30px;
+    text-align: center;
+    display: none;
+    text-shadow: 
+        -1px -1px 0 var(--clr-text-rev),
+        1px -1px 0 var(--clr-text-rev),
+        -1px  1px 0 var(--clr-text-rev),
+        1px  1px 0 var(--clr-text-rev);
+}
+
+video {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 10px;
+}
+
+canvas {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 10px;
+    display: none;
+}
+
+#snapshotButton {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+    margin: 10px;
+    width: calc(100% - 20px);
+    display: none;
+}
+</style>

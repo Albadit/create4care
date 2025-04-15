@@ -1,0 +1,9 @@
+fastapi
+uvicorn[standard]
+SQLAlchemy>=2.0
+psycopg2-binary>=2.9
+pydantic[email]
+requests
+python-multipart
+bcrypt
+python-jose[cryptography]
