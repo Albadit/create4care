@@ -7,3 +7,5 @@ requests
 python-multipart
 bcrypt
 python-jose[cryptography]
+mediapipe
+numpy

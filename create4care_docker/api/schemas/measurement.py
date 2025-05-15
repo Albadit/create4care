@@ -20,7 +20,7 @@ class MeasurementRequest(BaseModel):
     weight_kg: float
     sleep_hours: Optional[float]
     exercise_hours: Optional[float]
-    image_base64: str
+    image: str
 
 class MeasurementUpdate(BaseModel):
     patient_id: Optional[int]

@@ -8,6 +8,7 @@ from .session import router as session_router
 from .log import router as log_router
 from .auth import router as auth_router
 from .db_seed import router as db_seed_router
+from .pose_detection import router as pose_detection_router
 
 __all__ = [
     "user_router",
@@ -20,4 +21,5 @@ __all__ = [
     "log_router",
     "auth_router",
     "db_seed_router",
+    "pose_detection_router",
 ]

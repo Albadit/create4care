@@ -24,10 +24,6 @@ def create_measurement(db: Session, meas_in: MeasurementRequest, request: Reques
     user = db.query(User).filter(User.id == meas_in.measured_by_user_id).first()
     if not user:
         raise HTTPException(status_code=400, detail="Measured_by user does not exist")
-
-    image_url = None
-    if meas_in.image_base64:
-        image_url = save_image(meas_in.image_base64, meas_in.patient_id, request)
     
     measurement = Measurement(
         patient_id=meas_in.patient_id,
@@ -36,7 +32,7 @@ def create_measurement(db: Session, meas_in: MeasurementRequest, request: Reques
         weight_kg=meas_in.weight_kg,
         sleep_hours=meas_in.sleep_hours,
         exercise_hours=meas_in.exercise_hours,
-        image=image_url
+        image=save_image(meas_in.image, meas_in.patient_id, request)
     )
 
     db.add(measurement)

@@ -6,7 +6,8 @@ import os
 
 from routers import (
     user_router, role_router, permission_router, patient_router,
-    measurement_router, session_router, log_router, db_seed_router, auth_router 
+    measurement_router, session_router, log_router, db_seed_router, auth_router,
+    pose_detection_router
 )
 
 app = FastAPI()
@@ -29,6 +30,7 @@ app.include_router(session_router, prefix="/sessions", tags=["sessions"])
 app.include_router(log_router, prefix="/logs", tags=["logs"])
 app.include_router(db_seed_router, prefix="/database", tags=["database"])
 app.include_router(auth_router, prefix="/auth", tags=["auth"])
+app.include_router(pose_detection_router, prefix="/pose_detection", tags=["pose_detection"])
 
 # Ensure image directory exists and mount it
 os.makedirs(IMAGE_DIR, exist_ok=True)

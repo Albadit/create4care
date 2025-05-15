@@ -45,6 +45,7 @@ C:\Users\ardit\Documents\GitHub\School\year_3\sem6\create4care_docker
     └── utils
         ├── image_utils.py
         ├── password_hash.py
+        ├── pose_decection.py
         └── session.py
 ```
 
@@ -485,7 +486,7 @@ __all__ = [
 from datetime import timedelta
 from fastapi import APIRouter, Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
-from sqlalchemy.orm import Session
+from sqlalchemy.orm import Session as DBSession
 
 from core.auth import create_access_token, verify_token, ACCESS_TOKEN_EXPIRE_MINUTES
 from db.session import get_db
@@ -497,7 +498,7 @@ router = APIRouter()
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/auth/token")
 
 @router.post("/token")
-def login(form_data: OAuth2PasswordRequestForm = Depends(), db: Session = Depends(get_db)):
+def login(form_data: OAuth2PasswordRequestForm = Depends(), db: DBSession = Depends(get_db)):
     """
     Authenticate user and return a JWT token.
     """
@@ -511,7 +512,7 @@ def login(form_data: OAuth2PasswordRequestForm = Depends(), db: Session = Depend
     access_token = create_access_token(data={"sub": str(user.id)}, expires_delta=access_token_expires)
     return {"access_token": access_token, "token_type": "bearer"}
 
-def get_current_user(token: str = Depends(oauth2_scheme), db: Session = Depends(get_db)):
+def get_current_user(token: str = Depends(oauth2_scheme), db: DBSession = Depends(get_db)):
     """
     Dependency to get the current user based on the JWT token.
     """
@@ -565,7 +566,7 @@ def seed_dummy_data_route():
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session as DBSession
 from typing import List
-from schemas.log import LogRequest, LogResponse
+from schemas.log import LogRequest, LogResponse, LogUpdate
 from schemas.common import Message
 from db.session import get_db
 from services import log as log_service
@@ -584,6 +585,10 @@ def create_new_log(log_req: LogRequest, db: DBSession = Depends(get_db)):
 def get_log(log_id: int, db: DBSession = Depends(get_db)):
     return log_service.get_log(db, log_id)
 
+@router.patch("/{log_id}", response_model=LogResponse)
+def update_log(log_id: int, log_update: LogUpdate, db: DBSession = Depends(get_db)):
+    return log_service.update_log(db, log_id, log_update)
+
 @router.delete("/{log_id}", response_model=Message)
 def remove_log(log_id: int, db: DBSession = Depends(get_db)):
     return log_service.delete_log(db, log_id)
@@ -594,7 +599,7 @@ def remove_log(log_id: int, db: DBSession = Depends(get_db)):
 ```py
 from typing import List
 from fastapi import APIRouter, Depends, HTTPException, Request
-from sqlalchemy.orm import Session
+from sqlalchemy.orm import Session as DBSession
 from schemas.measurement import MeasurementRequest, MeasurementResponse, MeasurementUpdate
 from schemas.common import Message
 from db.session import get_db
@@ -603,26 +608,26 @@ from services import measurement as measurement_service
 router = APIRouter()
 
 @router.get("/", response_model=List[MeasurementResponse])
-def list_measurements(db: Session = Depends(get_db)):
+def list_measurements(db: DBSession = Depends(get_db)):
     return measurement_service.get_all_measurements(db)
 
 @router.post("/", response_model=MeasurementResponse)
-def create_measurement(measurement: MeasurementRequest, request: Request, db: Session = Depends(get_db)):
+def create_measurement(measurement: MeasurementRequest, request: Request, db: DBSession = Depends(get_db)):
     return measurement_service.create_measurement(db, measurement, request)
 
 @router.get("/{measurement_id}", response_model=MeasurementResponse)
-def get_measurement(measurement_id: int, db: Session = Depends(get_db)):
+def get_measurement(measurement_id: int, db: DBSession = Depends(get_db)):
     meas_obj = measurement_service.get_measurement(db, measurement_id)
     if not meas_obj:
         raise HTTPException(status_code=404, detail="Measurement not found")
     return meas_obj
 
 @router.patch("/{measurement_id}", response_model=MeasurementResponse)
-def update_measurement(measurement_id: int, measurement: MeasurementUpdate, request: Request, db: Session = Depends(get_db)):
+def update_measurement(measurement_id: int, measurement: MeasurementUpdate, request: Request, db: DBSession = Depends(get_db)):
     return measurement_service.update_measurement(db, measurement_id, measurement, request)
 
 @router.delete("/{measurement_id}", response_model=Message)
-def delete_measurement(measurement_id: int, db: Session = Depends(get_db)):
+def delete_measurement(measurement_id: int, db: DBSession = Depends(get_db)):
     return measurement_service.delete_measurement(db, measurement_id)
 ```
 
@@ -630,7 +635,7 @@ def delete_measurement(measurement_id: int, db: Session = Depends(get_db)):
 ```py
 from typing import List
 from fastapi import APIRouter, Depends, HTTPException
-from sqlalchemy.orm import Session
+from sqlalchemy.orm import Session as DBSession
 from schemas.patient import PatientRequest, PatientResponse, PatientUpdate
 from schemas.common import Message
 from db.session import get_db
@@ -639,26 +644,26 @@ from services import patient as patient_service
 router = APIRouter()
 
 @router.get("/", response_model=List[PatientResponse])
-def list_patients(db: Session = Depends(get_db)):
+def list_patients(db: DBSession = Depends(get_db)):
     return patient_service.get_all_patients(db)
 
 @router.post("/", response_model=PatientResponse)
-def create_patient(patient: PatientRequest, db: Session = Depends(get_db)):
+def create_patient(patient: PatientRequest, db: DBSession = Depends(get_db)):
     return patient_service.create_patient(db, patient)
 
 @router.get("/{patient_id}", response_model=PatientResponse)
-def get_patient(patient_id: int, db: Session = Depends(get_db)):
+def get_patient(patient_id: int, db: DBSession = Depends(get_db)):
     patient_obj = patient_service.get_patient(db, patient_id)
     if not patient_obj:
         raise HTTPException(status_code=404, detail="Patient not found")
     return patient_obj
 
 @router.patch("/{patient_id}", response_model=PatientResponse)
-def update_patient(patient_id: int, patient: PatientUpdate, db: Session = Depends(get_db)):
+def update_patient(patient_id: int, patient: PatientUpdate, db: DBSession = Depends(get_db)):
     return patient_service.update_patient(db, patient_id, patient)
 
 @router.delete("/{patient_id}", response_model=Message)
-def delete_patient(patient_id: int, db: Session = Depends(get_db)):
+def delete_patient(patient_id: int, db: DBSession = Depends(get_db)):
     return patient_service.delete_patient(db, patient_id)
 ```
 
@@ -666,7 +671,7 @@ def delete_patient(patient_id: int, db: Session = Depends(get_db)):
 ```py
 from typing import List
 from fastapi import APIRouter, Depends, HTTPException
-from sqlalchemy.orm import Session
+from sqlalchemy.orm import Session as DBSession
 from schemas.permission import PermissionRequest, PermissionUpdate, PermissionResponse
 from schemas.common import Message
 from db.session import get_db
@@ -675,26 +680,26 @@ from services import permission as permission_service
 router = APIRouter()
 
 @router.get("/", response_model=List[PermissionResponse])
-def list_permissions(db: Session = Depends(get_db)):
+def list_permissions(db: DBSession = Depends(get_db)):
     return permission_service.get_all_permissions(db)
 
 @router.post("/", response_model=PermissionResponse)
-def create_permission(permission: PermissionRequest, db: Session = Depends(get_db)):
+def create_permission(permission: PermissionRequest, db: DBSession = Depends(get_db)):
     return permission_service.create_permission(db, permission)
 
 @router.get("/{permission_id}", response_model=PermissionResponse)
-def get_permission(permission_id: int, db: Session = Depends(get_db)):
+def get_permission(permission_id: int, db: DBSession = Depends(get_db)):
     permission_obj = permission_service.get_permission(db, permission_id)
     if not permission_obj:
         raise HTTPException(status_code=404, detail="Permission not found")
     return permission_obj
 
 @router.patch("/{permission_id}", response_model=PermissionResponse)
-def update_permission(permission_id: int, permission: PermissionUpdate, db: Session = Depends(get_db)):
+def update_permission(permission_id: int, permission: PermissionUpdate, db: DBSession = Depends(get_db)):
     return permission_service.update_permission(db, permission_id, permission)
 
 @router.delete("/{permission_id}", response_model=Message)
-def delete_permission(permission_id: int, db: Session = Depends(get_db)):
+def delete_permission(permission_id: int, db: DBSession = Depends(get_db)):
     return permission_service.delete_permission(db, permission_id)
 
 ```
@@ -703,7 +708,7 @@ def delete_permission(permission_id: int, db: Session = Depends(get_db)):
 ```py
 from typing import List
 from fastapi import APIRouter, Depends, HTTPException
-from sqlalchemy.orm import Session
+from sqlalchemy.orm import Session as DBSession
 from schemas.role import RoleRequest, RoleResponse, RoleUpdate
 from schemas.common import Message
 from db.session import get_db
@@ -712,26 +717,26 @@ from services import role as role_service
 router = APIRouter()
 
 @router.get("/", response_model=List[RoleResponse])
-def list_roles(db: Session = Depends(get_db)):
+def list_roles(db: DBSession = Depends(get_db)):
     return role_service.get_all_roles(db)
 
 @router.post("/", response_model=RoleResponse)
-def create_role(role: RoleRequest, db: Session = Depends(get_db)):
+def create_role(role: RoleRequest, db: DBSession = Depends(get_db)):
     return role_service.create_role(db, role)
 
 @router.get("/{role_id}", response_model=RoleResponse)
-def get_role(role_id: int, db: Session = Depends(get_db)):
+def get_role(role_id: int, db: DBSession = Depends(get_db)):
     role_obj = role_service.get_role(db, role_id)
     if not role_obj:
         raise HTTPException(status_code=404, detail="Role not found")
     return role_obj
 
 @router.patch("/{role_id}", response_model=RoleResponse)
-def update_role(role_id: int, role: RoleUpdate, db: Session = Depends(get_db)):
+def update_role(role_id: int, role: RoleUpdate, db: DBSession = Depends(get_db)):
     return role_service.update_role(db, role_id, role)
 
 @router.delete("/{role_id}", response_model=Message)
-def delete_role(role_id: int, db: Session = Depends(get_db)):
+def delete_role(role_id: int, db: DBSession = Depends(get_db)):
     return role_service.delete_role(db, role_id)
 
 ```
@@ -741,7 +746,7 @@ def delete_role(role_id: int, db: Session = Depends(get_db)):
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session as DBSession
 from typing import List
-from schemas.session import SessionRequest, SessionResponse
+from schemas.session import SessionRequest, SessionResponse, SessionUpdate
 from schemas.common import Message
 from db.session import get_db
 from services import session as session_service
@@ -760,6 +765,10 @@ def create_new_session(session_req: SessionRequest, db: DBSession = Depends(get_
 def get_session(token: str, db: DBSession = Depends(get_db)):
     return session_service.get_session_by_token(db, token)
 
+@router.patch("/{token}", response_model=SessionResponse)
+def update_session(token: str, session_update: SessionUpdate, db: DBSession = Depends(get_db)):
+    return session_service.update_session(db, token, session_update)
+
 @router.delete("/{token}", response_model=Message)
 def remove_session(token: str, db: DBSession = Depends(get_db)):
     return session_service.delete_session(db, token)
@@ -770,7 +779,7 @@ def remove_session(token: str, db: DBSession = Depends(get_db)):
 ```py
 from typing import List
 from fastapi import APIRouter, Depends, HTTPException
-from sqlalchemy.orm import Session
+from sqlalchemy.orm import Session as DBSession
 from schemas.user import UserRequest, UserResponse, UserUpdate
 from schemas.common import Message
 from db.session import get_db
@@ -781,27 +790,27 @@ from db.models import User
 router = APIRouter()
 
 @router.get("/", response_model=List[UserResponse])
-def list_users(db: Session = Depends(get_db)):
+def list_users(db: DBSession = Depends(get_db)):
     return user_service.get_all_users(db)
 
 @router.post("/", response_model=UserResponse)
-def create_user(user: UserRequest, db: Session = Depends(get_db)):
+def create_user(user: UserRequest, db: DBSession = Depends(get_db)):
     return user_service.create_user(db, user)
 
 @router.get("/{uid}", response_model=UserResponse)
-def get_user(uid: int, db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
+def get_user(uid: int, db: DBSession = Depends(get_db), current_user: User = Depends(get_current_user)):
     user_obj = user_service.get_user(db, uid)
     if not user_obj:
         raise HTTPException(status_code=404, detail="User not found")
     return user_obj
 
 @router.patch("/{uid}", response_model=UserResponse)
-def update_user(uid: int, user: UserUpdate, db: Session = Depends(get_db)):
+def update_user(uid: int, user: UserUpdate, db: DBSession = Depends(get_db)):
     # Partially update the user data.
     return user_service.update_user(db, uid, user)
 
 @router.delete("/{uid}", response_model=Message)
-def delete_user(uid: int, db: Session = Depends(get_db)):
+def delete_user(uid: int, db: DBSession = Depends(get_db)):
     return user_service.delete_user(db, uid)
 ```
 
@@ -881,7 +890,7 @@ class MeasurementRequest(BaseModel):
     weight_kg: float
     sleep_hours: Optional[float]
     exercise_hours: Optional[float]
-    image_base64: str
+    image: str
 
 class MeasurementUpdate(BaseModel):
     patient_id: Optional[int]
@@ -1018,7 +1027,7 @@ from typing import List
 from sqlalchemy.orm import Session as DBSession
 from fastapi import HTTPException
 from db.models import Log
-from schemas.log import LogRequest
+from schemas.log import LogRequest, LogUpdate
 from schemas.common import Message
 
 def get_all_logs(db: DBSession) -> List[Log]:
@@ -1038,6 +1047,19 @@ def create_log(db: DBSession, log_in: LogRequest) -> Log:
         changed_data=log_in.changed_data
     )
     db.add(log_obj)
+    db.commit()
+    db.refresh(log_obj)
+    return log_obj
+
+def update_log(db: DBSession, log_id: int, log_update: LogUpdate) -> Log:
+    log_obj = db.query(Log).filter(Log.id == log_id).first()
+    if not log_obj:
+        raise HTTPException(status_code=404, detail="Log not found")
+
+    update_data = log_update.dict(exclude_unset=True)
+    for key, value in update_data.items():
+        setattr(log_obj, key, value)
+    
     db.commit()
     db.refresh(log_obj)
     return log_obj
@@ -1080,10 +1102,6 @@ def create_measurement(db: Session, meas_in: MeasurementRequest, request: Reques
     user = db.query(User).filter(User.id == meas_in.measured_by_user_id).first()
     if not user:
         raise HTTPException(status_code=400, detail="Measured_by user does not exist")
-
-    image_url = None
-    if meas_in.image_base64:
-        image_url = save_image(meas_in.image_base64, meas_in.patient_id, request)
     
     measurement = Measurement(
         patient_id=meas_in.patient_id,
@@ -1092,7 +1110,7 @@ def create_measurement(db: Session, meas_in: MeasurementRequest, request: Reques
         weight_kg=meas_in.weight_kg,
         sleep_hours=meas_in.sleep_hours,
         exercise_hours=meas_in.exercise_hours,
-        image=image_url
+        image=save_image(meas_in.image, meas_in.patient_id, request)
     )
 
     db.add(measurement)
@@ -1336,7 +1354,7 @@ from typing import List
 from sqlalchemy.orm import Session as DBSession
 from fastapi import HTTPException
 from db.models import Session
-from schemas.session import SessionRequest
+from schemas.session import SessionRequest, SessionUpdate
 from schemas.common import Message
 
 def get_all_sessions(db: DBSession) -> List[Session]:
@@ -1359,6 +1377,19 @@ def create_session(db: DBSession, session_in: SessionRequest) -> Session:
         expires=session_in.expires
     )
     db.add(session_obj)
+    db.commit()
+    db.refresh(session_obj)
+    return session_obj
+
+def update_session(db: DBSession, token: str, session_update: SessionUpdate) -> Session:
+    session_obj = db.query(Session).filter(Session.session_token == token).first()
+    if not session_obj:
+        raise HTTPException(status_code=404, detail="Session not found")
+
+    update_data = session_update.dict(exclude_unset=True)
+    for key, value in update_data.items():
+        setattr(session_obj, key, value)
+    
     db.commit()
     db.refresh(session_obj)
     return session_obj
@@ -1512,6 +1543,165 @@ def verify_password(plain_password: str, hashed_password: str) -> bool:
     """
     return bcrypt.checkpw(plain_password.encode('utf-8'), hashed_password.encode('utf-8'))
 
+```
+
+## api/utils/pose_decection.py
+```py
+import cv2
+import math
+import mediapipe as mp
+import numpy as np
+
+class PoseDetector:
+    def __init__(self):
+        self.mp_pose = mp.solutions.pose
+        self.mp_drawing = mp.solutions.drawing_utils
+        self.pose = self.mp_pose.Pose(
+            model_complexity=2,
+            min_detection_confidence=0.5,
+            min_tracking_confidence=0.5
+        )
+
+    def evaluate_neck_alignment(self, landmarks, ear_shoulder_angle_threshold=50):
+        left_ear = landmarks[self.mp_pose.PoseLandmark.LEFT_EAR.value]
+        right_ear = landmarks[self.mp_pose.PoseLandmark.RIGHT_EAR.value]
+        left_shoulder = landmarks[self.mp_pose.PoseLandmark.LEFT_SHOULDER.value]
+        right_shoulder = landmarks[self.mp_pose.PoseLandmark.RIGHT_SHOULDER.value]
+
+        shoulder_center_x = (left_shoulder.x + right_shoulder.x) / 2
+        shoulder_center_y = (left_shoulder.y + right_shoulder.y) / 2
+        ear_center_x = (left_ear.x + right_ear.x) / 2
+        ear_center_y = (left_ear.y + right_ear.y) / 2
+
+        delta_x = shoulder_center_x - ear_center_x
+        delta_y = shoulder_center_y - ear_center_y
+        theta = math.degrees(math.atan2(delta_x, delta_y))
+        return abs(theta) < ear_shoulder_angle_threshold
+
+    def evaluate_torso_alignment(self, landmarks, alignment_factor=0.1):
+        left_shoulder = landmarks[self.mp_pose.PoseLandmark.LEFT_SHOULDER.value]
+        right_shoulder = landmarks[self.mp_pose.PoseLandmark.RIGHT_SHOULDER.value]
+        left_hip = landmarks[self.mp_pose.PoseLandmark.LEFT_HIP.value]
+        right_hip = landmarks[self.mp_pose.PoseLandmark.RIGHT_HIP.value]
+        left_knee = landmarks[self.mp_pose.PoseLandmark.LEFT_KNEE.value]
+        right_knee = landmarks[self.mp_pose.PoseLandmark.RIGHT_KNEE.value]
+
+        torso_length = abs(((left_shoulder.y + right_shoulder.y) / 2) - ((left_hip.y + right_hip.y) / 2))
+        threshold = torso_length * alignment_factor
+
+        shoulder_center_x = (left_shoulder.x + right_shoulder.x) / 2
+        hip_center_x = (left_hip.x + right_hip.x) / 2
+        knee_center_x = (left_knee.x + right_knee.x) / 2
+
+        return (abs(shoulder_center_x - hip_center_x) < threshold and
+                abs(hip_center_x - knee_center_x) < threshold)
+
+    def evaluate_knee_alignment(self, landmarks, knee_angle_threshold=160):
+        def calculate_angle(a, b, c):
+            ba = (a[0] - b[0], a[1] - b[1])
+            bc = (c[0] - b[0], c[1] - b[1])
+            dot = ba[0]*bc[0] + ba[1]*bc[1]
+            norm_ba = math.hypot(*ba)
+            norm_bc = math.hypot(*bc)
+            if norm_ba * norm_bc == 0:
+                return 0
+            angle = math.degrees(math.acos(dot / (norm_ba * norm_bc)))
+            return angle
+
+        left = [landmarks[self.mp_pose.PoseLandmark.LEFT_HIP.value],
+                landmarks[self.mp_pose.PoseLandmark.LEFT_KNEE.value],
+                landmarks[self.mp_pose.PoseLandmark.LEFT_ANKLE.value]]
+        right = [landmarks[self.mp_pose.PoseLandmark.RIGHT_HIP.value],
+                 landmarks[self.mp_pose.PoseLandmark.RIGHT_KNEE.value],
+                 landmarks[self.mp_pose.PoseLandmark.RIGHT_ANKLE.value]]
+
+        left_angle = calculate_angle((left[0].x, left[0].y),
+                                     (left[1].x, left[1].y),
+                                     (left[2].x, left[2].y))
+        right_angle = calculate_angle((right[0].x, right[0].y),
+                                      (right[1].x, right[1].y),
+                                      (right[2].x, right[2].y))
+
+        return left_angle >= knee_angle_threshold and right_angle >= knee_angle_threshold
+
+    def evaluate_feet_flat(self, landmarks, foot_y_diff_threshold=0.02):
+        left_heel = landmarks[self.mp_pose.PoseLandmark.LEFT_HEEL.value]
+        right_heel = landmarks[self.mp_pose.PoseLandmark.RIGHT_HEEL.value]
+        left_toe = landmarks[self.mp_pose.PoseLandmark.LEFT_FOOT_INDEX.value]
+        right_toe = landmarks[self.mp_pose.PoseLandmark.RIGHT_FOOT_INDEX.value]
+
+        left_flat = abs(left_heel.y - left_toe.y) < foot_y_diff_threshold
+        right_flat = abs(right_heel.y - right_toe.y) < foot_y_diff_threshold
+        return left_flat and right_flat
+
+    # ----------------------------
+    # Main Processing Functions
+    # ----------------------------
+
+    def evaluate_image(self, image_path):
+        """
+        Evaluate a single image for posture correctness.
+        Returns:
+            - {'issues': [...]} if posture is incorrect
+            - {'landmark_image': np.ndarray} if posture is correct (image with landmarks only)
+        """
+        image = cv2.imread(image_path)
+        if image is None:
+            raise FileNotFoundError(f"Cannot load image from {image_path}")
+
+        rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+        results = self.pose.process(rgb)
+
+        if not results.pose_landmarks:
+            return {'issues': ['No pose detected in the image']}
+
+        landmarks = results.pose_landmarks.landmark
+        issues = []
+
+        if not self.evaluate_neck_alignment(landmarks):
+            issues.append('Adjust neck alignment: keep ears over shoulders')
+        if not self.evaluate_torso_alignment(landmarks):
+            issues.append('Straighten torso: align shoulders, hips, and knees vertically')
+        if not self.evaluate_knee_alignment(landmarks):
+            issues.append('Extend knees: keep legs straight')
+        if not self.evaluate_feet_flat(landmarks):
+            issues.append('Place feet flat on the ground')
+
+        if issues:
+            return {'issues': issues}
+        else:
+            # Create a transparent background image (4-channel)
+            h, w = image.shape[:2]
+            transparent = np.zeros((h, w, 4), dtype=np.uint8)
+            # Draw landmarks onto a separate BGR canvas
+            canvas = np.zeros((h, w, 3), dtype=np.uint8)
+            self.mp_drawing.draw_landmarks(
+                canvas,
+                results.pose_landmarks,
+                self.mp_pose.POSE_CONNECTIONS
+            )
+            # Convert canvas to BGRA and set alpha where landmarks exist
+            canvas_bgra = cv2.cvtColor(canvas, cv2.COLOR_BGR2BGRA)
+            # Alpha channel: non-black pixels become opaque
+            alpha = np.any(canvas != 0, axis=2).astype(np.uint8) * 255
+            canvas_bgra[:, :, 3] = alpha
+            return {'landmark_image': canvas_bgra}
+
+if __name__ == "__main__":
+    detector = PoseDetector()
+    # Replace with your image path (use raw string, double backslashes, or forward slashes)
+    img_path = r'C:/Users/ardit/Documents/GitHub/School/year_3/sem6/pose_decection/dummy_correct.jpg'
+    result = detector.evaluate_image(img_path)
+    if 'issues' in result:
+        print("Posture improvements needed:")
+        for issue in result['issues']:
+            print("-", issue)
+    else:
+        landmark_img = result['landmark_image']
+        # Save landmark-only image to current working directory
+        save_filename = 'landmarks_only.png'
+        cv2.imwrite(save_filename, landmark_img)
+        print(f"Landmark image saved as {save_filename} in the current folder.")
 ```
 
 ## api/utils/session.py

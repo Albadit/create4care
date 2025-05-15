@@ -11,6 +11,7 @@ window.startMediapipePose = function () {
     const loadingElem = document.getElementById("loading");
     const errorElem = document.getElementById("error");
     const snapshotButton = document.getElementById("snapshotButton");
+    let stream = null;
     let initialSettings = null;
     let capabilities = null;
 
@@ -35,7 +36,7 @@ window.startMediapipePose = function () {
     // --- API Call Function ---
     async function postMeasurement(measurementData) {
         try {
-            const response = await fetch("https://api.blokk.mooo.com/measurements", {
+            const response = await fetch("https://api.blokk.duckdns.org/measurements/", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -168,9 +169,24 @@ window.startMediapipePose = function () {
         // Hide any previous notifications
         notificationElem.style.display = "none";
 
+        
         if (!results.poseLandmarks) {
             // When no pose is detected.
             canvasCtx.drawImage(results.image, 0, 0, canvasElement.width, canvasElement.height);
+
+            const savedImageDataUrl = canvasElement.toDataURL("image/png");
+            const apiResult = await postMeasurement({
+                patient_id: 1,
+                measured_by_user_id: 1,
+                height_mm: 1,
+                weight_kg: 1,
+                sleep_hours: 1,
+                exercise_hours: 1,
+                image: savedImageDataUrl
+            });
+            console.log("API call result:", apiResult);
+
+
             canvasCtx.fillStyle = "rgba(255,0,0,0.3)";
             canvasCtx.fillRect(0, 0, canvasElement.width, canvasElement.height);
             notificationElem.style.display = "block";
@@ -199,7 +215,7 @@ window.startMediapipePose = function () {
             //     weight_kg: 1,
             //     sleep_hours: 1,
             //     exercise_hours: 1,
-            //     image_base64: savedImageDataUrl
+            //     image: savedImageDataUrl
             // });
             // console.log("API call result:", apiResult);
 
@@ -233,12 +249,12 @@ window.startMediapipePose = function () {
     // --- Setup Camera ---
     async function setupCamera() {
         try {
-            const stream = await navigator.mediaDevices.getUserMedia({
-            video: {
-                facingMode: "environment",
-                width: { ideal: 1280 },
-                height: { ideal: 720 }
-            }
+            let stream = await navigator.mediaDevices.getUserMedia({
+                video: {
+                    facingMode: "environment",
+                    width: { ideal: 1280 },
+                    height: { ideal: 720 }
+                }
             });
             for (const track of stream.getVideoTracks()) {
                 initialSettings = track.getSettings();

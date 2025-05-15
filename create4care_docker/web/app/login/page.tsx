@@ -18,7 +18,7 @@ export default function LoginPage() {
     try {
       // console.log(`URL link: ${getBaseUrl()}`)
 
-      const res = await fetch(`${getBaseUrl()}/auth/token`, {
+      const res = await fetch(`${getBaseUrl()}/auth/token/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
