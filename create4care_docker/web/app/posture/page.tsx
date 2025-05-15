@@ -128,10 +128,18 @@ export default function PosturePage() {
     if (!containerRef.current) return;
     
     // initial draw
-    adjustCanvas(capabilities.current?.width!.max, capabilities.current?.height!.max);
+    const width = capabilities.current?.width?.max;
+    const height = capabilities.current?.height?.max;
+    if (typeof width === 'number' && typeof height === 'number') {
+      adjustCanvas(width, height);
+    }
     
     const ro = new ResizeObserver(() => {
-      adjustCanvas(capabilities.current?.width!.max, capabilities.current?.height!.max);
+      const width = capabilities.current?.width?.max;
+      const height = capabilities.current?.height?.max;
+      if (typeof width === 'number' && typeof height === 'number') {
+        adjustCanvas(width, height);
+      }
     });
     ro.observe(containerRef.current);
     
@@ -139,7 +147,7 @@ export default function PosturePage() {
       ro.disconnect();
     };
   }, [adjustCanvas, capabilities.current?.width!.max, capabilities.current?.height!.max]);
-    
+  
 
   // prediction loop
   const predictWebcam = useCallback(() => {

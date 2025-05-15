@@ -1,10 +1,12 @@
 # Use official python image
 FROM python:3.10
 
-# Install netcat if not present (optional, if you need nc for waiting)
-RUN apt-get update && apt-get install -y \ 
-netcat-openbsd \
-&& apt-get clean
+# Install netcat (optional) and OpenGL support for cv2
+RUN apt-get update && apt-get install -y \
+    netcat-openbsd \
+    libgl1-mesa-glx \
+    libglib2.0-0 \
+&& apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Set working directory
 WORKDIR /app

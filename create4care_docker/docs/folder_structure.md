@@ -20,6 +20,7 @@ C:\Users\ardit\Documents\GitHub\School\year_3\sem6\create4care_docker
     │   ├── measurement.py
     │   ├── patient.py
     │   ├── permission.py
+    │   ├── pose_detection.py
     │   ├── role.py
     │   ├── session.py
     │   └── user.py
@@ -54,10 +55,12 @@ C:\Users\ardit\Documents\GitHub\School\year_3\sem6\create4care_docker
 # Use official python image
 FROM python:3.10
 
-# Install netcat if not present (optional, if you need nc for waiting)
-RUN apt-get update && apt-get install -y \ 
-netcat-openbsd \
-&& apt-get clean
+# Install netcat (optional) and OpenGL support for cv2
+RUN apt-get update && apt-get install -y \
+    netcat-openbsd \
+    libgl1-mesa-glx \
+    libglib2.0-0 \
+&& apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Set working directory
 WORKDIR /app
@@ -403,7 +406,8 @@ import os
 
 from routers import (
     user_router, role_router, permission_router, patient_router,
-    measurement_router, session_router, log_router, db_seed_router, auth_router 
+    measurement_router, session_router, log_router, db_seed_router, auth_router,
+    pose_detection_router
 )
 
 app = FastAPI()
@@ -426,6 +430,7 @@ app.include_router(session_router, prefix="/sessions", tags=["sessions"])
 app.include_router(log_router, prefix="/logs", tags=["logs"])
 app.include_router(db_seed_router, prefix="/database", tags=["database"])
 app.include_router(auth_router, prefix="/auth", tags=["auth"])
+app.include_router(pose_detection_router, prefix="/pose_detection", tags=["pose_detection"])
 
 # Ensure image directory exists and mount it
 os.makedirs(IMAGE_DIR, exist_ok=True)
@@ -450,6 +455,8 @@ requests
 python-multipart
 bcrypt
 python-jose[cryptography]
+mediapipe
+numpy
 ```
 
 ## api/routers/__init__.py
@@ -464,6 +471,7 @@ from .session import router as session_router
 from .log import router as log_router
 from .auth import router as auth_router
 from .db_seed import router as db_seed_router
+from .pose_detection import router as pose_detection_router
 
 __all__ = [
     "user_router",
@@ -476,6 +484,7 @@ __all__ = [
     "log_router",
     "auth_router",
     "db_seed_router",
+    "pose_detection_router",
 ]
 
 ```
@@ -701,6 +710,64 @@ def update_permission(permission_id: int, permission: PermissionUpdate, db: DBSe
 @router.delete("/{permission_id}", response_model=Message)
 def delete_permission(permission_id: int, db: DBSession = Depends(get_db)):
     return permission_service.delete_permission(db, permission_id)
+
+```
+
+## api/routers/pose_detection.py
+```py
+import os
+import tempfile
+import base64
+from fastapi import APIRouter, HTTPException
+from pydantic import BaseModel
+from typing import List, Optional
+import cv2
+
+from utils.pose_decection import PoseDetector
+
+router = APIRouter()
+detector = PoseDetector()
+
+class PostureRequest(BaseModel):
+    image_base64: str
+
+class PostureResponse(BaseModel):
+    issues: Optional[List[str]] = None
+    landmark_image: Optional[str] = None
+
+@router.post("/detect_posture", response_model=PostureResponse)
+async def detect_posture(req: PostureRequest):
+    # 1. Decode base64 image
+    try:
+        header, encoded = req.image_base64.split(",", 1)
+        img_data = base64.b64decode(encoded)
+    except Exception:
+        raise HTTPException(status_code=400, detail="Invalid base64 image format")
+
+    # 2. Write to a temporary file for PoseDetector
+    with tempfile.NamedTemporaryFile(suffix=".png", delete=False) as tmp:
+        tmp.write(img_data)
+        tmp_path = tmp.name
+
+    # 3. Run posture evaluation
+    try:
+        result = detector.evaluate_image(tmp_path)
+    finally:
+        os.unlink(tmp_path)
+
+    # 4a. Return issues if found
+    if "issues" in result:
+        return PostureResponse(issues=result["issues"])
+
+    # 4b. No issues: encode overlay and save via image_utils
+    success, buffer = cv2.imencode(".png", result["landmark_image"])
+    if not success:
+        raise HTTPException(status_code=500, detail="Failed to encode landmark image")
+
+    b64_img = base64.b64encode(buffer).decode("utf-8")
+    data_url = f"data:image/png;base64,{b64_img}"
+
+    return PostureResponse(landmark_image=data_url)
 
 ```
 

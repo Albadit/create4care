@@ -20,7 +20,6 @@ export default function Home() {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
 
-    // Get form values from FormData
     const patient_id = formData.get("patient_id") as string;
     const measured_by_user_id = formData.get("measured_by_user_id") as string;
     const height_mm = formData.get("height_mm") as string;
@@ -28,28 +27,48 @@ export default function Home() {
     const sleep_hours = formData.get("sleep_hours") as string;
     const exercise_hours = formData.get("exercise_hours") as string;
 
-    // Convert file input to Base64 (if provided)
     const fileInput = event.currentTarget.elements.namedItem("image") as HTMLInputElement;
     let image_base64 = null;
     if (fileInput && fileInput.files && fileInput.files.length > 0) {
       image_base64 = await fileToBase64(fileInput.files[0]);
     }
 
-    // Build JSON payload
-    const payload = {
-      patient_id: Number(patient_id),
-      measured_by_user_id: Number(measured_by_user_id),
-      height_mm: parseFloat(height_mm),
-      weight_kg: parseFloat(weight_kg),
-      sleep_hours: sleep_hours ? parseFloat(sleep_hours) : null,
-      exercise_hours: exercise_hours ? parseFloat(exercise_hours) : null,
-      image: image_base64,
-    };
+    if (!image_base64) {
+      setResult("Error: No image provided.");
+      return;
+    }
 
     try {
-      // console.log(`URL link: ${getBaseUrl()}`)
-      // Update the URL to your FastAPI endpoint
-      console.log(getBaseUrl());
+      // 1. Pose detection
+      const poseRes = await fetch("https://api.blokk.duckdns.org/pose_detection/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ image_base64 }),
+      });
+
+      if (!poseRes.ok) {
+        const poseError = await poseRes.json();
+        setResult("Pose detection failed: " + poseError.detail);
+        return;
+      }
+
+      const poseData = await poseRes.json();
+
+      if (poseData.issues && poseData.issues.length > 0) {
+        setResult("Posture issues detected: " + poseData.issues.join(", "));
+        return;
+      }
+
+      // 2. Send measurement (met landmark image)
+      const payload = {
+        patient_id: Number(patient_id),
+        measured_by_user_id: Number(measured_by_user_id),
+        height_mm: parseFloat(height_mm),
+        weight_kg: parseFloat(weight_kg),
+        sleep_hours: sleep_hours ? parseFloat(sleep_hours) : null,
+        exercise_hours: exercise_hours ? parseFloat(exercise_hours) : null,
+        image: poseData.landmark_image, // Use the processed image instead of original
+      };
 
       const res = await fetch(`https://api.blokk.duckdns.org/measurements/`, {
         method: "POST",
@@ -59,13 +78,14 @@ export default function Home() {
 
       if (!res.ok) {
         const errorData = await res.json();
-        setResult("Error: " + errorData.detail);
+        setResult("Measurement upload failed: " + errorData.detail);
       } else {
         const data = await res.json();
         setResult(
           `Measurement created: <a href="${data.image}" target="_blank">${data.image}</a>`
         );
       }
+
     } catch (error: unknown) {
       if (error instanceof Error) {
         setResult("Error: " + error.message);
