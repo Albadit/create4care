@@ -4,18 +4,18 @@ namespace create4care.Components.Models;
 
 public class NavItem
 {
-    public string Name { get; set; }
-    public string Href { get; set; }
-    public RenderFragment Icon { get; set; }
+    public required string Name { get; set; }
+    public required string Href { get; set; }
+    public required RenderFragment Icon { get; set; }
 }
 
 public class MenuSection
 {
-    public string Header { get; set; }
-    public List<NavItem> NavItems { get; set; }
+    public required string Header { get; set; }
+    public required List<NavItem> NavItems { get; set; }
 }
 
 public class NavMenuModel
 {
-    public List<MenuSection> MenuSections { get; set; }
+    public required List<MenuSection> MenuSections { get; set; }
 }

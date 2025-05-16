@@ -24,9 +24,9 @@
 </main>
 
 @code {
-    private string apiUrl { get; set; }
+    private string? apiUrl { get; set; }
     private bool isSaving = false;
-    private string feedbackMessage;
+    private string? feedbackMessage;
 
     protected override void OnInitialized()
     {

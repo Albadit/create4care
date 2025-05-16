@@ -1,27 +1,25 @@
-﻿using Plugin.BLE;
+using Plugin.BLE;
 using Plugin.BLE.Abstractions.Contracts;
 using Plugin.BLE.Abstractions.EventArgs;
-using System;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace create4care.Components.Services;
 
 public class BluetoothService
 {
-    IAdapter _adapter;
-    IBluetoothLE _ble;
-    IDevice _device;
-    IService _service;
-    ICharacteristic _characteristic;
+    readonly IAdapter _adapter;
+    readonly IBluetoothLE _ble;
+    IDevice? _device;
+    IService? _service;
+    ICharacteristic? _characteristic;
 
     // Convert 16-bit UUIDs to full 128-bit format.
-    Guid serviceUuid = Guid.Parse("0000180C-0000-1000-8000-00805F9B34FB");
-    Guid characteristicUuid = Guid.Parse("00002A56-0000-1000-8000-00805F9B34FB");
+    readonly Guid serviceUuid = Guid.Parse("0000180C-0000-1000-8000-00805F9B34FB");
+    readonly Guid characteristicUuid = Guid.Parse("00002A56-0000-1000-8000-00805F9B34FB");
 
     // Events to notify the UI
-    public event Action<string> OnStatusChanged;
-    public event Action<string> OnDataReceived;
+    public event Action<string>? OnStatusChanged;
+    public event Action<string>? OnDataReceived;
 
     public BluetoothService()
     {
@@ -88,7 +86,7 @@ public class BluetoothService
         }
     }
 
-    private void Characteristic_ValueUpdated(object sender, CharacteristicUpdatedEventArgs e)
+    private void Characteristic_ValueUpdated(object? sender, CharacteristicUpdatedEventArgs e)
     {
         // Convert the incoming byte array (JSON data) to a string.
         string json = Encoding.UTF8.GetString(e.Characteristic.Value);
