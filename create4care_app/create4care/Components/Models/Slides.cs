@@ -4,7 +4,7 @@ namespace create4care.Components.Models;
 
 public class SlidePage
 {
-    public RenderFragment? Image { get; set; }
+    public object? Icon { get; set; }
     public string? Title { get; set; }
     public string? Content { get; set; }
 }

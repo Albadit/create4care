@@ -13,7 +13,16 @@
     <div class="slider-container">
         <IconBackgroundShape />
         <div class="slider-background">
-            <div class="slider-page @AnimationClass">@Pages[CurrentPageIndex].Image</div>
+            <div class="slider-page @AnimationClass">
+                @if (Pages[CurrentPageIndex].Icon is RenderFragment fragment)
+                {
+                    @fragment
+                }
+                else if (Pages[CurrentPageIndex].Icon is string imageUrl)
+                {
+                    <img src="@imageUrl" alt="Slide icon" style="height: 340px;" />
+                }
+            </div>
         </div>
         <div class="slider-content">
             <h2 class="slider-page @AnimationClass">@Pages[CurrentPageIndex].Title</h2>
@@ -51,26 +60,27 @@
     {
         new SlidePage
         {
-            Image = @<IconPerson />,
-            Title = "Step 1: This is the title of the onboarding", 
+            @* (RenderFragment)(@<IconPerson />) *@
+            Icon = "images/step_1.png",
+            Title = "Monteer de MeetMaatje", 
             Content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis"
         },
         new SlidePage
         {
-            Image = @<IconCamera />,
-            Title = "Step 2: This is the title of the onboarding",
+            Icon = "images/step_2.png",
+            Title = "Connect met MeetMaatje",
             Content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis"
         },
         new SlidePage
         {
-            Image = @<IconPerson />,
-            Title = "Step 3: This is the title of the onboarding",
+            Icon = "images/step_3.png",
+            Title = "Kalibreer de MeetMaatje",
             Content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis"
         },
         new SlidePage
         {
-            Image = @<IconPerson />,
-            Title = "Step 4: This is the title of the onboarding",
+            Icon = "images/step_4.png",
+            Title = "Controleer het postuur via een foto",
             Content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis"
         }
     };
