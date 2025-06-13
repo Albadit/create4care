@@ -17,9 +17,10 @@ public class BluetoothService
     readonly Guid serviceUuid = Guid.Parse("0000180C-0000-1000-8000-00805F9B34FB");
     readonly Guid characteristicUuid = Guid.Parse("00002A56-0000-1000-8000-00805F9B34FB");
 
-    // Events to notify the UI
     public event Action<string>? OnStatusChanged;
     public event Action<string>? OnDataReceived;
+
+    public bool IsConnected { get; private set; } = false;
 
     public BluetoothService()
     {
@@ -32,16 +33,16 @@ public class BluetoothService
         OnStatusChanged?.Invoke("Scanning for devices...");
         try
         {
-            _adapter.DeviceDiscovered += (s, a) =>
-            {
-                if (!string.IsNullOrEmpty(a.Device.Name) &&
-                    a.Device.Name.Equals("Arduino_R4_WiFi", StringComparison.Ordinal))
-                {
-                    _device = a.Device;
-                }
-            };
+            // Clear any previous state:
+            IsConnected = false;
+            _device = null;
+            _service = null;
+            _characteristic = null;
 
+            _adapter.DeviceDiscovered += DeviceDiscoveredHandler;
             await _adapter.StartScanningForDevicesAsync();
+
+            _adapter.DeviceDiscovered -= DeviceDiscoveredHandler;
 
             if (_device == null)
             {
@@ -73,7 +74,9 @@ public class BluetoothService
             {
                 _characteristic.ValueUpdated += Characteristic_ValueUpdated;
                 await _characteristic.StartUpdatesAsync();
-                OnStatusChanged?.Invoke("Connected. Waiting for data...");
+                OnStatusChanged?.Invoke("Connected. Waiting for data…");
+
+                IsConnected = true;
             }
             else
             {
@@ -86,10 +89,28 @@ public class BluetoothService
         }
     }
 
+    private void DeviceDiscoveredHandler(object? sender, DeviceEventArgs a)
+    {
+        if (!string.IsNullOrEmpty(a.Device.Name) &&
+            a.Device.Name.Equals("Arduino_R4_WiFi", StringComparison.Ordinal))
+        {
+            _device = a.Device;
+        }
+    }
+
     private void Characteristic_ValueUpdated(object? sender, CharacteristicUpdatedEventArgs e)
     {
-        // Convert the incoming byte array (JSON data) to a string.
         string json = Encoding.UTF8.GetString(e.Characteristic.Value);
         OnDataReceived?.Invoke(json);
+    }
+
+    public async Task DisconnectAsync()
+    {
+        if (_device != null)
+        {
+            await _adapter.DisconnectDeviceAsync(_device);
+            IsConnected = false;
+            OnStatusChanged?.Invoke("Disconnected.");
+        }
     }
 }

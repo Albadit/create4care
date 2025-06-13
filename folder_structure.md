@@ -1,98 +1,1457 @@
 # Folder structure
 ```
-C:\Users\ardit\Documents\GitHub\School\year_3\sem6\create4care_app\create4care
-├── App.xaml
-├── App.xaml.cs
-├── Components
-│   ├── Layout
-│   │   └── MainLayout.razor
-│   ├── Models
-│   │   ├── NavMenuModels.cs
-│   │   └── Slides.cs
-│   ├── Pages
-│   │   ├── Bluetooth.razor
-│   │   ├── Home.razor
-│   │   ├── Instruction.razor
-│   │   ├── Measuring.razor
-│   │   └── Settings.razor
-│   ├── Routes.razor
-│   ├── Services
-│   │   └── BluetoothService.cs
-│   ├── Shared
-│   │   ├── Icon
-│   │   │   ├── Home.razor
-│   │   │   ├── IconBackgroundShape.razor
-│   │   │   ├── IconBluetooth.razor
-│   │   │   ├── IconCamera.razor
-│   │   │   ├── IconHome.razor
-│   │   │   ├── IconInfo.razor
-│   │   │   ├── IconInstruction.razor
-│   │   │   ├── IconLogin.razor
-│   │   │   ├── IconLogout.razor
-│   │   │   ├── IconMeasuring.razor
-│   │   │   ├── IconPerson.razor
-│   │   │   └── IconSettings.razor
-│   │   └── NavMenu.razor
-│   └── _Imports.razor
-├── MainPage.xaml
-├── MainPage.xaml.cs
-├── MauiProgram.cs
-├── Platforms
-│   ├── Android
-│   │   ├── AndroidManifest.xml
-│   │   ├── CustomBlazorWebViewHandler.cs
-│   │   ├── MainActivity.cs
-│   │   ├── MainApplication.cs
-│   │   └── Resources
-│   │       └── values
-│   │           └── colors.xml
-│   ├── MacCatalyst
-│   │   ├── AppDelegate.cs
-│   │   ├── Entitlements.plist
-│   │   ├── Info.plist
-│   │   └── Program.cs
-│   ├── Tizen
-│   │   ├── Main.cs
-│   │   └── tizen-manifest.xml
-│   ├── Windows
+C:\Users\Albadit\Documents\GitHub\create4care
+├── .git
+│   ├── COMMIT_EDITMSG
+│   ├── FETCH_HEAD
+│   ├── HEAD
+│   ├── config
+│   ├── description
+│   ├── hooks
+│   │   ├── applypatch-msg.sample
+│   │   ├── commit-msg.sample
+│   │   ├── fsmonitor-watchman.sample
+│   │   ├── post-update.sample
+│   │   ├── pre-applypatch.sample
+│   │   ├── pre-commit.sample
+│   │   ├── pre-merge-commit.sample
+│   │   ├── pre-push.sample
+│   │   ├── pre-rebase.sample
+│   │   ├── pre-receive.sample
+│   │   ├── prepare-commit-msg.sample
+│   │   ├── push-to-checkout.sample
+│   │   ├── sendemail-validate.sample
+│   │   └── update.sample
+│   ├── index
+│   ├── info
+│   │   └── exclude
+│   ├── logs
+│   │   ├── HEAD
+│   │   └── refs
+│   │       ├── heads
+│   │       │   └── main
+│   │       └── remotes
+│   │           └── origin
+│   │               ├── HEAD
+│   │               └── main
+│   ├── objects
+│   │   ├── 00
+│   │   │   └── 9be431de3ef2005be716820d4e52227509fde1
+│   │   ├── 08
+│   │   │   └── ea17bc367e0c627729e680f6a20460551a306d
+│   │   ├── 1c
+│   │   │   └── c28343f84d3502799549a1fede8c572de47977
+│   │   ├── 25
+│   │   │   ├── 4be60b428d523856c6055403ba6b1ef3546700
+│   │   │   └── dd8f232f0914da86c12594cb3c7b9e93b3a60a
+│   │   ├── 35
+│   │   │   └── ec9387201f83fe2dc943715474aa1f0e0fd8af
+│   │   ├── 37
+│   │   │   └── 3f6bbfbfe21242a2559287fc1523d16bdf2b9f
+│   │   ├── 3c
+│   │   │   └── 7fa4ac53f5b22ea608e84bb2cc5aec1d4b356e
+│   │   ├── 4a
+│   │   │   └── 0b4dcea1fcae6fe7593a191bc7fb595e83e4d0
+│   │   ├── 59
+│   │   │   └── b7b0c96daccd88923fb9e6d25827a3fdf82b9e
+│   │   ├── 63
+│   │   │   ├── 2d26d0408528b507fb3fea5e2977b1f6aad283
+│   │   │   └── a6d543c5503d9e4f5e97506cd06480960dd40e
+│   │   ├── 6a
+│   │   │   └── 507368fec19f2ddb40a2675d29318e652accbe
+│   │   ├── 70
+│   │   │   └── 157a540ec7cfd190692291c21a9df5bb7c9518
+│   │   ├── 7a
+│   │   │   └── fca68db51473672db0a9cc35ca733e88f190bc
+│   │   ├── 89
+│   │   │   └── a4a7d8d74d513c611c4ad0d33fd4f5d55bb6e6
+│   │   ├── 8d
+│   │   │   └── 1d7e37f3a8a9c7deb5a15287edd2c8b9ed5f31
+│   │   ├── a2
+│   │   │   └── 06e5024acd2d73b05f5b5152d3062932f982e0
+│   │   ├── b0
+│   │   │   └── 36c1e2caee09b6496bdacd93994c6ba94149a1
+│   │   ├── b8
+│   │   │   └── 82eef57d987b46a57d17392131f09de7f1a434
+│   │   ├── d6
+│   │   │   └── 79529e4ab87352a0b08d24b39b1e5507c189b7
+│   │   ├── e0
+│   │   │   └── dda8364fd2bf29ffd4974710ad67fe4fd33e91
+│   │   ├── ee
+│   │   │   └── 59d53c69aac5097bf637cd8a042244036802f9
+│   │   ├── f3
+│   │   │   └── 323ec9ad2e9f96c2f04caffba661cf8ae46d6f
+│   │   ├── f6
+│   │   │   └── 0d04069e855dd23492f9dc19893f8cb408ebb3
+│   │   ├── info
+│   │   └── pack
+│   │       ├── pack-998bfbe251ee8ae7de73809dc5d872de83daa3d6.idx
+│   │       ├── pack-998bfbe251ee8ae7de73809dc5d872de83daa3d6.pack
+│   │       └── pack-998bfbe251ee8ae7de73809dc5d872de83daa3d6.rev
+│   ├── packed-refs
+│   └── refs
+│       ├── heads
+│       │   └── main
+│       ├── remotes
+│       │   └── origin
+│       │       ├── HEAD
+│       │       └── main
+│       └── tags
+├── create4care_app
+│   ├── create4care
 │   │   ├── App.xaml
 │   │   ├── App.xaml.cs
-│   │   ├── Package.appxmanifest
-│   │   └── app.manifest
-│   └── iOS
-│       ├── AppDelegate.cs
-│       ├── Info.plist
-│       ├── Program.cs
-│       └── Resources
-│           └── PrivacyInfo.xcprivacy
-├── Properties
-│   └── launchSettings.json
-├── Resources
-│   ├── AppIcon
-│   │   ├── appicon.svg
-│   │   └── appiconfg.svg
-│   ├── Fonts
-│   │   └── OpenSans-Regular.ttf
-│   ├── Images
-│   │   ├── dotnet_bot.svg
-│   │   ├── step_1.png
-│   │   ├── step_2.png
-│   │   ├── step_3.png
-│   │   ├── step_4.png
-│   │   └── step_5.png
-│   ├── Raw
-│   │   └── AboutAssets.txt
-│   └── Splash
-│       └── splash.svg
-├── create4care.csproj
-├── create4care.csproj.user
-└── wwwroot
-    ├── css
-    │   └── app.css
-    └── index.html
+│   │   ├── Components
+│   │   │   ├── Layout
+│   │   │   │   └── MainLayout.razor
+│   │   │   ├── Models
+│   │   │   │   ├── Measuring.cs
+│   │   │   │   └── NavMenuModels.cs
+│   │   │   ├── Pages
+│   │   │   │   ├── Bluetooth.razor
+│   │   │   │   ├── Finish.razor
+│   │   │   │   ├── Home.razor
+│   │   │   │   ├── Instruction.razor
+│   │   │   │   ├── Measuring.razor
+│   │   │   │   └── Settings.razor
+│   │   │   ├── Routes.razor
+│   │   │   ├── Services
+│   │   │   │   └── BluetoothService.cs
+│   │   │   ├── Shared
+│   │   │   │   ├── Icon
+│   │   │   │   │   ├── Home.razor
+│   │   │   │   │   ├── IconBackgroundShape.razor
+│   │   │   │   │   ├── IconBluetooth.razor
+│   │   │   │   │   ├── IconCamera.razor
+│   │   │   │   │   ├── IconHome.razor
+│   │   │   │   │   ├── IconInfo.razor
+│   │   │   │   │   ├── IconInstruction.razor
+│   │   │   │   │   ├── IconLogin.razor
+│   │   │   │   │   ├── IconLogout.razor
+│   │   │   │   │   ├── IconMeasuring.razor
+│   │   │   │   │   ├── IconPerson.razor
+│   │   │   │   │   └── IconSettings.razor
+│   │   │   │   └── NavMenu.razor
+│   │   │   └── _Imports.razor
+│   │   ├── MainPage.xaml
+│   │   ├── MainPage.xaml.cs
+│   │   ├── MauiProgram.cs
+│   │   ├── Platforms
+│   │   │   ├── Android
+│   │   │   │   ├── AndroidManifest.xml
+│   │   │   │   ├── CustomBlazorWebViewHandler.cs
+│   │   │   │   ├── MainActivity.cs
+│   │   │   │   ├── MainApplication.cs
+│   │   │   │   └── Resources
+│   │   │   │       └── values
+│   │   │   │           └── colors.xml
+│   │   │   ├── MacCatalyst
+│   │   │   │   ├── AppDelegate.cs
+│   │   │   │   ├── Entitlements.plist
+│   │   │   │   ├── Info.plist
+│   │   │   │   └── Program.cs
+│   │   │   ├── Tizen
+│   │   │   │   ├── Main.cs
+│   │   │   │   └── tizen-manifest.xml
+│   │   │   ├── Windows
+│   │   │   │   ├── App.xaml
+│   │   │   │   ├── App.xaml.cs
+│   │   │   │   ├── Package.appxmanifest
+│   │   │   │   └── app.manifest
+│   │   │   └── iOS
+│   │   │       ├── AppDelegate.cs
+│   │   │       ├── Info.plist
+│   │   │       ├── Program.cs
+│   │   │       └── Resources
+│   │   │           └── PrivacyInfo.xcprivacy
+│   │   ├── Properties
+│   │   │   └── launchSettings.json
+│   │   ├── Resources
+│   │   │   ├── AppIcon
+│   │   │   │   ├── appicon.svg
+│   │   │   │   └── appiconfg.svg
+│   │   │   ├── Fonts
+│   │   │   │   └── OpenSans-Regular.ttf
+│   │   │   ├── Images
+│   │   │   │   └── dotnet_bot.svg
+│   │   │   ├── Raw
+│   │   │   │   └── AboutAssets.txt
+│   │   │   └── Splash
+│   │   │       └── splash.svg
+│   │   ├── create4care.csproj
+│   │   ├── create4care.csproj.user
+│   │   └── wwwroot
+│   │       ├── css
+│   │       │   └── app.css
+│   │       ├── images
+│   │       │   ├── step_1.png
+│   │       │   ├── step_2.png
+│   │       │   ├── step_3.png
+│   │       │   ├── step_4.png
+│   │       │   └── step_5.png
+│   │       ├── index.html
+│   │       └── js
+│   │           ├── camera.js
+│   │           ├── chart.js
+│   │           └── slider.js
+│   └── create4care.sln
+├── create4care_docker
+│   └── api
+│       ├── Dockerfile
+│       ├── core
+│       │   ├── auth.py
+│       │   └── config.py
+│       ├── db
+│       │   ├── models.py
+│       │   ├── seed.py
+│       │   └── session.py
+│       ├── main.py
+│       ├── requirements.txt
+│       ├── routers
+│       │   ├── __init__.py
+│       │   ├── auth.py
+│       │   ├── db_seed.py
+│       │   ├── log.py
+│       │   ├── measurement.py
+│       │   ├── patient.py
+│       │   ├── permission.py
+│       │   ├── pose_detection.py
+│       │   ├── role.py
+│       │   ├── session.py
+│       │   └── user.py
+│       ├── schemas
+│       │   ├── __init__.py
+│       │   ├── common.py
+│       │   ├── log.py
+│       │   ├── measurement.py
+│       │   ├── patient.py
+│       │   ├── permission.py
+│       │   ├── role.py
+│       │   ├── session.py
+│       │   └── user.py
+│       ├── services
+│       │   ├── __init__.py
+│       │   ├── log.py
+│       │   ├── measurement.py
+│       │   ├── patient.py
+│       │   ├── permission.py
+│       │   ├── role.py
+│       │   ├── session.py
+│       │   └── user.py
+│       └── utils
+│           ├── image_utils.py
+│           ├── password_hash.py
+│           ├── pose_decection.py
+│           └── session.py
+├── pose_decection
+│   ├── dummy_correct.jpg
+│   ├── dummy_wrong.jpg
+│   ├── main.py
+│   └── test.py
+├── readme.md
+└── sensor_meter
+    └── sensor_meter.ino
 ```
 
-## App.xaml
+## .git/COMMIT_EDITMSG
+```txt
+Update README.md
+
+```
+
+## .git/FETCH_HEAD
+```txt
+a206e5024acd2d73b05f5b5152d3062932f982e0		branch 'main' of https://github.com/Albadit/create4care
+
+```
+
+## .git/HEAD
+```txt
+ref: refs/heads/main
+
+```
+
+## .git/config
+```txt
+[core]
+	repositoryformatversion = 0
+	filemode = false
+	bare = false
+	logallrefupdates = true
+	symlinks = false
+	ignorecase = true
+[submodule]
+	active = .
+[remote "origin"]
+	url = https://github.com/Albadit/create4care.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "main"]
+	remote = origin
+	merge = refs/heads/main
+[lfs]
+	repositoryformatversion = 0
+
+```
+
+## .git/description
+```txt
+Unnamed repository; edit this file 'description' to name the repository.
+
+```
+
+## .git/hooks/applypatch-msg.sample
+```sample
+#!/bin/sh
+#
+# An example hook script to check the commit log message taken by
+# applypatch from an e-mail message.
+#
+# The hook should exit with non-zero status after issuing an
+# appropriate message if it wants to stop the commit.  The hook is
+# allowed to edit the commit message file.
+#
+# To enable this hook, rename this file to "applypatch-msg".
+
+. git-sh-setup
+commitmsg="$(git rev-parse --git-path hooks/commit-msg)"
+test -x "$commitmsg" && exec "$commitmsg" ${1+"$@"}
+:
+
+```
+
+## .git/hooks/commit-msg.sample
+```sample
+#!/bin/sh
+#
+# An example hook script to check the commit log message.
+# Called by "git commit" with one argument, the name of the file
+# that has the commit message.  The hook should exit with non-zero
+# status after issuing an appropriate message if it wants to stop the
+# commit.  The hook is allowed to edit the commit message file.
+#
+# To enable this hook, rename this file to "commit-msg".
+
+# Uncomment the below to add a Signed-off-by line to the message.
+# Doing this in a hook is a bad idea in general, but the prepare-commit-msg
+# hook is more suited to it.
+#
+# SOB=$(git var GIT_AUTHOR_IDENT | sed -n 's/^\(.*>\).*$/Signed-off-by: \1/p')
+# grep -qs "^$SOB" "$1" || echo "$SOB" >> "$1"
+
+# This example catches duplicate Signed-off-by lines.
+
+test "" = "$(grep '^Signed-off-by: ' "$1" |
+	 sort | uniq -c | sed -e '/^[ 	]*1[ 	]/d')" || {
+	echo >&2 Duplicate Signed-off-by lines.
+	exit 1
+}
+
+```
+
+## .git/hooks/fsmonitor-watchman.sample
+```sample
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+use IPC::Open2;
+
+# An example hook script to integrate Watchman
+# (https://facebook.github.io/watchman/) with git to speed up detecting
+# new and modified files.
+#
+# The hook is passed a version (currently 2) and last update token
+# formatted as a string and outputs to stdout a new update token and
+# all files that have been modified since the update token. Paths must
+# be relative to the root of the working tree and separated by a single NUL.
+#
+# To enable this hook, rename this file to "query-watchman" and set
+# 'git config core.fsmonitor .git/hooks/query-watchman'
+#
+my ($version, $last_update_token) = @ARGV;
+
+# Uncomment for debugging
+# print STDERR "$0 $version $last_update_token\n";
+
+# Check the hook interface version
+if ($version ne 2) {
+	die "Unsupported query-fsmonitor hook version '$version'.\n" .
+	    "Falling back to scanning...\n";
+}
+
+my $git_work_tree = get_working_dir();
+
+my $retry = 1;
+
+my $json_pkg;
+eval {
+	require JSON::XS;
+	$json_pkg = "JSON::XS";
+	1;
+} or do {
+	require JSON::PP;
+	$json_pkg = "JSON::PP";
+};
+
+launch_watchman();
+
+sub launch_watchman {
+	my $o = watchman_query();
+	if (is_work_tree_watched($o)) {
+		output_result($o->{clock}, @{$o->{files}});
+	}
+}
+
+sub output_result {
+	my ($clockid, @files) = @_;
+
+	# Uncomment for debugging watchman output
+	# open (my $fh, ">", ".git/watchman-output.out");
+	# binmode $fh, ":utf8";
+	# print $fh "$clockid\n@files\n";
+	# close $fh;
+
+	binmode STDOUT, ":utf8";
+	print $clockid;
+	print "\0";
+	local $, = "\0";
+	print @files;
+}
+
+sub watchman_clock {
+	my $response = qx/watchman clock "$git_work_tree"/;
+	die "Failed to get clock id on '$git_work_tree'.\n" .
+		"Falling back to scanning...\n" if $? != 0;
+
+	return $json_pkg->new->utf8->decode($response);
+}
+
+sub watchman_query {
+	my $pid = open2(\*CHLD_OUT, \*CHLD_IN, 'watchman -j --no-pretty')
+	or die "open2() failed: $!\n" .
+	"Falling back to scanning...\n";
+
+	# In the query expression below we're asking for names of files that
+	# changed since $last_update_token but not from the .git folder.
+	#
+	# To accomplish this, we're using the "since" generator to use the
+	# recency index to select candidate nodes and "fields" to limit the
+	# output to file names only. Then we're using the "expression" term to
+	# further constrain the results.
+	my $last_update_line = "";
+	if (substr($last_update_token, 0, 1) eq "c") {
+		$last_update_token = "\"$last_update_token\"";
+		$last_update_line = qq[\n"since": $last_update_token,];
+	}
+	my $query = <<"	END";
+		["query", "$git_work_tree", {$last_update_line
+			"fields": ["name"],
+			"expression": ["not", ["dirname", ".git"]]
+		}]
+	END
+
+	# Uncomment for debugging the watchman query
+	# open (my $fh, ">", ".git/watchman-query.json");
+	# print $fh $query;
+	# close $fh;
+
+	print CHLD_IN $query;
+	close CHLD_IN;
+	my $response = do {local $/; <CHLD_OUT>};
+
+	# Uncomment for debugging the watch response
+	# open ($fh, ">", ".git/watchman-response.json");
+	# print $fh $response;
+	# close $fh;
+
+	die "Watchman: command returned no output.\n" .
+	"Falling back to scanning...\n" if $response eq "";
+	die "Watchman: command returned invalid output: $response\n" .
+	"Falling back to scanning...\n" unless $response =~ /^\{/;
+
+	return $json_pkg->new->utf8->decode($response);
+}
+
+sub is_work_tree_watched {
+	my ($output) = @_;
+	my $error = $output->{error};
+	if ($retry > 0 and $error and $error =~ m/unable to resolve root .* directory (.*) is not watched/) {
+		$retry--;
+		my $response = qx/watchman watch "$git_work_tree"/;
+		die "Failed to make watchman watch '$git_work_tree'.\n" .
+		    "Falling back to scanning...\n" if $? != 0;
+		$output = $json_pkg->new->utf8->decode($response);
+		$error = $output->{error};
+		die "Watchman: $error.\n" .
+		"Falling back to scanning...\n" if $error;
+
+		# Uncomment for debugging watchman output
+		# open (my $fh, ">", ".git/watchman-output.out");
+		# close $fh;
+
+		# Watchman will always return all files on the first query so
+		# return the fast "everything is dirty" flag to git and do the
+		# Watchman query just to get it over with now so we won't pay
+		# the cost in git to look up each individual file.
+		my $o = watchman_clock();
+		$error = $output->{error};
+
+		die "Watchman: $error.\n" .
+		"Falling back to scanning...\n" if $error;
+
+		output_result($o->{clock}, ("/"));
+		$last_update_token = $o->{clock};
+
+		eval { launch_watchman() };
+		return 0;
+	}
+
+	die "Watchman: $error.\n" .
+	"Falling back to scanning...\n" if $error;
+
+	return 1;
+}
+
+sub get_working_dir {
+	my $working_dir;
+	if ($^O =~ 'msys' || $^O =~ 'cygwin') {
+		$working_dir = Win32::GetCwd();
+		$working_dir =~ tr/\\/\//;
+	} else {
+		require Cwd;
+		$working_dir = Cwd::cwd();
+	}
+
+	return $working_dir;
+}
+
+```
+
+## .git/hooks/post-update.sample
+```sample
+#!/bin/sh
+#
+# An example hook script to prepare a packed repository for use over
+# dumb transports.
+#
+# To enable this hook, rename this file to "post-update".
+
+exec git update-server-info
+
+```
+
+## .git/hooks/pre-applypatch.sample
+```sample
+#!/bin/sh
+#
+# An example hook script to verify what is about to be committed
+# by applypatch from an e-mail message.
+#
+# The hook should exit with non-zero status after issuing an
+# appropriate message if it wants to stop the commit.
+#
+# To enable this hook, rename this file to "pre-applypatch".
+
+. git-sh-setup
+precommit="$(git rev-parse --git-path hooks/pre-commit)"
+test -x "$precommit" && exec "$precommit" ${1+"$@"}
+:
+
+```
+
+## .git/hooks/pre-commit.sample
+```sample
+#!/bin/sh
+#
+# An example hook script to verify what is about to be committed.
+# Called by "git commit" with no arguments.  The hook should
+# exit with non-zero status after issuing an appropriate message if
+# it wants to stop the commit.
+#
+# To enable this hook, rename this file to "pre-commit".
+
+if git rev-parse --verify HEAD >/dev/null 2>&1
+then
+	against=HEAD
+else
+	# Initial commit: diff against an empty tree object
+	against=$(git hash-object -t tree /dev/null)
+fi
+
+# If you want to allow non-ASCII filenames set this variable to true.
+allownonascii=$(git config --type=bool hooks.allownonascii)
+
+# Redirect output to stderr.
+exec 1>&2
+
+# Cross platform projects tend to avoid non-ASCII filenames; prevent
+# them from being added to the repository. We exploit the fact that the
+# printable range starts at the space character and ends with tilde.
+if [ "$allownonascii" != "true" ] &&
+	# Note that the use of brackets around a tr range is ok here, (it's
+	# even required, for portability to Solaris 10's /usr/bin/tr), since
+	# the square bracket bytes happen to fall in the designated range.
+	test $(git diff-index --cached --name-only --diff-filter=A -z $against |
+	  LC_ALL=C tr -d '[ -~]\0' | wc -c) != 0
+then
+	cat <<\EOF
+Error: Attempt to add a non-ASCII file name.
+
+This can cause problems if you want to work with people on other platforms.
+
+To be portable it is advisable to rename the file.
+
+If you know what you are doing you can disable this check using:
+
+  git config hooks.allownonascii true
+EOF
+	exit 1
+fi
+
+# If there are whitespace errors, print the offending file names and fail.
+exec git diff-index --check --cached $against --
+
+```
+
+## .git/hooks/pre-merge-commit.sample
+```sample
+#!/bin/sh
+#
+# An example hook script to verify what is about to be committed.
+# Called by "git merge" with no arguments.  The hook should
+# exit with non-zero status after issuing an appropriate message to
+# stderr if it wants to stop the merge commit.
+#
+# To enable this hook, rename this file to "pre-merge-commit".
+
+. git-sh-setup
+test -x "$GIT_DIR/hooks/pre-commit" &&
+        exec "$GIT_DIR/hooks/pre-commit"
+:
+
+```
+
+## .git/hooks/pre-push.sample
+```sample
+#!/bin/sh
+
+# An example hook script to verify what is about to be pushed.  Called by "git
+# push" after it has checked the remote status, but before anything has been
+# pushed.  If this script exits with a non-zero status nothing will be pushed.
+#
+# This hook is called with the following parameters:
+#
+# $1 -- Name of the remote to which the push is being done
+# $2 -- URL to which the push is being done
+#
+# If pushing without using a named remote those arguments will be equal.
+#
+# Information about the commits which are being pushed is supplied as lines to
+# the standard input in the form:
+#
+#   <local ref> <local oid> <remote ref> <remote oid>
+#
+# This sample shows how to prevent push of commits where the log message starts
+# with "WIP" (work in progress).
+
+remote="$1"
+url="$2"
+
+zero=$(git hash-object --stdin </dev/null | tr '[0-9a-f]' '0')
+
+while read local_ref local_oid remote_ref remote_oid
+do
+	if test "$local_oid" = "$zero"
+	then
+		# Handle delete
+		:
+	else
+		if test "$remote_oid" = "$zero"
+		then
+			# New branch, examine all commits
+			range="$local_oid"
+		else
+			# Update to existing branch, examine new commits
+			range="$remote_oid..$local_oid"
+		fi
+
+		# Check for WIP commit
+		commit=$(git rev-list -n 1 --grep '^WIP' "$range")
+		if test -n "$commit"
+		then
+			echo >&2 "Found WIP commit in $local_ref, not pushing"
+			exit 1
+		fi
+	fi
+done
+
+exit 0
+
+```
+
+## .git/hooks/pre-rebase.sample
+```sample
+#!/bin/sh
+#
+# Copyright (c) 2006, 2008 Junio C Hamano
+#
+# The "pre-rebase" hook is run just before "git rebase" starts doing
+# its job, and can prevent the command from running by exiting with
+# non-zero status.
+#
+# The hook is called with the following parameters:
+#
+# $1 -- the upstream the series was forked from.
+# $2 -- the branch being rebased (or empty when rebasing the current branch).
+#
+# This sample shows how to prevent topic branches that are already
+# merged to 'next' branch from getting rebased, because allowing it
+# would result in rebasing already published history.
+
+publish=next
+basebranch="$1"
+if test "$#" = 2
+then
+	topic="refs/heads/$2"
+else
+	topic=`git symbolic-ref HEAD` ||
+	exit 0 ;# we do not interrupt rebasing detached HEAD
+fi
+
+case "$topic" in
+refs/heads/??/*)
+	;;
+*)
+	exit 0 ;# we do not interrupt others.
+	;;
+esac
+
+# Now we are dealing with a topic branch being rebased
+# on top of master.  Is it OK to rebase it?
+
+# Does the topic really exist?
+git show-ref -q "$topic" || {
+	echo >&2 "No such branch $topic"
+	exit 1
+}
+
+# Is topic fully merged to master?
+not_in_master=`git rev-list --pretty=oneline ^master "$topic"`
+if test -z "$not_in_master"
+then
+	echo >&2 "$topic is fully merged to master; better remove it."
+	exit 1 ;# we could allow it, but there is no point.
+fi
+
+# Is topic ever merged to next?  If so you should not be rebasing it.
+only_next_1=`git rev-list ^master "^$topic" ${publish} | sort`
+only_next_2=`git rev-list ^master           ${publish} | sort`
+if test "$only_next_1" = "$only_next_2"
+then
+	not_in_topic=`git rev-list "^$topic" master`
+	if test -z "$not_in_topic"
+	then
+		echo >&2 "$topic is already up to date with master"
+		exit 1 ;# we could allow it, but there is no point.
+	else
+		exit 0
+	fi
+else
+	not_in_next=`git rev-list --pretty=oneline ^${publish} "$topic"`
+	/usr/bin/perl -e '
+		my $topic = $ARGV[0];
+		my $msg = "* $topic has commits already merged to public branch:\n";
+		my (%not_in_next) = map {
+			/^([0-9a-f]+) /;
+			($1 => 1);
+		} split(/\n/, $ARGV[1]);
+		for my $elem (map {
+				/^([0-9a-f]+) (.*)$/;
+				[$1 => $2];
+			} split(/\n/, $ARGV[2])) {
+			if (!exists $not_in_next{$elem->[0]}) {
+				if ($msg) {
+					print STDERR $msg;
+					undef $msg;
+				}
+				print STDERR " $elem->[1]\n";
+			}
+		}
+	' "$topic" "$not_in_next" "$not_in_master"
+	exit 1
+fi
+
+<<\DOC_END
+
+This sample hook safeguards topic branches that have been
+published from being rewound.
+
+The workflow assumed here is:
+
+ * Once a topic branch forks from "master", "master" is never
+   merged into it again (either directly or indirectly).
+
+ * Once a topic branch is fully cooked and merged into "master",
+   it is deleted.  If you need to build on top of it to correct
+   earlier mistakes, a new topic branch is created by forking at
+   the tip of the "master".  This is not strictly necessary, but
+   it makes it easier to keep your history simple.
+
+ * Whenever you need to test or publish your changes to topic
+   branches, merge them into "next" branch.
+
+The script, being an example, hardcodes the publish branch name
+to be "next", but it is trivial to make it configurable via
+$GIT_DIR/config mechanism.
+
+With this workflow, you would want to know:
+
+(1) ... if a topic branch has ever been merged to "next".  Young
+    topic branches can have stupid mistakes you would rather
+    clean up before publishing, and things that have not been
+    merged into other branches can be easily rebased without
+    affecting other people.  But once it is published, you would
+    not want to rewind it.
+
+(2) ... if a topic branch has been fully merged to "master".
+    Then you can delete it.  More importantly, you should not
+    build on top of it -- other people may already want to
+    change things related to the topic as patches against your
+    "master", so if you need further changes, it is better to
+    fork the topic (perhaps with the same name) afresh from the
+    tip of "master".
+
+Let's look at this example:
+
+		   o---o---o---o---o---o---o---o---o---o "next"
+		  /       /           /           /
+		 /   a---a---b A     /           /
+		/   /               /           /
+	       /   /   c---c---c---c B         /
+	      /   /   /             \         /
+	     /   /   /   b---b C     \       /
+	    /   /   /   /             \     /
+    ---o---o---o---o---o---o---o---o---o---o---o "master"
+
+
+A, B and C are topic branches.
+
+ * A has one fix since it was merged up to "next".
+
+ * B has finished.  It has been fully merged up to "master" and "next",
+   and is ready to be deleted.
+
+ * C has not merged to "next" at all.
+
+We would want to allow C to be rebased, refuse A, and encourage
+B to be deleted.
+
+To compute (1):
+
+	git rev-list ^master ^topic next
+	git rev-list ^master        next
+
+	if these match, topic has not merged in next at all.
+
+To compute (2):
+
+	git rev-list master..topic
+
+	if this is empty, it is fully merged to "master".
+
+DOC_END
+
+```
+
+## .git/hooks/pre-receive.sample
+```sample
+#!/bin/sh
+#
+# An example hook script to make use of push options.
+# The example simply echoes all push options that start with 'echoback='
+# and rejects all pushes when the "reject" push option is used.
+#
+# To enable this hook, rename this file to "pre-receive".
+
+if test -n "$GIT_PUSH_OPTION_COUNT"
+then
+	i=0
+	while test "$i" -lt "$GIT_PUSH_OPTION_COUNT"
+	do
+		eval "value=\$GIT_PUSH_OPTION_$i"
+		case "$value" in
+		echoback=*)
+			echo "echo from the pre-receive-hook: ${value#*=}" >&2
+			;;
+		reject)
+			exit 1
+		esac
+		i=$((i + 1))
+	done
+fi
+
+```
+
+## .git/hooks/prepare-commit-msg.sample
+```sample
+#!/bin/sh
+#
+# An example hook script to prepare the commit log message.
+# Called by "git commit" with the name of the file that has the
+# commit message, followed by the description of the commit
+# message's source.  The hook's purpose is to edit the commit
+# message file.  If the hook fails with a non-zero status,
+# the commit is aborted.
+#
+# To enable this hook, rename this file to "prepare-commit-msg".
+
+# This hook includes three examples. The first one removes the
+# "# Please enter the commit message..." help message.
+#
+# The second includes the output of "git diff --name-status -r"
+# into the message, just before the "git status" output.  It is
+# commented because it doesn't cope with --amend or with squashed
+# commits.
+#
+# The third example adds a Signed-off-by line to the message, that can
+# still be edited.  This is rarely a good idea.
+
+COMMIT_MSG_FILE=$1
+COMMIT_SOURCE=$2
+SHA1=$3
+
+/usr/bin/perl -i.bak -ne 'print unless(m/^. Please enter the commit message/..m/^#$/)' "$COMMIT_MSG_FILE"
+
+# case "$COMMIT_SOURCE,$SHA1" in
+#  ,|template,)
+#    /usr/bin/perl -i.bak -pe '
+#       print "\n" . `git diff --cached --name-status -r`
+# 	 if /^#/ && $first++ == 0' "$COMMIT_MSG_FILE" ;;
+#  *) ;;
+# esac
+
+# SOB=$(git var GIT_COMMITTER_IDENT | sed -n 's/^\(.*>\).*$/Signed-off-by: \1/p')
+# git interpret-trailers --in-place --trailer "$SOB" "$COMMIT_MSG_FILE"
+# if test -z "$COMMIT_SOURCE"
+# then
+#   /usr/bin/perl -i.bak -pe 'print "\n" if !$first_line++' "$COMMIT_MSG_FILE"
+# fi
+
+```
+
+## .git/hooks/push-to-checkout.sample
+```sample
+#!/bin/sh
+
+# An example hook script to update a checked-out tree on a git push.
+#
+# This hook is invoked by git-receive-pack(1) when it reacts to git
+# push and updates reference(s) in its repository, and when the push
+# tries to update the branch that is currently checked out and the
+# receive.denyCurrentBranch configuration variable is set to
+# updateInstead.
+#
+# By default, such a push is refused if the working tree and the index
+# of the remote repository has any difference from the currently
+# checked out commit; when both the working tree and the index match
+# the current commit, they are updated to match the newly pushed tip
+# of the branch. This hook is to be used to override the default
+# behaviour; however the code below reimplements the default behaviour
+# as a starting point for convenient modification.
+#
+# The hook receives the commit with which the tip of the current
+# branch is going to be updated:
+commit=$1
+
+# It can exit with a non-zero status to refuse the push (when it does
+# so, it must not modify the index or the working tree).
+die () {
+	echo >&2 "$*"
+	exit 1
+}
+
+# Or it can make any necessary changes to the working tree and to the
+# index to bring them to the desired state when the tip of the current
+# branch is updated to the new commit, and exit with a zero status.
+#
+# For example, the hook can simply run git read-tree -u -m HEAD "$1"
+# in order to emulate git fetch that is run in the reverse direction
+# with git push, as the two-tree form of git read-tree -u -m is
+# essentially the same as git switch or git checkout that switches
+# branches while keeping the local changes in the working tree that do
+# not interfere with the difference between the branches.
+
+# The below is a more-or-less exact translation to shell of the C code
+# for the default behaviour for git's push-to-checkout hook defined in
+# the push_to_deploy() function in builtin/receive-pack.c.
+#
+# Note that the hook will be executed from the repository directory,
+# not from the working tree, so if you want to perform operations on
+# the working tree, you will have to adapt your code accordingly, e.g.
+# by adding "cd .." or using relative paths.
+
+if ! git update-index -q --ignore-submodules --refresh
+then
+	die "Up-to-date check failed"
+fi
+
+if ! git diff-files --quiet --ignore-submodules --
+then
+	die "Working directory has unstaged changes"
+fi
+
+# This is a rough translation of:
+#
+#   head_has_history() ? "HEAD" : EMPTY_TREE_SHA1_HEX
+if git cat-file -e HEAD 2>/dev/null
+then
+	head=HEAD
+else
+	head=$(git hash-object -t tree --stdin </dev/null)
+fi
+
+if ! git diff-index --quiet --cached --ignore-submodules $head --
+then
+	die "Working directory has staged changes"
+fi
+
+if ! git read-tree -u -m "$commit"
+then
+	die "Could not update working tree to new HEAD"
+fi
+
+```
+
+## .git/hooks/sendemail-validate.sample
+```sample
+#!/bin/sh
+
+# An example hook script to validate a patch (and/or patch series) before
+# sending it via email.
+#
+# The hook should exit with non-zero status after issuing an appropriate
+# message if it wants to prevent the email(s) from being sent.
+#
+# To enable this hook, rename this file to "sendemail-validate".
+#
+# By default, it will only check that the patch(es) can be applied on top of
+# the default upstream branch without conflicts in a secondary worktree. After
+# validation (successful or not) of the last patch of a series, the worktree
+# will be deleted.
+#
+# The following config variables can be set to change the default remote and
+# remote ref that are used to apply the patches against:
+#
+#   sendemail.validateRemote (default: origin)
+#   sendemail.validateRemoteRef (default: HEAD)
+#
+# Replace the TODO placeholders with appropriate checks according to your
+# needs.
+
+validate_cover_letter () {
+	file="$1"
+	# TODO: Replace with appropriate checks (e.g. spell checking).
+	true
+}
+
+validate_patch () {
+	file="$1"
+	# Ensure that the patch applies without conflicts.
+	git am -3 "$file" || return
+	# TODO: Replace with appropriate checks for this patch
+	# (e.g. checkpatch.pl).
+	true
+}
+
+validate_series () {
+	# TODO: Replace with appropriate checks for the whole series
+	# (e.g. quick build, coding style checks, etc.).
+	true
+}
+
+# main -------------------------------------------------------------------------
+
+if test "$GIT_SENDEMAIL_FILE_COUNTER" = 1
+then
+	remote=$(git config --default origin --get sendemail.validateRemote) &&
+	ref=$(git config --default HEAD --get sendemail.validateRemoteRef) &&
+	worktree=$(mktemp --tmpdir -d sendemail-validate.XXXXXXX) &&
+	git worktree add -fd --checkout "$worktree" "refs/remotes/$remote/$ref" &&
+	git config --replace-all sendemail.validateWorktree "$worktree"
+else
+	worktree=$(git config --get sendemail.validateWorktree)
+fi || {
+	echo "sendemail-validate: error: failed to prepare worktree" >&2
+	exit 1
+}
+
+unset GIT_DIR GIT_WORK_TREE
+cd "$worktree" &&
+
+if grep -q "^diff --git " "$1"
+then
+	validate_patch "$1"
+else
+	validate_cover_letter "$1"
+fi &&
+
+if test "$GIT_SENDEMAIL_FILE_COUNTER" = "$GIT_SENDEMAIL_FILE_TOTAL"
+then
+	git config --unset-all sendemail.validateWorktree &&
+	trap 'git worktree remove -ff "$worktree"' EXIT &&
+	validate_series
+fi
+
+```
+
+## .git/hooks/update.sample
+```sample
+#!/bin/sh
+#
+# An example hook script to block unannotated tags from entering.
+# Called by "git receive-pack" with arguments: refname sha1-old sha1-new
+#
+# To enable this hook, rename this file to "update".
+#
+# Config
+# ------
+# hooks.allowunannotated
+#   This boolean sets whether unannotated tags will be allowed into the
+#   repository.  By default they won't be.
+# hooks.allowdeletetag
+#   This boolean sets whether deleting tags will be allowed in the
+#   repository.  By default they won't be.
+# hooks.allowmodifytag
+#   This boolean sets whether a tag may be modified after creation. By default
+#   it won't be.
+# hooks.allowdeletebranch
+#   This boolean sets whether deleting branches will be allowed in the
+#   repository.  By default they won't be.
+# hooks.denycreatebranch
+#   This boolean sets whether remotely creating branches will be denied
+#   in the repository.  By default this is allowed.
+#
+
+# --- Command line
+refname="$1"
+oldrev="$2"
+newrev="$3"
+
+# --- Safety check
+if [ -z "$GIT_DIR" ]; then
+	echo "Don't run this script from the command line." >&2
+	echo " (if you want, you could supply GIT_DIR then run" >&2
+	echo "  $0 <ref> <oldrev> <newrev>)" >&2
+	exit 1
+fi
+
+if [ -z "$refname" -o -z "$oldrev" -o -z "$newrev" ]; then
+	echo "usage: $0 <ref> <oldrev> <newrev>" >&2
+	exit 1
+fi
+
+# --- Config
+allowunannotated=$(git config --type=bool hooks.allowunannotated)
+allowdeletebranch=$(git config --type=bool hooks.allowdeletebranch)
+denycreatebranch=$(git config --type=bool hooks.denycreatebranch)
+allowdeletetag=$(git config --type=bool hooks.allowdeletetag)
+allowmodifytag=$(git config --type=bool hooks.allowmodifytag)
+
+# check for no description
+projectdesc=$(sed -e '1q' "$GIT_DIR/description")
+case "$projectdesc" in
+"Unnamed repository"* | "")
+	echo "*** Project description file hasn't been set" >&2
+	exit 1
+	;;
+esac
+
+# --- Check types
+# if $newrev is 0000...0000, it's a commit to delete a ref.
+zero=$(git hash-object --stdin </dev/null | tr '[0-9a-f]' '0')
+if [ "$newrev" = "$zero" ]; then
+	newrev_type=delete
+else
+	newrev_type=$(git cat-file -t $newrev)
+fi
+
+case "$refname","$newrev_type" in
+	refs/tags/*,commit)
+		# un-annotated tag
+		short_refname=${refname##refs/tags/}
+		if [ "$allowunannotated" != "true" ]; then
+			echo "*** The un-annotated tag, $short_refname, is not allowed in this repository" >&2
+			echo "*** Use 'git tag [ -a | -s ]' for tags you want to propagate." >&2
+			exit 1
+		fi
+		;;
+	refs/tags/*,delete)
+		# delete tag
+		if [ "$allowdeletetag" != "true" ]; then
+			echo "*** Deleting a tag is not allowed in this repository" >&2
+			exit 1
+		fi
+		;;
+	refs/tags/*,tag)
+		# annotated tag
+		if [ "$allowmodifytag" != "true" ] && git rev-parse $refname > /dev/null 2>&1
+		then
+			echo "*** Tag '$refname' already exists." >&2
+			echo "*** Modifying a tag is not allowed in this repository." >&2
+			exit 1
+		fi
+		;;
+	refs/heads/*,commit)
+		# branch
+		if [ "$oldrev" = "$zero" -a "$denycreatebranch" = "true" ]; then
+			echo "*** Creating a branch is not allowed in this repository" >&2
+			exit 1
+		fi
+		;;
+	refs/heads/*,delete)
+		# delete branch
+		if [ "$allowdeletebranch" != "true" ]; then
+			echo "*** Deleting a branch is not allowed in this repository" >&2
+			exit 1
+		fi
+		;;
+	refs/remotes/*,commit)
+		# tracking branch
+		;;
+	refs/remotes/*,delete)
+		# delete tracking branch
+		if [ "$allowdeletebranch" != "true" ]; then
+			echo "*** Deleting a tracking branch is not allowed in this repository" >&2
+			exit 1
+		fi
+		;;
+	*)
+		# Anything else (is there anything else?)
+		echo "*** Update hook: unknown type of update to ref $refname of type $newrev_type" >&2
+		exit 1
+		;;
+esac
+
+# --- Finished
+exit 0
+
+```
+
+## .git/index
+```
+Error reading file.
+```
+
+## .git/info/exclude
+```txt
+# git ls-files --others --exclude-from=.git/info/exclude
+# Lines that start with '#' are comments.
+# For a project mostly in C, the following would be a good set of
+# exclude patterns (uncomment them if you want to use them):
+# *.[oa]
+# *~
+
+```
+
+## .git/logs/HEAD
+```txt
+0000000000000000000000000000000000000000 dc5ea98eba79be83d9e1731b3dca632d0d2b1622 Albadit <46565849+Albadit@users.noreply.github.com> 1748944967 +0200	clone: from https://github.com/Albadit/create4care.git
+dc5ea98eba79be83d9e1731b3dca632d0d2b1622 254be60b428d523856c6055403ba6b1ef3546700 Albadit <46565849+Albadit@users.noreply.github.com> 1748945177 +0200	commit: done
+254be60b428d523856c6055403ba6b1ef3546700 a206e5024acd2d73b05f5b5152d3062932f982e0 Albadit <46565849+Albadit@users.noreply.github.com> 1748954437 +0200	commit: Update README.md
+
+```
+
+## .git/logs/refs/heads/main
+```txt
+0000000000000000000000000000000000000000 dc5ea98eba79be83d9e1731b3dca632d0d2b1622 Albadit <46565849+Albadit@users.noreply.github.com> 1748944967 +0200	clone: from https://github.com/Albadit/create4care.git
+dc5ea98eba79be83d9e1731b3dca632d0d2b1622 254be60b428d523856c6055403ba6b1ef3546700 Albadit <46565849+Albadit@users.noreply.github.com> 1748945177 +0200	commit: done
+254be60b428d523856c6055403ba6b1ef3546700 a206e5024acd2d73b05f5b5152d3062932f982e0 Albadit <46565849+Albadit@users.noreply.github.com> 1748954437 +0200	commit: Update README.md
+
+```
+
+## .git/logs/refs/remotes/origin/HEAD
+```txt
+0000000000000000000000000000000000000000 dc5ea98eba79be83d9e1731b3dca632d0d2b1622 Albadit <46565849+Albadit@users.noreply.github.com> 1748944967 +0200	clone: from https://github.com/Albadit/create4care.git
+254be60b428d523856c6055403ba6b1ef3546700 254be60b428d523856c6055403ba6b1ef3546700 unknown <Albadit@DESKTOP-3SQBGN8.(none)> 1748945194 +0200	remote set-head
+254be60b428d523856c6055403ba6b1ef3546700 254be60b428d523856c6055403ba6b1ef3546700 unknown <Albadit@DESKTOP-3SQBGN8.(none)> 1748952915 +0200	remote set-head
+a206e5024acd2d73b05f5b5152d3062932f982e0 a206e5024acd2d73b05f5b5152d3062932f982e0 unknown <Albadit@DESKTOP-3SQBGN8.(none)> 1748954440 +0200	remote set-head
+a206e5024acd2d73b05f5b5152d3062932f982e0 a206e5024acd2d73b05f5b5152d3062932f982e0 unknown <Albadit@DESKTOP-3SQBGN8.(none)> 1749821509 +0200	remote set-head
+
+```
+
+## .git/logs/refs/remotes/origin/main
+```txt
+dc5ea98eba79be83d9e1731b3dca632d0d2b1622 254be60b428d523856c6055403ba6b1ef3546700 Albadit <46565849+Albadit@users.noreply.github.com> 1748945193 +0200	update by push
+254be60b428d523856c6055403ba6b1ef3546700 a206e5024acd2d73b05f5b5152d3062932f982e0 Albadit <46565849+Albadit@users.noreply.github.com> 1748954439 +0200	update by push
+
+```
+
+## .git/objects/00/9be431de3ef2005be716820d4e52227509fde1
+```
+Error reading file.
+```
+
+## .git/objects/08/ea17bc367e0c627729e680f6a20460551a306d
+```
+Error reading file.
+```
+
+## .git/objects/1c/c28343f84d3502799549a1fede8c572de47977
+```
+Error reading file.
+```
+
+## .git/objects/25/4be60b428d523856c6055403ba6b1ef3546700
+```
+Error reading file.
+```
+
+## .git/objects/25/dd8f232f0914da86c12594cb3c7b9e93b3a60a
+```
+Error reading file.
+```
+
+## .git/objects/35/ec9387201f83fe2dc943715474aa1f0e0fd8af
+```
+Error reading file.
+```
+
+## .git/objects/37/3f6bbfbfe21242a2559287fc1523d16bdf2b9f
+```
+Error reading file.
+```
+
+## .git/objects/3c/7fa4ac53f5b22ea608e84bb2cc5aec1d4b356e
+```
+Error reading file.
+```
+
+## .git/objects/4a/0b4dcea1fcae6fe7593a191bc7fb595e83e4d0
+```
+Error reading file.
+```
+
+## .git/objects/59/b7b0c96daccd88923fb9e6d25827a3fdf82b9e
+```
+Error reading file.
+```
+
+## .git/objects/63/2d26d0408528b507fb3fea5e2977b1f6aad283
+```
+Error reading file.
+```
+
+## .git/objects/63/a6d543c5503d9e4f5e97506cd06480960dd40e
+```
+Error reading file.
+```
+
+## .git/objects/6a/507368fec19f2ddb40a2675d29318e652accbe
+```
+Error reading file.
+```
+
+## .git/objects/70/157a540ec7cfd190692291c21a9df5bb7c9518
+```
+Error reading file.
+```
+
+## .git/objects/7a/fca68db51473672db0a9cc35ca733e88f190bc
+```
+Error reading file.
+```
+
+## .git/objects/89/a4a7d8d74d513c611c4ad0d33fd4f5d55bb6e6
+```
+Error reading file.
+```
+
+## .git/objects/8d/1d7e37f3a8a9c7deb5a15287edd2c8b9ed5f31
+```
+Error reading file.
+```
+
+## .git/objects/a2/06e5024acd2d73b05f5b5152d3062932f982e0
+```
+Error reading file.
+```
+
+## .git/objects/b0/36c1e2caee09b6496bdacd93994c6ba94149a1
+```
+Error reading file.
+```
+
+## .git/objects/b8/82eef57d987b46a57d17392131f09de7f1a434
+```
+Error reading file.
+```
+
+## .git/objects/d6/79529e4ab87352a0b08d24b39b1e5507c189b7
+```
+Error reading file.
+```
+
+## .git/objects/e0/dda8364fd2bf29ffd4974710ad67fe4fd33e91
+```
+Error reading file.
+```
+
+## .git/objects/ee/59d53c69aac5097bf637cd8a042244036802f9
+```
+Error reading file.
+```
+
+## .git/objects/f3/323ec9ad2e9f96c2f04caffba661cf8ae46d6f
+```
+Error reading file.
+```
+
+## .git/objects/f6/0d04069e855dd23492f9dc19893f8cb408ebb3
+```
+Error reading file.
+```
+
+## .git/objects/pack/pack-998bfbe251ee8ae7de73809dc5d872de83daa3d6.idx
+```
+Error reading file.
+```
+
+## .git/objects/pack/pack-998bfbe251ee8ae7de73809dc5d872de83daa3d6.pack
+```
+Error reading file.
+```
+
+## .git/objects/pack/pack-998bfbe251ee8ae7de73809dc5d872de83daa3d6.rev
+```
+Error reading file.
+```
+
+## .git/packed-refs
+```txt
+# pack-refs with: peeled fully-peeled sorted 
+dc5ea98eba79be83d9e1731b3dca632d0d2b1622 refs/remotes/origin/main
+
+```
+
+## .git/refs/heads/main
+```txt
+a206e5024acd2d73b05f5b5152d3062932f982e0
+
+```
+
+## .git/refs/remotes/origin/HEAD
+```txt
+ref: refs/remotes/origin/main
+
+```
+
+## .git/refs/remotes/origin/main
+```txt
+a206e5024acd2d73b05f5b5152d3062932f982e0
+
+```
+
+## create4care_app/create4care/App.xaml
 ```xaml
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -114,7 +1473,7 @@ C:\Users\ardit\Documents\GitHub\School\year_3\sem6\create4care_app\create4care
 
 ```
 
-## App.xaml.cs
+## create4care_app/create4care/App.xaml.cs
 ```cs
 ﻿namespace create4care
 {
@@ -134,7 +1493,7 @@ C:\Users\ardit\Documents\GitHub\School\year_3\sem6\create4care_app\create4care
 
 ```
 
-## Components/Layout/MainLayout.razor
+## create4care_app/create4care/Components/Layout/MainLayout.razor
 ```razor
 ﻿@inherits LayoutComponentBase
 
@@ -142,7 +1501,20 @@ C:\Users\ardit\Documents\GitHub\School\year_3\sem6\create4care_app\create4care
 
 ```
 
-## Components/Models/NavMenuModels.cs
+## create4care_app/create4care/Components/Models/Measuring.cs
+```cs
+using Microsoft.AspNetCore.Components;
+
+namespace create4care.Components.Models;
+
+public class MeasuringResult
+{
+    public required int Distance { get; set; }
+    public required string Unit { get; set; }
+}
+```
+
+## create4care_app/create4care/Components/Models/NavMenuModels.cs
 ```cs
 using Microsoft.AspNetCore.Components;
 
@@ -167,22 +1539,7 @@ public class NavMenuModel
 }
 ```
 
-## Components/Models/Slides.cs
-```cs
-using Microsoft.AspNetCore.Components;
-
-namespace create4care.Components.Models;
-
-public class SlidePage
-{
-    public object? Icon { get; set; }
-    public string? Title { get; set; }
-    public string? Content { get; set; }
-}
-
-```
-
-## Components/Pages/Bluetooth.razor
+## create4care_app/create4care/Components/Pages/Bluetooth.razor
 ```razor
 ﻿@page "/bluetooth"
 @inject BluetoothService BluetoothService
@@ -190,13 +1547,26 @@ public class SlidePage
 <NavMenu Name="Bluetooth"/>
 
 <main>
-    <label>Connect to Arduino BLE:</label>
-    <button class="btn" @onclick="ConnectToDevice" disabled="@(isConnecting || isConnected)">
-        @(isConnected ? "Connected" : (isConnecting ? "Connecting..." : "Connect"))
-    </button>
+    <section>
+        <label>Connect to Arduino BLE:</label>
+        <button class="btn" @onclick="ConnectToDevice" disabled="@(isConnecting || isConnected)">
+            @(isConnected ? "Connected" : (isConnecting ? "Connecting..." : "Connect"))
+        </button>
 
-    <p>@statusMessage</p>
-    <p>@dataMessage</p>
+        <p>@statusMessage</p>
+        <p>@dataMessage</p>
+    </section>
+
+    @if (isConnected)
+    {
+        <section>
+            <label>Calibrate:</label>
+            <button class="btn" @onclick="Calibrate">Calibrate</button>
+
+            <p>@statusMessagCalibrate</p>
+            <p>@dataMessageCalibrate</p>
+        </section>
+    }
 </main>
 
 @code {
@@ -204,31 +1574,60 @@ public class SlidePage
     private bool isConnected = false;
     private string statusMessage = "Status: Not connected";
     private string dataMessage = "No data yet";
+    private string statusMessagCalibrate = "Status: Not Save";
+    private string dataMessageCalibrate = "No data yet";
 
     protected override void OnInitialized()
     {
         BluetoothService.OnStatusChanged += UpdateStatus;
         BluetoothService.OnDataReceived += UpdateData;
+
+        if (BluetoothService.IsConnected)
+        {
+            isConnected = true;
+            statusMessage = "Connected to BLE.";
+        }
+
+        if (Preferences.ContainsKey("CalibrationData"))
+        {
+            dataMessageCalibrate = Preferences.Get("CalibrationData", "No data found.");
+            statusMessagCalibrate = "Calibration data loaded from storage.";
+        }
     }
 
     private async Task ConnectToDevice()
     {
-        if (isConnected) return;
+        if (BluetoothService.IsConnected)
+        {
+            // Already connected
+            isConnected = true;
+            return;
+        }
 
         isConnecting = true;
         statusMessage = "Scanning for devices...";
         StateHasChanged();
 
         await BluetoothService.ConnectAsync();
-
         isConnecting = false;
-        StateHasChanged();
+
+        if (BluetoothService.IsConnected)
+        {
+            isConnected = true;
+            statusMessage = "Connected to BLE.";
+            StateHasChanged();
+        }
+        else
+        {
+            isConnected = false;
+            statusMessage = "Failed to connect. Try again.";
+            StateHasChanged();
+        }
     }
 
     private void UpdateStatus(string status)
     {
         statusMessage = status;
-
         if (status.Contains("Connected"))
         {
             isConnected = true;
@@ -237,7 +1636,6 @@ public class SlidePage
         {
             isConnected = false;
         }
-
         InvokeAsync(StateHasChanged);
     }
 
@@ -246,10 +1644,25 @@ public class SlidePage
         dataMessage = data;
         InvokeAsync(StateHasChanged);
     }
+
+    private void Calibrate()
+    {
+        // Save the latest dataMessage into MAUI Preferences under the key "CalibrationData"
+        Preferences.Set("CalibrationData", dataMessage);
+        statusMessagCalibrate = "Calibration saved to local storage.";
+        dataMessageCalibrate = dataMessage;
+        StateHasChanged();
+    }
 }
 
 <style>
 main {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+section {
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -258,14 +1671,166 @@ main {
 
 ```
 
-## Components/Pages/Home.razor
+## create4care_app/create4care/Components/Pages/Finish.razor
+```razor
+﻿@page "/finish"
+@using System.Text.Json
+@using Microsoft.Maui.Storage
+@inject NavigationManager NavigationManager
+
+<NavMenu Name="Finish"/>
+
+<main>
+    <div class="slider">
+        <IconBackgroundShape />
+        <div class="slides">
+            <div class="slide active">
+                <img src="images/step_5.png" alt="step_5" />
+                <h2>Goed gedaan!</h2>
+                <p>Gemeten lengte: @ConvertDistance(_difference, _userData.Unit, "cm") cm</p>
+            </div>
+        </div>
+        <div class="controls">
+            <button class="btn" @onclick="GoToHome">Home</button>
+        </div>
+    </div>
+</main>
+
+@code {
+    private MeasuringResult _userData        = new MeasuringResult { Distance = 0, Unit = "mm" };
+    private MeasuringResult _calibrationData = new MeasuringResult { Distance = 0, Unit = "mm" };
+    private double          _difference;
+
+    void GoToHome() => NavigationManager.NavigateTo("/");
+
+    protected override void OnInitialized()
+    {
+        _userData        = Load("UserData");
+        _calibrationData = Load("CalibrationData");
+        _difference      = _calibrationData.Distance - _userData.Distance;
+    }
+
+    static MeasuringResult Load(string key)
+    {
+        // De fallback-json hier is het dummy-object dat je terugkrijgt als de key niet bestaat
+        var defaultJson = "{\"distance\":0,\"unit\":\"mm\"}";
+        var json = Preferences.Get(key, defaultJson);
+        try
+        {
+            // Let op: standaard is System.Text.Json case-sensitive
+            var opts = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+            return JsonSerializer.Deserialize<MeasuringResult>(json, opts)
+                ?? new MeasuringResult { Distance = 0, Unit = "mm" };
+        }
+        catch (Exception ex)
+        {
+            return new MeasuringResult { Distance = 0, Unit = "mm" };
+        }
+    }
+
+    static double ConvertDistance(double value, string fromUnit, string toUnit)
+    {
+        // Eerst: breng de invoer‐waarde om naar millimeter (mm)
+        double valueInMm = fromUnit.ToLower() switch
+        {
+            "mm"   => value,
+            "cm"   => value * 10.0,       // 1 cm = 10 mm
+            "dm"   => value * 100.0,      // 1 dm = 0,1 m = 100 mm
+            "m"    => value * 1000.0,     // 1 m = 1000 mm
+            "dam"  => value * 10000.0,    // 1 dam = 10 m = 10 × 1000 mm = 10000 mm
+            "hm"   => value * 100000.0,   // 1 hm = 100 m = 100 × 1000 mm = 100000 mm
+            "km"   => value * 1000000.0,  // 1 km = 1000 m = 1000 × 1000 mm = 1 000 000 mm
+            "inch" => value * 25.4,       // 1 inch = 25.4 mm
+            _      => throw new ArgumentException($"Niet-ondersteunde bron-eenheid: '{fromUnit}'")
+        };
+
+        // Vervolgens: zet van millimeter (mm) om naar de doeleenheid
+        return toUnit.ToLower() switch
+        {
+            "mm"   => valueInMm,
+            "cm"   => valueInMm / 10.0,       // 10 mm = 1 cm
+            "dm"   => valueInMm / 100.0,      // 100 mm = 1 dm
+            "m"    => valueInMm / 1000.0,     // 1000 mm = 1 m
+            "dam"  => valueInMm / 10000.0,    // 10000 mm = 1 dam
+            "hm"   => valueInMm / 100000.0,   // 100000 mm = 1 hm
+            "km"   => valueInMm / 1000000.0,  // 1000000 mm = 1 km
+            "inch" => valueInMm / 25.4,       // 25.4 mm = 1 inch
+            _      => throw new ArgumentException($"Niet-ondersteunde doel-eenheid: '{toUnit}'")
+        };
+    }
+}
+
+
+<style>
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.slider {
+    width: 100%;
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: var(--padding-body-y) 0;
+}
+.slider svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-58%, -66%);
+    fill: var(--clr-primary);
+    z-index: -1;
+}
+.slides {
+    display: flex;
+    flex-grow: 1;
+}
+.slide {
+    display: none;
+}
+.slide.active {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    text-align: center;
+}
+.slide img {
+    height: 320px;
+}
+.slide h2 {
+    color: var(--clr-text);
+    font-size: 26px;
+}
+.slide p {
+    color: var(--clr-accent);
+    font-size: 25px;
+}
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+    max-width: 500px;
+}
+</style>
+
+```
+
+## create4care_app/create4care/Components/Pages/Home.razor
 ```razor
 ﻿@page "/"
+@inject IJSRuntime JS
 
 <NavMenu Name="Home"/>
 
 <main>
-    <h1>Hello, world!</h1>
+    <h1>Create4Care</h1>
 
     <span>Welcome to your new app.</span>
 
@@ -274,62 +1839,18 @@ main {
     </div>
 </main>
 
-<script>
-    // 1) Replace Utils.months(...)
-    const labels = ['Week 1','Week 2','Week 3','Week 4','Week 5','Week 6','Week 7'];
-
-    // 2) Your data
-    const data = {
-        labels,
-        datasets: [{
-            label: 'Measurement',
-            data: [130,133,137,142,145,148,150],
-            fill: true,
-            borderColor: 'rgb(75,192,192)',
-            backgroundColor: 'rgba(75,192,192,0.2)',
-            tension: 0.1
-        }]
-    };
-
-    // 3) Your config
-    const config = {
-        type: 'line',
-        data,
-        options: {
-            scales: {
-                y: {
-                    min: 130,
-                    max: 150,
-                    ticks: {
-                    stepSize: 1,
-                    callback: v => v + ' cm'
-                    },
-                    title: {
-                    display: true,
-                    text: 'Height (cm)'
-                    }
-                },
-                x: {
-                    title: {
-                    display: true,
-                    text: 'Week'
-                    }
-                }
-            },
-            plugins: {
-                legend: { display: false },
-                tooltip: {
-                    callbacks: {
-                    label: ctx => ctx.parsed.y + ' cm'
-                    }
-                }
-            }
+@code {
+    private bool _chartInitialized;
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            // This will invoke window.createHomeChart() in wwwroot/js/home-chart.js
+            await JS.InvokeVoidAsync("createHomeChart");
+            _chartInitialized = true;
         }
-    };
-
-    // 4) Instantiate the chart
-    new Chart(document.getElementById('myChart'), config);
-</script>
+    }
+}
 
 <style>
 main {
@@ -344,148 +1865,36 @@ main {
 </style>
 ```
 
-## Components/Pages/Instruction.razor
+## create4care_app/create4care/Components/Pages/Instruction.razor
 ```razor
 ﻿@page "/instruction"
-@inject NavigationManager Navigation
+@inject IJSRuntime JS
 
 <NavMenu Name="Instruction"/>
 
-<main style="
-    --ani-fade: @AniFade; 
-    --ani-slide-offset: @AniSlideOffset; 
-    --indicator-width: @($"{DotWidth}px"); 
-    --indicator-active-width:@($"{IndicatorActiveWidth}px"); 
-    --indicator-gap: @($"{IndicatorGap}px");
-    ">
-    <div class="slider-container">
+<main>
+    <div class="slider">
         <IconBackgroundShape />
-        <div class="slider-background">
-            <div class="slider-page @AnimationClass">
-                @if (Pages[CurrentPageIndex].Icon is RenderFragment fragment)
-                {
-                    @fragment
-                }
-                else if (Pages[CurrentPageIndex].Icon is string imageUrl)
-                {
-                    <img src="@imageUrl" alt="Slide icon" style="max-height: 100%;" />
-                }
-            </div>
-        </div>
-        <div class="slider-content">
-            <h2 class="slider-page @AnimationClass">@Pages[CurrentPageIndex].Title</h2>
-            <p class="slider-page @AnimationClass">@Pages[CurrentPageIndex].Content</p>
-        </div>
-    </div>
-
-    <div class="actions">
-        @* <div class="indicators">
-            @for (int i = 0; i < Pages.Count; i++)
-            {
-                <span class="indicator @(i == CurrentPageIndex ? "active" : "")"></span>
-            }
-        </div> *@
-
-        <div class="indicators">
-            <span class="active-indicator" style="@($"left: {ComputeIndicatorLeft()}px;")"></span>
-            @for (int i = 0; i < Pages.Count; i++)
-            {
-                <span class="indicator @(i == CurrentPageIndexAnimation ? $"active {(isReversedTransition ? "back" : "next")}" : "")"></span>
-            }
-        </div>
-
-        <div class="buttons">
-            <button @onclick="PreviousPage" disabled="@(CurrentPageIndexAnimation == 0)" class="btn btn-secondary btn-back @(CurrentPageIndexAnimation != 0 ? "btn-back-active" : "")">
-                Back
-            </button>
-            <button @onclick="NextPage" class="btn">Next</button>
+        <div class="slides"></div>
+        <div class="indicators"></div>
+        <div class="controls">
+            <button class="btn btn-secondary" id="prev">Back</button>
+            <button class="btn" id="next">Next</button>
         </div>
     </div>
 </main>
 
 @code {
-    private List<SlidePage> Pages = new List<SlidePage>
+    private bool _sliderInitialized;
+    protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        new SlidePage
+        if (firstRender)
         {
-            @* (RenderFragment)(@<IconPerson />) *@
-            Icon = "images/step_1.png",
-            Title = "Monteer de MeetMaatje", 
-            Content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis"
-        },
-        new SlidePage
-        {
-            Icon = "images/step_2.png",
-            Title = "Connect met MeetMaatje",
-            Content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis"
-        },
-        new SlidePage
-        {
-            Icon = "images/step_3.png",
-            Title = "Kalibreer de MeetMaatje",
-            Content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis"
-        },
-        new SlidePage
-        {
-            Icon = "images/step_4.png",
-            Title = "Controleer het postuur via een foto",
-            Content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis"
+            // Calls window.initializeInstructionSlider() from wwwroot/js/slider-init.js
+            await JS.InvokeVoidAsync("initializeInstructionSlider");
+            _sliderInitialized = true;
         }
-    };
-
-    private int CurrentPageIndex = 0;
-    private int CurrentPageIndexAnimation = 0;
-    private bool IsAnimating = false;
-    private string AnimationClass = "";
-    private int FadeDuration = 500;
-    private int WaitDuration = 0;
-    private bool isReversedTransition = false;
-
-    private string AniFade => $"{FadeDuration / 1000.0}s";
-    private string AniSlideOffset => "20px";
-    private const double IndicatorGap = 15;
-    private const double IndicatorActiveWidth = 28;
-    private const double DotWidth = 6;
-
-    private async Task AnimateTransition(Func<int, int> updatePage)
-    {
-        CurrentPageIndexAnimation = updatePage(CurrentPageIndex);
-        AnimationClass = isReversedTransition ? "fade-out-reverse" : "fade-out";
-        StateHasChanged();
-        await Task.Delay(FadeDuration + WaitDuration);
-
-        CurrentPageIndex = updatePage(CurrentPageIndex);
-
-        AnimationClass = isReversedTransition ? "fade-in-reverse" : "fade-in";
-        StateHasChanged();
-        await Task.Delay(FadeDuration);
-
-        AnimationClass = "";
-        IsAnimating = false;
     }
-
-    private async Task NextPage()
-    {
-        if (IsAnimating) return;
-        if (CurrentPageIndex == Pages.Count - 1)
-        {
-            Navigation.NavigateTo("/");
-            return;
-        }
-        IsAnimating = true;
-        isReversedTransition = false;
-        await AnimateTransition(i => i + 1);
-    }
-
-    private async Task PreviousPage()
-    {
-        if (IsAnimating) return;
-        IsAnimating = true;
-        isReversedTransition = true;
-        await AnimateTransition(i => i > 0 ? i - 1 : i);
-    }
-
-    private double ComputeIndicatorLeft() => CurrentPageIndexAnimation * (DotWidth + IndicatorGap);
 }
 
 <style>
@@ -495,19 +1904,17 @@ main {
     justify-content: center;
     align-items: center;
 }
-
-.slider-container {
+.slider {
     width: 100%;
     position: relative;
     display: flex;
-    gap: 40px;
+    gap: 20px;
     flex-direction: column;
     align-items: center;
     flex-grow: 1;
     padding: var(--padding-body-y) 0;
 }
-
-.slider-container > svg {
+.slider svg {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -516,117 +1923,59 @@ main {
     width: fit-content;
     z-index: -1;
 }
-
-.slider-background {
-    align-content: center;
+.slides {
+    display: flex;
     flex-grow: 1;
 }
-
-.slider-content {
+.slide {
+    display: none;
+}
+.slide.active {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 20px;
     text-align: center;
 }
-
-.slider-content > h1 {
+.slide img {
+    width: max-content;
+    height: 320px;
+    flex-grow: 1;
+}
+.slide h2 {
     color: var(--clr-text);
     font-size: 26px;
 }
-
-.slider-content > p {
+.slide p {
     color: var(--clr-text-tint);
     font-size: 15px;
 }
-
-/* Base state for slider pages */
-.slider-page {
-    opacity: 1;
-    transform: translateX(0);
-}
-
-
-@@keyframes fadeOutSlide {
-    from { opacity: 1; transform: translateX(0); }
-    to { opacity: 0; transform: translateX(calc(0px - var(--ani-slide-offset))); }
-}
-.slider-page.fade-out {
-    animation: fadeOutSlide var(--ani-fade) ease forwards;
-}
-
-@@keyframes fadeInSlide {
-    from { opacity: 0; transform: translateX(var(--ani-slide-offset)); }
-    to { opacity: 1; transform: translateX(0); }
-}
-.slider-page.fade-in {
-    animation: fadeInSlide var(--ani-fade) ease forwards;
-}
-
-@@keyframes fadeOutSlideReverse {
-    from { opacity: 1; transform: translateX(0); }
-    to { opacity: 0; transform: translateX(var(--ani-slide-offset)); }
-}
-.slider-page.fade-out-reverse {
-    animation: fadeOutSlideReverse var(--ani-fade) ease forwards;
-}
-
-@@keyframes fadeInSlideReverse {
-    from { opacity: 0; transform: translateX(calc(0px - var(--ani-slide-offset))); }
-    to { opacity: 1; transform: translateX(0); }
-}
-.slider-page.fade-in-reverse {
-    animation: fadeInSlideReverse var(--ani-fade) ease forwards;
-}
-
-.actions {
-    width: 100%;
+.controls {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 25px;
+    justify-content: space-between;
 }
 
 .indicators {
     display: flex;
     flex-direction: row;
-    gap: var(--indicator-gap);
     justify-content: center;
     align-items: center;
-    position: relative;
+    gap: 15px;
 }
-
 .indicator {
-    width: var(--indicator-width);
-    height: var(--indicator-width);
+    width: 6px;
+    height: 6px;
     border-radius: 10px;
     background-color: var(--clr-indicator);
+    transition:
+        width 500ms ease,
+        background-color 500ms ease;
 }
-
-@* .indicator.active {
-    width: var(--indicator-active-width);
-} *@
-
-.indicator.active.back {
-    margin-right: calc(var(--indicator-active-width) / 2 + var(--indicator-width));
-}
-
-.indicator.active.next {
-    margin-left: calc(var(--indicator-active-width) / 2 + var(--indicator-width));
-}
-
-.active-indicator {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: var(--indicator-width);
-    width: var(--indicator-active-width);
+.indicator.active {
+    width: 28px;
     background-color: var(--clr-primary);
-    border-radius: 10px;
-    transition: left var(--ani-fade) ease, transform var(--ani-fade) ease;
 }
-
-.buttons {
+.controls {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -635,35 +1984,32 @@ main {
     width: 100%;
     max-width: 500px;
 }
-
-.btn-back {
-    opacity: 0;
-    transition: opacity var(--ani-fade) ease;
-}
-
-.btn-back-active {
-    opacity: 1;
-}
 </style>
 
 ```
 
-## Components/Pages/Measuring.razor
+## create4care_app/create4care/Components/Pages/Measuring.razor
 ```razor
 ﻿@page "/measuring"
+@using Microsoft.Maui.Storage
+@implements IAsyncDisposable
+@inject IJSRuntime JS
+@inject BluetoothService BluetoothService
+@inject NavigationManager NavigationManager
 
 <NavMenu Name="Measuring" />
 
 <main>
     <!-- <h1>Pose Measuring</h1> -->
 
-    <span id="loading" class="center">Loading camera...</span>
+    <span id="loading" class="center" hidden>Loading camera...</span>
     <span id="error" class="center error" hidden></span>
+
     <div id="container">
         <span id="notification" class="center" hidden></span>
         <video id="videoInput" muted autoplay playsinline></video>
         <canvas id="output"></canvas>
-        <button id="snapshotButton" class="btn" hidden>Take Picture</button>
+        <button id="snapshotButton" class="btn" hidden disabled="@(!BluetoothService.IsConnected)">Take Picture</button>
     </div>
     <div id="issuePopup" class="modal" hidden>
         <div class="modal-content">
@@ -672,167 +2018,75 @@ main {
             <button id="retryButton" class="btn">Retry</button>
         </div>
     </div>
+
+    @* <div class="bluetooth-status" style="padding:1rem; border-top:1px solid #ccc;">
+        <p>BLE Status: @BluetoothService.IsConnected</p>
+        <p>Last Data: @_btPayloadJson</p>
+        <p>current Data: @_savedBtPayload</p>
+    </div> *@
+
+    <div id="issuePopup" class="modal" hidden="@(BluetoothService.IsConnected)">
+        <div class="modal-content">
+            <h2>Please connect the device</h2>
+            <button class="btn" @onclick="GoToBluetooth">Connect here</button>
+        </div>
+    </div>
 </main>
 
-<script>
-(() => {
-    // ---- Cached DOM & State ----
-    const $ = id => document.getElementById(id);
-    const video      = $('videoInput');
-    const canvas     = $('output');
-    const loading    = $('loading');
-    const errorMsg   = $('error');
-    const notify     = $('notification');
-    const btn        = $('snapshotButton');
-    const popup      = $('issuePopup');
-    const issueList  = $('issueList');
-    const retryBtn   = $('retryButton');
-    let capabilities = {};
-    let videoDims    = { width: 1280, height: 720 };
+@code {
+    private DotNetObjectReference<Measuring>? _dotNetRef;
+    private bool _cameraInitialized = false;
+    private string _btPayloadJson = "(none)";
+    private string _savedBtPayload = "(none)";
 
-    // ---- Generic POST helper ----
-    async function postData(url, payload) {
-        try {
-            const res = await fetch(url, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
-            });
-            if (!res.ok) throw new Error(`HTTP ${res.status}`);
-            return await res.json();
-        } catch (err) {
-            console.error(`Error POST ${url}:`, err);
-            return null;
-        }
+    protected override void OnInitialized()
+    {
+        BluetoothService.OnDataReceived += data => {
+            _btPayloadJson = data;
+            InvokeAsync(StateHasChanged);
+        };
     }
 
-    // ---- Camera Setup ----
-    async function setupCamera() {
-        try {
-            const stream = await navigator.mediaDevices.getUserMedia({
-                video: { facingMode: 'environment', width: 1280, height: 720 }
-            });
-            const track = stream.getVideoTracks()[0];
-            const caps  = track.getCapabilities?.() || {};
-            capabilities = caps;
-
-            // Try max resolution
-            if (caps.width?.max && caps.height?.max) {
-                await track.applyConstraints({
-                    width: caps.width.max,
-                    height: caps.height.max
-                });
-                videoDims = { width: caps.width.max, height: caps.height.max };
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {   
+            if (BluetoothService.IsConnected) {
+                _dotNetRef = DotNetObjectReference.Create(this);
+                await JS.InvokeVoidAsync("initializeCamera", _dotNetRef);
+                _cameraInitialized = true;
+                StateHasChanged();
             }
-
-            video.srcObject = stream;
-            await new Promise(r => video.onloadedmetadata = r);
-
-            loading.hidden = true;
-            adjustCanvas();
-            btn.hidden = false;
-        } catch (err) {
-            console.error('Camera error:', err);
-            loading.hidden = true;
-            errorMsg.hidden = false;
-            errorMsg.textContent = `Error accessing camera: ${err.message}`;
         }
     }
 
-    // ---- Canvas Sizing ----
-    function adjustCanvas() {
-        const { width: vw, height: vh } = videoDims;
-        const CW = container.clientWidth;
-        const CH = container.clientHeight;
-        const scale = Math.min(CW / vw, CH / vh);
-        canvas.width  = vw;
-        canvas.height = vh;
-        [video, canvas].forEach(el => {
-            el.style.width  = `${vw * scale}px`;
-            el.style.height = `${vh * scale}px`;
-        });
+    [JSInvokable]
+    public void OnMeasurementSave()
+    {
+        Preferences.Set("UserData", _btPayloadJson);
+        _savedBtPayload = Preferences.Get("UserData", "(none)");
+    }
+    [JSInvokable]
+    public void OnMeasurementSuccess()
+    {
+        NavigationManager.NavigateTo("/finish");
     }
 
-    // ---- Snapshot Flow ----
-    btn.addEventListener('click', async () => {
-        if (!video.paused) {
-        // Capture
-        video.pause();
-        btn.textContent = 'Processing...';
-        notify.hidden = true;
-
-        // Draw & encode
-        const ctx = canvas.getContext('2d');
-        ctx.drawImage(video, 0, 0, videoDims.width, videoDims.height);
-        const imageBase64 = canvas.toDataURL();
-
-        // 1) Pose detection
-        const pose = await postData(
-            'https://api.blokk.duckdns.org/pose_detection/',
-            { image_base64: imageBase64 }
-        );
-        if (!pose) {
-            notify.textContent = 'Pose detection failed.';
-            notify.hidden = false;
-            return btn.textContent = 'Retry';
+    public async ValueTask DisposeAsync()
+    {
+        if (_dotNetRef != null)
+        {
+            _dotNetRef.Dispose();
         }
 
-        // 2) Show issues
-        if (pose.issues?.length) {
-            issueList.innerHTML = pose.issues.map(i => `<span>- ${i}</span>`).join('');
-            popup.hidden = false;
-            retryBtn.onclick = reset;
-            return;
-        }
-
-        // 3) Save measurement
-        if (pose.landmark_image) {
-            const measurement = {
-                patient_id: 1,
-                measured_by_user_id: 1,
-                height_mm: 1,
-                weight_kg: 1,
-                sleep_hours: 1,
-                exercise_hours: 1,
-                image: pose.landmark_image
-            };
-            const result = await postData(
-                'https://api.blokk.duckdns.org/measurements/',
-                measurement
-            );
-            notify.textContent = result
-                ? 'Measurement saved!'
-                : 'Failed to save measurement.';
-        } else {
-            notify.textContent = 'No landmark image returned.';
-        }
-
-        notify.hidden = false;
-        btn.textContent = 'Retry';
-
-        } else {
-            reset();
-        }
-    });
-
-    function reset() {
-        popup.hidden = true;
-        video.play();
-        notify.hidden = true;
-        btn.textContent = 'Take Picture';
+        await JS.InvokeVoidAsync("stopCamera");
     }
 
-    // ---- (Optional) Handle resize ----
-    // let resizeTimeout;
-    // window.addEventListener('resize', () => {
-    //   clearTimeout(resizeTimeout);
-    //   resizeTimeout = setTimeout(adjustCanvas, 200);
-    // });
-
-    // ---- Init ----
-    setupCamera();
-})();
-</script>
+    private void GoToBluetooth()
+    {
+        NavigationManager.NavigateTo("/bluetooth");
+    }
+}
 
 <style>
 .center { display: block; text-align: center; }
@@ -902,11 +2156,15 @@ canvas {
 }
 
 .modal-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
     background: var(--clr-background);
     padding: 1.5rem;
+    margin: 1rem;
     border-radius: 8px;
-    max-width: 90%;
-    width: 300px;
+    width: 100%;
+    max-width: 400px;
     text-align: center;
 }
 
@@ -920,7 +2178,7 @@ canvas {
 </style>
 ```
 
-## Components/Pages/Settings.razor
+## create4care_app/create4care/Components/Pages/Settings.razor
 ```razor
 ﻿@page "/settings"
 @using Microsoft.Maui.Storage
@@ -982,7 +2240,7 @@ main {
 </style>
 ```
 
-## Components/Routes.razor
+## create4care_app/create4care/Components/Routes.razor
 ```razor
 ﻿<Router AppAssembly="@typeof(MauiProgram).Assembly">
     <Found Context="routeData">
@@ -992,7 +2250,7 @@ main {
 
 ```
 
-## Components/Services/BluetoothService.cs
+## create4care_app/create4care/Components/Services/BluetoothService.cs
 ```cs
 using Plugin.BLE;
 using Plugin.BLE.Abstractions.Contracts;
@@ -1013,9 +2271,10 @@ public class BluetoothService
     readonly Guid serviceUuid = Guid.Parse("0000180C-0000-1000-8000-00805F9B34FB");
     readonly Guid characteristicUuid = Guid.Parse("00002A56-0000-1000-8000-00805F9B34FB");
 
-    // Events to notify the UI
     public event Action<string>? OnStatusChanged;
     public event Action<string>? OnDataReceived;
+
+    public bool IsConnected { get; private set; } = false;
 
     public BluetoothService()
     {
@@ -1028,16 +2287,16 @@ public class BluetoothService
         OnStatusChanged?.Invoke("Scanning for devices...");
         try
         {
-            _adapter.DeviceDiscovered += (s, a) =>
-            {
-                if (!string.IsNullOrEmpty(a.Device.Name) &&
-                    a.Device.Name.Equals("Arduino_R4_WiFi", StringComparison.Ordinal))
-                {
-                    _device = a.Device;
-                }
-            };
+            // Clear any previous state:
+            IsConnected = false;
+            _device = null;
+            _service = null;
+            _characteristic = null;
 
+            _adapter.DeviceDiscovered += DeviceDiscoveredHandler;
             await _adapter.StartScanningForDevicesAsync();
+
+            _adapter.DeviceDiscovered -= DeviceDiscoveredHandler;
 
             if (_device == null)
             {
@@ -1069,7 +2328,9 @@ public class BluetoothService
             {
                 _characteristic.ValueUpdated += Characteristic_ValueUpdated;
                 await _characteristic.StartUpdatesAsync();
-                OnStatusChanged?.Invoke("Connected. Waiting for data...");
+                OnStatusChanged?.Invoke("Connected. Waiting for data…");
+
+                IsConnected = true;
             }
             else
             {
@@ -1082,17 +2343,34 @@ public class BluetoothService
         }
     }
 
+    private void DeviceDiscoveredHandler(object? sender, DeviceEventArgs a)
+    {
+        if (!string.IsNullOrEmpty(a.Device.Name) &&
+            a.Device.Name.Equals("Arduino_R4_WiFi", StringComparison.Ordinal))
+        {
+            _device = a.Device;
+        }
+    }
+
     private void Characteristic_ValueUpdated(object? sender, CharacteristicUpdatedEventArgs e)
     {
-        // Convert the incoming byte array (JSON data) to a string.
         string json = Encoding.UTF8.GetString(e.Characteristic.Value);
         OnDataReceived?.Invoke(json);
     }
-}
 
+    public async Task DisconnectAsync()
+    {
+        if (_device != null)
+        {
+            await _adapter.DisconnectDeviceAsync(_device);
+            IsConnected = false;
+            OnStatusChanged?.Invoke("Disconnected.");
+        }
+    }
+}
 ```
 
-## Components/Shared/Icon/Home.razor
+## create4care_app/create4care/Components/Shared/Icon/Home.razor
 ```razor
 ﻿<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
     <g fill="none" stroke="currentColor" stroke-width="1.5">
@@ -1103,7 +2381,7 @@ public class BluetoothService
 
 ```
 
-## Components/Shared/Icon/IconBackgroundShape.razor
+## create4care_app/create4care/Components/Shared/Icon/IconBackgroundShape.razor
 ```razor
 ﻿<svg width="1118" height="486" viewBox="0 0 1118 486" fill="none" xmlns="http://www.w3.org/2000/svg">
 	<path d="M933.252 75.3997C676.239 203.907 387.402 78.6779 275.109 0C67.5053 181.943 -223.14 512.882 275.109 381.096C773.358 249.311 1005.28 396.121 1058.96 486C1124.15 295.589 1190.26 -53.1076 933.252 75.3997Z" fill="currentC olor"/>
@@ -1111,7 +2389,7 @@ public class BluetoothService
 
 ```
 
-## Components/Shared/Icon/IconBluetooth.razor
+## create4care_app/create4care/Components/Shared/Icon/IconBluetooth.razor
 ```razor
 ﻿<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
 	<g fill="none">
@@ -1121,7 +2399,7 @@ public class BluetoothService
 </svg>
 ```
 
-## Components/Shared/Icon/IconCamera.razor
+## create4care_app/create4care/Components/Shared/Icon/IconCamera.razor
 ```razor
 ﻿<svg width="276" height="226" viewBox="0 0 276 226" fill="none" xmlns="http://www.w3.org/2000/svg">
 	<path d="M48.8479 30.7533H20.6753C16.9266 30.7533 13.8909 27.7175 13.8909 23.9688V7.36417C13.8909 3.61547 16.9266 0.579712 20.6753 0.579712H48.8479C52.5966 0.579712 55.6324 3.61547 55.6324 7.36417V23.9688C55.6094 27.7175 52.5736 30.7533 48.8479 30.7533Z" fill="#90A4AE"/>
@@ -1156,7 +2434,7 @@ public class BluetoothService
 
 ```
 
-## Components/Shared/Icon/IconHome.razor
+## create4care_app/create4care/Components/Shared/Icon/IconHome.razor
 ```razor
 ﻿<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
 	<g fill="none" stroke="currentColor" stroke-width="1.5">
@@ -1166,7 +2444,7 @@ public class BluetoothService
 </svg>
 ```
 
-## Components/Shared/Icon/IconInfo.razor
+## create4care_app/create4care/Components/Shared/Icon/IconInfo.razor
 ```razor
 ﻿<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
 	<g fill="none">
@@ -1177,7 +2455,7 @@ public class BluetoothService
 </svg>
 ```
 
-## Components/Shared/Icon/IconInstruction.razor
+## create4care_app/create4care/Components/Shared/Icon/IconInstruction.razor
 ```razor
 ﻿<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
 	<g fill="none" stroke="currentColor" stroke-width="1.5">
@@ -1187,7 +2465,7 @@ public class BluetoothService
 </svg>
 ```
 
-## Components/Shared/Icon/IconLogin.razor
+## create4care_app/create4care/Components/Shared/Icon/IconLogin.razor
 ```razor
 ﻿<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
 	<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.2">
@@ -1197,7 +2475,7 @@ public class BluetoothService
 </svg>
 ```
 
-## Components/Shared/Icon/IconLogout.razor
+## create4care_app/create4care/Components/Shared/Icon/IconLogout.razor
 ```razor
 ﻿<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
 	<g fill="none" stroke="currentColor" stroke-width="1.2">
@@ -1207,7 +2485,7 @@ public class BluetoothService
 </svg>
 ```
 
-## Components/Shared/Icon/IconMeasuring.razor
+## create4care_app/create4care/Components/Shared/Icon/IconMeasuring.razor
 ```razor
 ﻿<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
 	<g fill="none">
@@ -1218,7 +2496,7 @@ public class BluetoothService
 </svg>
 ```
 
-## Components/Shared/Icon/IconPerson.razor
+## create4care_app/create4care/Components/Shared/Icon/IconPerson.razor
 ```razor
 ﻿<svg width="211" height="340" viewBox="0 0 211 340" fill="none" xmlns="http://www.w3.org/2000/svg">
 	<path d="M33.9811 184.714C32.5011 200.324 30.9111 217.554 29.9411 243.294C25.1111 264.884 28.3611 282.724 30.1111 304.464C30.1111 304.464 29.6811 311.014 29.6811 318.064C29.6811 318.064 29.1711 323.444 30.8311 330.714H73.2711C73.2711 330.714 74.6011 323.294 67.3511 320.794C60.7911 318.534 56.5111 316.584 53.2711 314.794C48.7711 312.314 43.7611 304.464 43.7611 304.464C45.4311 271.544 51.0811 243.294 51.0811 243.294C51.0811 243.294 55.6111 222.354 61.7311 184.714H33.9911H33.9811Z" fill="#C39173" />
@@ -1647,7 +2925,7 @@ public class BluetoothService
 
 ```
 
-## Components/Shared/Icon/IconSettings.razor
+## create4care_app/create4care/Components/Shared/Icon/IconSettings.razor
 ```razor
 ﻿<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
 	<g fill="none" stroke="currentColor" stroke-width="1.5">
@@ -1657,7 +2935,7 @@ public class BluetoothService
 </svg>
 ```
 
-## Components/Shared/NavMenu.razor
+## create4care_app/create4care/Components/Shared/NavMenu.razor
 ```razor
 ﻿<header>
     <input type="checkbox" id="toggleSidebar">
@@ -1717,6 +2995,7 @@ public class BluetoothService
                     new NavItem { Name = "Bluetooth", Href = "/bluetooth", Icon = @<IconBluetooth /> },
                     new NavItem { Name = "Instruction", Href = "/instruction", Icon = @<IconInstruction /> },
                     new NavItem { Name = "Measuring", Href = "/measuring", Icon =  @<IconMeasuring /> },
+                    new NavItem { Name = "Finish", Href = "/finish", Icon =  @<IconMeasuring /> },
                     new NavItem { Name = "Settings", Href = "/settings", Icon = @<IconSettings /> },
                 }
             }
@@ -1861,19 +3140,19 @@ public class BluetoothService
 
 /* Images and Hover/Active States */
 .sidebar a:hover,
-.active {
+.sidebar .active {
     background-color: var(--clr-link);
     color: var(--clr-text) !important;
 }
 
 .sidebar a:hover svg,
-.active svg {
+.sidebar .active svg {
     fill: var(--clr-text) !important;
 }
 </style>
 ```
 
-## Components/_Imports.razor
+## create4care_app/create4care/Components/_Imports.razor
 ```razor
 ﻿@using System.Net.Http
 @using System.Net.Http.Json
@@ -1884,14 +3163,14 @@ public class BluetoothService
 @using Microsoft.JSInterop
 @using create4care
 @using create4care.Components
+@using create4care.Components.Models
+@using create4care.Components.Services
 @using create4care.Components.Shared
 @using create4care.Components.Shared.Icon
-@using create4care.Components.Services
-@using create4care.Components.Models
 
 ```
 
-## MainPage.xaml
+## create4care_app/create4care/MainPage.xaml
 ```xaml
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -1910,7 +3189,7 @@ public class BluetoothService
 
 ```
 
-## MainPage.xaml.cs
+## create4care_app/create4care/MainPage.xaml.cs
 ```cs
 ﻿namespace create4care
 {
@@ -1925,7 +3204,7 @@ public class BluetoothService
 
 ```
 
-## MauiProgram.cs
+## create4care_app/create4care/MauiProgram.cs
 ```cs
 ﻿using Microsoft.AspNetCore.Components.WebView.Maui;
 using Microsoft.Extensions.Logging;
@@ -1953,7 +3232,7 @@ namespace create4care
             {
                 handlers.AddHandler<BlazorWebView, CustomBlazorWebViewHandler>();
             });
-#endif
+            #endif
 
 #if DEBUG
             builder.Services.AddBlazorWebViewDeveloperTools();
@@ -1967,7 +3246,7 @@ namespace create4care
 
 ```
 
-## Platforms/Android/AndroidManifest.xml
+## create4care_app/create4care/Platforms/Android/AndroidManifest.xml
 ```xml
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
@@ -1984,7 +3263,7 @@ namespace create4care
 </manifest>
 ```
 
-## Platforms/Android/CustomBlazorWebViewHandler.cs
+## create4care_app/create4care/Platforms/Android/CustomBlazorWebViewHandler.cs
 ```cs
 using Android.Webkit;
 using Microsoft.AspNetCore.Components.WebView.Maui;
@@ -2014,7 +3293,7 @@ namespace create4care
 
 ```
 
-## Platforms/Android/MainActivity.cs
+## create4care_app/create4care/Platforms/Android/MainActivity.cs
 ```cs
 ﻿using Android;
 using Android.App;
@@ -2052,7 +3331,7 @@ public class MainActivity : MauiAppCompatActivity
 
 ```
 
-## Platforms/Android/MainApplication.cs
+## create4care_app/create4care/Platforms/Android/MainApplication.cs
 ```cs
 ﻿using Android.App;
 using Android.Runtime;
@@ -2073,7 +3352,7 @@ namespace create4care
 
 ```
 
-## Platforms/Android/Resources/values/colors.xml
+## create4care_app/create4care/Platforms/Android/Resources/values/colors.xml
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
@@ -2083,7 +3362,7 @@ namespace create4care
 </resources>
 ```
 
-## Platforms/MacCatalyst/AppDelegate.cs
+## create4care_app/create4care/Platforms/MacCatalyst/AppDelegate.cs
 ```cs
 ﻿using Foundation;
 
@@ -2098,7 +3377,7 @@ namespace create4care
 
 ```
 
-## Platforms/MacCatalyst/Entitlements.plist
+## create4care_app/create4care/Platforms/MacCatalyst/Entitlements.plist
 ```plist
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
@@ -2117,7 +3396,7 @@ namespace create4care
 
 ```
 
-## Platforms/MacCatalyst/Info.plist
+## create4care_app/create4care/Platforms/MacCatalyst/Info.plist
 ```plist
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
@@ -2160,7 +3439,7 @@ namespace create4care
 
 ```
 
-## Platforms/MacCatalyst/Program.cs
+## create4care_app/create4care/Platforms/MacCatalyst/Program.cs
 ```cs
 ﻿using ObjCRuntime;
 using UIKit;
@@ -2180,7 +3459,7 @@ namespace create4care
 }
 ```
 
-## Platforms/Tizen/Main.cs
+## create4care_app/create4care/Platforms/Tizen/Main.cs
 ```cs
 using System;
 using Microsoft.Maui;
@@ -2202,7 +3481,7 @@ namespace create4care
 
 ```
 
-## Platforms/Tizen/tizen-manifest.xml
+## create4care_app/create4care/Platforms/Tizen/tizen-manifest.xml
 ```xml
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest package="maui-application-id-placeholder" version="0.0.0" api-version="9" xmlns="http://tizen.org/ns/packages">
@@ -2221,7 +3500,7 @@ namespace create4care
 </manifest>
 ```
 
-## Platforms/Windows/App.xaml
+## create4care_app/create4care/Platforms/Windows/App.xaml
 ```xaml
 ﻿<maui:MauiWinUIApplication
     x:Class="create4care.WinUI.App"
@@ -2234,7 +3513,7 @@ namespace create4care
 
 ```
 
-## Platforms/Windows/App.xaml.cs
+## create4care_app/create4care/Platforms/Windows/App.xaml.cs
 ```cs
 ﻿using Microsoft.UI.Xaml;
 
@@ -2264,7 +3543,7 @@ namespace create4care.WinUI
 
 ```
 
-## Platforms/Windows/Package.appxmanifest
+## create4care_app/create4care/Platforms/Windows/Package.appxmanifest
 ```appxmanifest
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package
@@ -2315,7 +3594,7 @@ namespace create4care.WinUI
 
 ```
 
-## Platforms/Windows/app.manifest
+## create4care_app/create4care/Platforms/Windows/app.manifest
 ```manifest
 <?xml version="1.0" encoding="utf-8"?>
 <assembly manifestVersion="1.0" xmlns="urn:schemas-microsoft-com:asm.v1">
@@ -2335,7 +3614,7 @@ namespace create4care.WinUI
 
 ```
 
-## Platforms/iOS/AppDelegate.cs
+## create4care_app/create4care/Platforms/iOS/AppDelegate.cs
 ```cs
 ﻿using Foundation;
 
@@ -2350,7 +3629,7 @@ namespace create4care
 
 ```
 
-## Platforms/iOS/Info.plist
+## create4care_app/create4care/Platforms/iOS/Info.plist
 ```plist
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
@@ -2387,7 +3666,7 @@ namespace create4care
 
 ```
 
-## Platforms/iOS/Program.cs
+## create4care_app/create4care/Platforms/iOS/Program.cs
 ```cs
 ﻿using ObjCRuntime;
 using UIKit;
@@ -2408,7 +3687,7 @@ namespace create4care
 
 ```
 
-## Platforms/iOS/Resources/PrivacyInfo.xcprivacy
+## create4care_app/create4care/Platforms/iOS/Resources/PrivacyInfo.xcprivacy
 ```xcprivacy
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
@@ -2464,7 +3743,7 @@ More information: https://aka.ms/maui-privacy-manifest
 
 ```
 
-## Properties/launchSettings.json
+## create4care_app/create4care/Properties/launchSettings.json
 ```json
 {
   "profiles": {
@@ -2476,7 +3755,7 @@ More information: https://aka.ms/maui-privacy-manifest
 }
 ```
 
-## Resources/AppIcon/appicon.svg
+## create4care_app/create4care/Resources/AppIcon/appicon.svg
 ```svg
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg width="456" height="456" viewBox="0 0 456 456" version="1.1" xmlns="http://www.w3.org/2000/svg">
@@ -2484,7 +3763,7 @@ More information: https://aka.ms/maui-privacy-manifest
 </svg>
 ```
 
-## Resources/AppIcon/appiconfg.svg
+## create4care_app/create4care/Resources/AppIcon/appiconfg.svg
 ```svg
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
@@ -2496,12 +3775,12 @@ More information: https://aka.ms/maui-privacy-manifest
 </svg>
 ```
 
-## Resources/Fonts/OpenSans-Regular.ttf
+## create4care_app/create4care/Resources/Fonts/OpenSans-Regular.ttf
 ```
 Error reading file.
 ```
 
-## Resources/Images/dotnet_bot.svg
+## create4care_app/create4care/Resources/Images/dotnet_bot.svg
 ```svg
 <svg width="419" height="519" viewBox="0 0 419 519" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M284.432 247.568L284.004 221.881C316.359 221.335 340.356 211.735 355.308 193.336C382.408 159.996 372.893 108.183 372.786 107.659L398.013 102.831C398.505 105.432 409.797 167.017 375.237 209.53C355.276 234.093 324.719 246.894 284.432 247.568Z" fill="#8A6FE8"/>
@@ -2599,32 +3878,7 @@ Error reading file.
 
 ```
 
-## Resources/Images/step_1.png
-```
-Error reading file.
-```
-
-## Resources/Images/step_2.png
-```
-Error reading file.
-```
-
-## Resources/Images/step_3.png
-```
-Error reading file.
-```
-
-## Resources/Images/step_4.png
-```
-Error reading file.
-```
-
-## Resources/Images/step_5.png
-```
-Error reading file.
-```
-
-## Resources/Raw/AboutAssets.txt
+## create4care_app/create4care/Resources/Raw/AboutAssets.txt
 ```txt
 ﻿Any raw assets you want to be deployed with your application can be placed in
 this directory (and child directories). Deployment of the asset to your application
@@ -2644,7 +3898,7 @@ These files will be deployed with your package and will be accessible using Esse
 
 ```
 
-## Resources/Splash/splash.svg
+## create4care_app/create4care/Resources/Splash/splash.svg
 ```svg
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
@@ -2656,7 +3910,7 @@ These files will be deployed with your package and will be accessible using Esse
 </svg>
 ```
 
-## create4care.csproj
+## create4care_app/create4care/create4care.csproj
 ```csproj
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
@@ -2702,6 +3956,10 @@ These files will be deployed with your package and will be accessible using Esse
         <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
     </PropertyGroup>
 
+    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net9.0-android|AnyCPU'">
+      <AndroidPackageFormat>apk</AndroidPackageFormat>
+    </PropertyGroup>
+
     <ItemGroup>
         <!-- App Icon -->
         <MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
@@ -2721,29 +3979,27 @@ These files will be deployed with your package and will be accessible using Esse
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
-        <PackageReference Include="Microsoft.AspNetCore.Components.WebView.Maui" Version="$(MauiVersion)" />
-        <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.0" />
-        <PackageReference Include="Plugin.BLE" Version="3.2.0-beta.1" />
+        <PackageReference Include="Microsoft.Maui.Controls" Version="9.0.70" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.WebView.Maui" Version="9.0.70" />
+        <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.5" />
+        <PackageReference Include="Plugin.BLE" Version="3.1.0" />
     </ItemGroup>
 
 </Project>
 
 ```
 
-## create4care.csproj.user
+## create4care_app/create4care/create4care.csproj.user
 ```user
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ActiveDebugFramework>net9.0-windows10.0.19041.0</ActiveDebugFramework>
-    <IsFirstTimeProjectOpen>False</IsFirstTimeProjectOpen>
-    <ActiveDebugProfile>Windows Machine</ActiveDebugProfile>
   </PropertyGroup>
 </Project>
 ```
 
-## wwwroot/css/app.css
+## create4care_app/create4care/wwwroot/css/app.css
 ```css
 ﻿/* main */
 @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
@@ -2856,8 +4112,8 @@ a {
 }
 
 .btn-secondary {
-    background-color: transparent;
-    color: var(--clr-btn-text-secondary);
+    background-color: transparent !important;
+    color: var(--clr-btn-text-secondary) !important;
 }
 
 .valid.modified:not([type=checkbox]) {
@@ -2922,7 +4178,32 @@ a {
 }
 ```
 
-## wwwroot/index.html
+## create4care_app/create4care/wwwroot/images/step_1.png
+```
+Error reading file.
+```
+
+## create4care_app/create4care/wwwroot/images/step_2.png
+```
+Error reading file.
+```
+
+## create4care_app/create4care/wwwroot/images/step_3.png
+```
+Error reading file.
+```
+
+## create4care_app/create4care/wwwroot/images/step_4.png
+```
+Error reading file.
+```
+
+## create4care_app/create4care/wwwroot/images/step_5.png
+```
+Error reading file.
+```
+
+## create4care_app/create4care/wwwroot/index.html
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -2946,6 +4227,10 @@ a {
         <script src="https://cdn.jsdelivr.net/npm/@mediapipe/pose/pose.js" crossorigin="anonymous"></script>
         
         <!-- Your custom JS for starting MediaPipe Pose -->
+        <script src="js/chart.js"></script>
+        <script src="js/slider.js"></script>
+        <script src="js/camera.js"></script>
+
         <script src="_framework/blazor.webview.js" autostart="false" defer></script>
     </head>
     <body id="app">
@@ -2958,5 +4243,2872 @@ a {
         </div>
     </body>
 </html>
+
+```
+
+## create4care_app/create4care/wwwroot/js/camera.js
+```js
+// wwwroot/js/camera-init.js
+
+let _stream = null;
+let dotnetHelper = null;
+
+window.initializeCamera = (dotnetRef) => {
+  dotnetHelper = dotnetRef;
+
+  // ---- Cached DOM & State ----
+  const $ = id => document.getElementById(id);
+  const container  = $('container');
+  const video      = $('videoInput');
+  const canvas     = $('output');
+  const loading    = $('loading');
+  const errorMsg   = $('error');
+  const notify     = $('notification');
+  const btn        = $('snapshotButton');
+  const popup      = $('issuePopup');
+  const issueList  = $('issueList');
+  const retryBtn   = $('retryButton');
+  let videoDims    = { width: 1280, height: 720 };
+
+  // ---- Generic POST helper ----
+  async function postData(url, payload) {
+    try {
+      const res = await fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      return await res.json();
+    } catch (err) {
+      console.error(`Error POST ${url}:`, err);
+      return null;
+    }
+  }
+
+  // ---- Camera Setup ----
+  async function setupCamera() {
+    loading.hidden = false;
+    try {
+      _stream = await navigator.mediaDevices.getUserMedia({
+        video: { facingMode: 'environment', width: 1280, height: 720 }
+      });
+      const track = _stream.getVideoTracks()[0];
+      const caps  = track.getCapabilities?.() || {};
+
+      // Try max resolution
+      if (caps.width?.max && caps.height?.max) {
+        await track.applyConstraints({
+          width: caps.width.max,
+          height: caps.height.max
+        });
+        videoDims = { width: caps.width.max, height: caps.height.max };
+      }
+
+      video.srcObject = _stream;
+      await new Promise(r => video.onloadedmetadata = r);
+
+      loading.hidden = true;
+      adjustCanvas();
+      btn.hidden = false;
+    } catch (err) {
+      console.error('Camera error:', err);
+      loading.hidden = true;
+      errorMsg.hidden = false;
+      errorMsg.textContent = `Error accessing camera: ${err.message}`;
+    }
+  }
+
+  // ---- Canvas Sizing ----
+  function adjustCanvas() {
+    const { width: vw, height: vh } = videoDims;
+    const CW = container.clientWidth;
+    const CH = container.clientHeight;
+    let scale;
+    if (CW >= CH) {
+      scale = Math.min(CW / vw, CH / vh);
+    } else {
+      scale = Math.max(CW / vw, CH / vh);
+    }
+    
+    // set the actual pixel buffer size
+    canvas.width  = vw;
+    canvas.height = vh;
+    video.width  = vw;
+    video.height = vh;
+
+    // then scale both elements via CSS to fit inside #container
+    [video, canvas].forEach(el => {
+      el.style.width  = `${vw * scale}px`;
+      el.style.height = `${vh * scale}px`;
+    });
+  }
+
+  // ---- Snapshot Flow ----
+  btn.addEventListener('click', async () => {
+    if (!video.paused) {
+    // Capture
+    video.pause();
+    btn.textContent = 'Processing...';
+    notify.hidden = true;
+
+    // Draw & encode
+    const ctx = canvas.getContext('2d');
+    ctx.drawImage(video, 0, 0, videoDims.width, videoDims.height);
+    const imageBase64 = canvas.toDataURL();
+    await dotnetHelper.invokeMethodAsync("OnMeasurementSave");
+
+    // 1) Pose detection
+    const pose = await postData(
+      'https://api.blokk.duckdns.org/pose_detection/',
+      { image_base64: imageBase64 }
+    );
+    if (!pose) {
+      notify.textContent = 'Pose detection failed.';
+      notify.hidden = false;
+      return btn.textContent = 'Retry';
+    }
+
+    // 2) Show issues
+    if (pose.issues?.length) {
+      issueList.innerHTML = pose.issues.map(i => `<span>- ${i}</span>`).join('');
+      popup.hidden = false;
+      retryBtn.onclick = reset;
+      return;
+    }
+
+    // 3) Save measurement
+    if (pose.landmark_image) {
+      const measurement = {
+        patient_id: 1,
+        measured_by_user_id: 1,
+        height_mm: 1,
+        weight_kg: 1,
+        sleep_hours: 1,
+        exercise_hours: 1,
+        image: pose.landmark_image
+      };
+      const result = await postData(
+        'https://api.blokk.duckdns.org/measurements/',
+        measurement
+      );
+      if (result) {
+        if (dotnetHelper) {
+          await dotnetHelper.invokeMethodAsync("OnMeasurementSuccess");
+        }
+      } else {
+        notify.textContent = "Failed to save measurement.";
+      }
+    } else {
+      notify.textContent = 'No landmark image returned.';
+    }
+
+    notify.hidden = false;
+    btn.textContent = 'Retry';
+
+    } else {
+      reset();
+    }
+  });
+
+  function reset() {
+    popup.hidden = true;
+    video.play();
+    notify.hidden = true;
+    btn.textContent = 'Take Picture';
+  }
+
+  // ---- (Optional) Handle resize ----
+  let resizeTimeout;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(adjustCanvas, 200);
+  });
+
+  // ---- Init ----
+  setupCamera();
+};
+
+window.stopCamera = () => {
+  const video = document.getElementById('videoInput');
+  if (video && video.srcObject) {
+    // Stop every track
+    video.srcObject.getTracks().forEach(track => track.stop());
+    video.srcObject = null;
+  }
+  _stream = null;
+}
+```
+
+## create4care_app/create4care/wwwroot/js/chart.js
+```js
+// wwwroot/js/home‐chart.js
+window.createHomeChart = () => {
+  const ctx = document.getElementById('myChart');
+  if (!ctx) return;
+
+  const labels = ['Week 1','Week 2','Week 3','Week 4','Week 5','Week 6','Week 7'];
+  const data = {
+    labels,
+    datasets: [{
+      label: 'Measurement',
+      data: [130,133,137,142,145,148,150],
+      fill: true,
+      borderColor: 'rgb(75,192,192)',
+      backgroundColor: 'rgba(75,192,192,0.2)',
+      tension: 0.1
+    }]
+  };
+  const config = {
+    type: 'line',
+    data,
+    options: {
+      scales: {
+        y: {
+          min: 130,
+          max: 150,
+          ticks: { stepSize: 1, callback: v => v + ' cm' },
+          title: { display: true, text: 'Height (cm)' }
+        },
+        x: { title: { display: true, text: 'Week' } }
+      },
+      plugins: {
+        legend: { display: false },
+        tooltip: { callbacks: { label: ctx => ctx.parsed.y + ' cm' } }
+      }
+    }
+  };
+  new Chart(ctx, config);
+};
+
+```
+
+## create4care_app/create4care/wwwroot/js/slider.js
+```js
+// wwwroot/js/slider‐init.js
+window.initializeInstructionSlider = () => {
+  const pages = [
+    { image: 'images/step_1.png', title: 'Monteer de MeetMaatje', 
+    content: 'Kies een stevige binnendeur en hang de haak van het meetapparaat goed over de bovenkant. Zorg dat de haak volledig vastzit en het apparaat recht naar beneden hangt.' },
+    { image: 'images/step_2.png', title: 'Connect met MeetMaatje', 
+    content: 'Zet Bluetooth aan op je smartphone of tablet en open de app. Selecteer het meetapparaat in de lijst met beschikbare apparaten en wacht tot de app bevestigt dat de koppeling gelukt is.' },
+    { image: 'images/step_3.png', title: 'Kalibreer de MeetMaatje', 
+    content: 'Volg de instructies in de app om het apparaat te kalibreren. Zorg dat er niemand onder staat. De kalibratie duurt slechts enkele seconden en zorgt voor een nauwkeurige meting.' },
+    { image: 'images/step_4.png', title: 'Controleer het postuur via een foto', 
+    content: 'Maak via de app een foto van het kind in meetpositie. Zorg dat het recht staat met kin vooruit, schouders ontspannen en voeten onder het lichaam. Pas de houding aan als dat nodig is.' }
+];
+  const fadeDuration = 500;
+  const gapDuration = 100;
+  const slidesContainer = document.querySelector('.slides');
+  const indicatorsContainer = document.querySelector('.indicators');
+  const prevBtn = document.getElementById('prev');
+  const nextBtn = document.getElementById('next');
+  let currentIndex = 0;
+
+  // Build slides + indicators
+  pages.forEach((page, i) => {
+    const slide = document.createElement('div');
+    slide.className = 'slide';
+    slide.innerHTML = `
+      <img src="${page.image}" alt="${page.title}">
+      <h2>${page.title}</h2>
+      <p>${page.content}</p>
+    `;
+    slidesContainer.appendChild(slide);
+    const dot = document.createElement('div');
+    dot.className = 'indicator';
+    dot.addEventListener('click', () => transitionTo(i));
+    indicatorsContainer.appendChild(dot);
+  });
+
+  const slides = slidesContainer.querySelectorAll('.slide');
+  const dots = indicatorsContainer.querySelectorAll('.indicator');
+
+  function updateButtons() {
+    const atStart = currentIndex === 0;
+    prevBtn.disabled = atStart;
+    prevBtn.style.opacity = atStart ? '0' : '1';
+    nextBtn.disabled = false;
+    nextBtn.style.opacity = '1';
+  }
+
+  function transitionTo(nextIndex) {
+    if (nextIndex < 0 || nextIndex >= pages.length || nextIndex === currentIndex) return;
+    dots[currentIndex].classList.remove('active');
+    dots[nextIndex].classList.add('active');
+    const dir = nextIndex > currentIndex ? -20 : 20;
+
+    slidesContainer.style.transition = `opacity ${fadeDuration}ms ease, transform ${fadeDuration}ms ease`;
+    slidesContainer.style.opacity = '0';
+    slidesContainer.style.transform = `translateX(${dir}px)`;
+    prevBtn.disabled = nextBtn.disabled = true;
+
+    if (currentIndex === 0 && nextIndex > 0) prevBtn.style.opacity = '1';
+    else if (currentIndex >= 1 && nextIndex === 0) prevBtn.style.opacity = '0';
+
+    setTimeout(() => {
+      slides[currentIndex].classList.remove('active');
+      currentIndex = nextIndex;
+      slides[currentIndex].classList.add('active');
+
+      slidesContainer.style.transition = 'none';
+      slidesContainer.style.transform = `translateX(${-dir}px)`;
+      slidesContainer.style.opacity = '0';
+
+      setTimeout(() => {
+        slidesContainer.style.transition = `opacity ${fadeDuration}ms ease, transform ${fadeDuration}ms ease`;
+        slidesContainer.style.opacity = '1';
+        slidesContainer.style.transform = 'translateX(0)';
+        setTimeout(updateButtons, fadeDuration);
+      }, gapDuration);
+    }, fadeDuration);
+  }
+
+  nextBtn.addEventListener('click', () => {
+    if (currentIndex === pages.length - 1) {
+      window.location.href = '/measuring';
+    } else {
+      transitionTo(currentIndex + 1);
+    }
+  });
+  prevBtn.addEventListener('click', () => transitionTo(currentIndex - 1));
+
+  slides[currentIndex].classList.add('active');
+  dots[currentIndex].classList.add('active');
+  updateButtons();
+};
+
+```
+
+## create4care_app/create4care.sln
+```sln
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35931.197 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "create4care", "create4care\create4care.csproj", "{66694445-7148-4D41-970C-C9FDD9289FE5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{66694445-7148-4D41-970C-C9FDD9289FE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66694445-7148-4D41-970C-C9FDD9289FE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66694445-7148-4D41-970C-C9FDD9289FE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66694445-7148-4D41-970C-C9FDD9289FE5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DC4E0157-FCDC-42B9-A7CB-3ABF1DB05C12}
+	EndGlobalSection
+EndGlobal
+
+```
+
+## create4care_docker/api/Dockerfile
+```txt
+# Use official python image
+FROM python:3.10
+
+# Install netcat (optional) and OpenGL support for cv2
+RUN apt-get update && apt-get install -y \
+    netcat-openbsd \
+    libgl1-mesa-glx \
+    libglib2.0-0 \
+&& apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# Set working directory
+WORKDIR /app
+
+# Copy the entire project into the container
+COPY api .
+
+# Install requirements
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Start the FastAPI app with Uvicorn
+CMD ["sh", "-c", "uvicorn main:app --host 0.0.0.0 --port ${PORT}"]
+
+# Start the run the seed
+# RUN python db/seed.py
+# RUN python -m db.seed
+```
+
+## create4care_docker/api/core/auth.py
+```py
+# api/core/auth.py
+from datetime import datetime, timedelta
+from jose import JWTError, jwt
+from fastapi import HTTPException, status
+
+# Use a strong secret key and load it from an environment variable in production!
+SECRET_KEY = "your-secret-key"  
+ALGORITHM = "HS256"
+ACCESS_TOKEN_EXPIRE_MINUTES = 30
+
+def create_access_token(data: dict, expires_delta: timedelta = None) -> str:
+    """
+    Create a JWT token with an expiration.
+    """
+    to_encode = data.copy()
+    expire = datetime.utcnow() + (expires_delta if expires_delta else timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES))
+    to_encode.update({"exp": expire})
+    return jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
+
+def verify_token(token: str) -> dict:
+    """
+    Decode and verify the token. Raises an exception if token is invalid or expired.
+    """
+    try:
+        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+        return payload
+    except JWTError:
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Could not validate credentials")
+
+```
+
+## create4care_docker/api/core/config.py
+```py
+import os
+
+IMAGE_DIR = os.getenv("IMAGE_DIR", "images")
+IMAGES_URL = os.getenv("IMAGES_URL", "patient_images")
+DATABASE_URL = os.getenv("DATABASE_URL", "postgresql+psycopg2://root:admin@localhost:5432/mydb")
+
+```
+
+## create4care_docker/api/db/models.py
+```py
+import logging
+from sqlalchemy import (
+    create_engine, Column, Integer, String, Float, Date, Text,
+    ForeignKey, DateTime, Table
+)
+from sqlalchemy.orm import declarative_base, relationship
+from datetime import datetime
+from core.config import DATABASE_URL
+
+# Setup logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+# Create the engine with echo enabled for SQL debugging.
+engine = create_engine(DATABASE_URL, echo=True)
+Base = declarative_base()
+
+# Define junction tables
+user_roles = Table(
+    'user_roles',
+    Base.metadata,
+    Column('user_id', Integer, ForeignKey('users.id'), primary_key=True),
+    Column('role_id', Integer, ForeignKey('roles.id'), primary_key=True),
+)
+
+role_permissions = Table(
+    'role_permissions',
+    Base.metadata,
+    Column('role_id', Integer, ForeignKey('roles.id'), primary_key=True),
+    Column('permission_id', Integer, ForeignKey('permissions.id'), primary_key=True),
+)
+
+user_patients = Table(
+    'user_patients',
+    Base.metadata,
+    Column('user_id', Integer, ForeignKey('users.id'), primary_key=True),
+    Column('patient_id', Integer, ForeignKey('patients.id'), primary_key=True),
+)
+
+# Define models
+class User(Base):
+    """Model representing an application user."""
+    __tablename__ = 'users'
+
+    id = Column(Integer, primary_key=True)
+    name = Column(String, nullable=False)
+    email = Column(String, unique=True, nullable=False)
+    password = Column(String, nullable=False)
+    email_verified = Column(DateTime)
+    image = Column(String)
+
+    roles = relationship("Role", secondary=user_roles, back_populates="users")
+    sessions = relationship("Session", back_populates="user")
+    patients = relationship("Patient", secondary=user_patients, back_populates="users")
+    measurements = relationship("Measurement", back_populates="measured_by")
+
+    def __repr__(self):
+        return f"<User(name={self.name}, email={self.email})>"
+
+class Role(Base):
+    """Model representing a user role."""
+    __tablename__ = 'roles'
+
+    id = Column(Integer, primary_key=True)
+    name = Column(String, unique=True, nullable=False)
+
+    users = relationship("User", secondary=user_roles, back_populates="roles")
+    permissions = relationship("Permission", secondary=role_permissions, back_populates="roles")
+
+    def __repr__(self):
+        return f"<Role(name={self.name})>"
+
+class Session(Base):
+    """Model representing user sessions."""
+    __tablename__ = 'sessions'
+
+    user_id = Column(Integer, ForeignKey('users.id'), primary_key=True)
+    session_token = Column(String, unique=True, nullable=False)
+    expires = Column(DateTime, nullable=False)
+
+    user = relationship("User", back_populates="sessions")
+
+class Permission(Base):
+    """Model representing permissions."""
+    __tablename__ = 'permissions'
+
+    id = Column(Integer, primary_key=True)
+    name = Column(String, unique=True, nullable=False)
+
+    roles = relationship("Role", secondary=role_permissions, back_populates="permissions")
+
+class Patient(Base):
+    """Model representing a patient."""
+    __tablename__ = 'patients'
+
+    id = Column(Integer, primary_key=True)
+    name = Column(String, nullable=False)
+    birth_date = Column(Date, nullable=False)
+    gender = Column(Integer, nullable=False)  # 0 = female, 1 = male
+    father_height_mm = Column(Float, nullable=False)
+    mother_height_mm = Column(Float, nullable=False)
+
+    users = relationship("User", secondary=user_patients, back_populates="patients")
+    measurements = relationship("Measurement", back_populates="patient")
+
+    def __repr__(self):
+        return f"<Patient(name={self.name}, birth_date={self.birth_date})>"
+
+class Measurement(Base):
+    """Model representing patient measurements."""
+    __tablename__ = 'measurements'
+
+    id = Column(Integer, primary_key=True)
+    patient_id = Column(Integer, ForeignKey('patients.id'), nullable=False)
+    measured_by_user_id = Column(Integer, ForeignKey('users.id'), nullable=False)
+    height_mm = Column(Float, nullable=False)
+    weight_kg = Column(Float, nullable=False)
+    sleep_hours = Column(Float)
+    exercise_hours = Column(Float)
+    image =  Column(String, nullable=False)
+    date = Column(DateTime, default=datetime.utcnow, nullable=False)
+
+    patient = relationship("Patient", back_populates="measurements")
+    measured_by = relationship("User", back_populates="measurements")
+
+    def __repr__(self):
+        return f"<Measurement(patient_id={self.patient_id}, height_mm={self.height_mm})>"
+
+class Log(Base):
+    """Model representing logs."""
+    __tablename__ = 'logs'
+
+    id = Column(Integer, primary_key=True)
+    table_name = Column(String, nullable=False)
+    record_id = Column(Integer, nullable=False)
+    operation = Column(String, nullable=False)  # 'INSERT', 'UPDATE', or 'DELETE'
+    changed_data = Column(Text)  # JSON data capturing the change details
+    changed_at = Column(DateTime, default=datetime.utcnow, nullable=False)
+```
+
+## create4care_docker/api/db/seed.py
+```py
+import logging
+from datetime import date
+from sqlalchemy.orm import sessionmaker
+from db.models import Base, engine, Role, User, Patient, Measurement
+from utils.password_hash import hash_password
+from sqlalchemy import text
+
+# Setup logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+def create_tables():
+    """Create all tables in the database."""
+    try:
+        Base.metadata.create_all(engine)
+        logger.info("✅ All tables created successfully!")
+    except Exception as e:
+        logger.error("Error creating tables: %s", e)
+        raise
+
+def drop_tables():
+    """Drop all tables in the database."""
+    try:
+        # Instead of using drop_all() with cascade, drop the entire schema with CASCADE.
+        with engine.connect() as connection:
+            connection = connection.execution_options(isolation_level="AUTOCOMMIT")
+            connection.execute(text("DROP SCHEMA public CASCADE"))
+            connection.execute(text("CREATE SCHEMA public"))
+        logger.info("✅ All tables dropped successfully")
+    except Exception as e:
+        logger.error("Error dropping tables: %s", e)
+        raise
+
+def seed_roles():
+    """Insert default roles into the roles table."""
+    Session = sessionmaker(bind=engine)
+    try:
+        with Session() as session:
+            default_roles = ["admin", "doctor", "parent", "patient"]
+            for role_name in default_roles:
+                if not session.query(Role).filter_by(name=role_name).first():
+                    session.add(Role(name=role_name))
+                    logger.info("Adding role: %s", role_name)
+            session.commit()
+            logger.info("✅ Default roles inserted successfully!")
+    except Exception as e:
+        logger.error("Error seeding roles: %s", e)
+        raise
+
+def seed_dummy_data():
+    Session = sessionmaker(bind=engine)
+    with Session() as session:
+        if session.query(User).first():
+            logger.info("Dummy data already exists")
+            return
+
+        # Get roles
+        admin = session.query(Role).filter_by(name="admin").first()
+        doctor = session.query(Role).filter_by(name="doctor").first()
+        parent = session.query(Role).filter_by(name="parent").first()
+        patient_role = session.query(Role).filter_by(name="patient").first()
+
+        # Create users
+        user1 = User(name="Alice Admin", email="alice@admin.com", password=hash_password("pass"))
+        user1.roles.append(admin)
+        user2 = User(name="Bob Doctor", email="bob@doctor.com", password=hash_password("pass"))
+        user2.roles.append(doctor)
+        user3 = User(name="Charlie Parent", email="charlie@parent.com", password=hash_password("pass"))
+        user3.roles.append(parent)
+        user4 = User(name="Daisy Patient", email="daisy@patient.com", password=hash_password("pass"))
+        user4.roles.append(patient_role)
+        session.add_all([user1, user2, user3, user4])
+        session.commit()
+
+        # Create patients
+        patient1 = Patient(name="Patient One", birth_date=date(2000, 1, 1), gender=0, father_height_mm=170, mother_height_mm=160)
+        patient2 = Patient(name="Patient Two", birth_date=date(1995, 5, 15), gender=1, father_height_mm=180, mother_height_mm=165)
+        session.add_all([patient1, patient2])
+        session.commit()
+
+        # Associate patients with users
+        user3.patients.extend([patient1, patient2])
+        user2.patients.append(patient1)
+        session.commit()
+
+        # Insert measurements
+        measurement1 = Measurement(
+            patient_id=patient1.id, measured_by_user_id=user2.id, height_mm=165,
+            weight_kg=60, sleep_hours=8, exercise_hours=1,
+            image="localhost/test.png"
+        )
+        measurement2 = Measurement(
+            patient_id=patient2.id, measured_by_user_id=user2.id, height_mm=170,
+            weight_kg=70, sleep_hours=7, exercise_hours=0.5,
+            image="localhost/test.png"
+        )
+        session.add_all([measurement1, measurement2])
+        session.commit()
+
+        logger.info("✅ Dummy data seeded")
+
+if __name__ == "__main__":
+    drop_tables()
+    create_tables()
+    seed_roles()
+    seed_dummy_data()
+    print("✅ All tasks and Seeding completed successfully!")
+
+```
+
+## create4care_docker/api/db/session.py
+```py
+from sqlalchemy.orm import sessionmaker
+from db.models import engine
+
+# Create a session factory
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+
+def get_db():
+    """
+    Dependency function that yields a new database session.
+    """
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
+
+```
+
+## create4care_docker/api/main.py
+```py
+from fastapi import FastAPI
+from fastapi.staticfiles import StaticFiles
+from fastapi.middleware.cors import CORSMiddleware
+from core.config import IMAGE_DIR, IMAGES_URL
+import os
+
+from routers import (
+    user_router, role_router, permission_router, patient_router,
+    measurement_router, session_router, log_router, db_seed_router, auth_router,
+    pose_detection_router
+)
+
+app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# Include routers with appropriate prefixes and tags
+app.include_router(user_router, prefix="/users", tags=["users"])
+app.include_router(role_router, prefix="/roles", tags=["roles"])
+app.include_router(permission_router, prefix="/permissions", tags=["permissions"])
+app.include_router(patient_router, prefix="/patients", tags=["patients"])
+app.include_router(measurement_router, prefix="/measurements", tags=["measurements"])
+app.include_router(session_router, prefix="/sessions", tags=["sessions"])
+app.include_router(log_router, prefix="/logs", tags=["logs"])
+app.include_router(db_seed_router, prefix="/database", tags=["database"])
+app.include_router(auth_router, prefix="/auth", tags=["auth"])
+app.include_router(pose_detection_router, prefix="/pose_detection", tags=["pose_detection"])
+
+# Ensure image directory exists and mount it
+os.makedirs(IMAGE_DIR, exist_ok=True)
+app.mount(f"/{IMAGES_URL}", StaticFiles(directory=IMAGE_DIR), name="images")
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000, reload=True)
+    # uvicorn main:app --reload
+
+
+```
+
+## create4care_docker/api/requirements.txt
+```txt
+fastapi
+uvicorn[standard]
+SQLAlchemy>=2.0
+psycopg2-binary>=2.9
+pydantic[email]
+requests
+python-multipart
+bcrypt
+python-jose[cryptography]
+mediapipe
+numpy
+```
+
+## create4care_docker/api/routers/__init__.py
+```py
+# app/routers/__init__.py
+from .user import router as user_router
+from .role import router as role_router
+from .permission import router as permission_router
+from .patient import router as patient_router
+from .measurement import router as measurement_router
+from .session import router as session_router
+from .log import router as log_router
+from .auth import router as auth_router
+from .db_seed import router as db_seed_router
+from .pose_detection import router as pose_detection_router
+
+__all__ = [
+    "user_router",
+    "role_router",
+    "permission_router",
+    "patient_router",
+    "measurement_router",
+    "user_patient_router",
+    "session_router",
+    "log_router",
+    "auth_router",
+    "db_seed_router",
+    "pose_detection_router",
+]
+
+```
+
+## create4care_docker/api/routers/auth.py
+```py
+# api/routers/auth.py
+from datetime import timedelta
+from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
+from sqlalchemy.orm import Session as DBSession
+
+from core.auth import create_access_token, verify_token, ACCESS_TOKEN_EXPIRE_MINUTES
+from db.session import get_db
+from services import user as user_service  # We'll add a helper function here shortly.
+from utils.password_hash import verify_password  # Using your existing password hash utilities
+
+router = APIRouter()
+
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/auth/token")
+
+@router.post("/token")
+def login(form_data: OAuth2PasswordRequestForm = Depends(), db: DBSession = Depends(get_db)):
+    """
+    Authenticate user and return a JWT token.
+    """
+    user = user_service.get_user_by_email(db, form_data.username)
+    if not user or not verify_password(form_data.password, user.password):
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Incorrect email or password"
+        )
+    access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
+    access_token = create_access_token(data={"sub": str(user.id)}, expires_delta=access_token_expires)
+    return {"access_token": access_token, "token_type": "bearer"}
+
+def get_current_user(token: str = Depends(oauth2_scheme), db: DBSession = Depends(get_db)):
+    """
+    Dependency to get the current user based on the JWT token.
+    """
+    payload = verify_token(token)
+    user_id: str = payload.get("sub")
+    if user_id is None:
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid token")
+    user = user_service.get_user(db, int(user_id))
+    if user is None:
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="User not found")
+    return user
+
+```
+
+## create4care_docker/api/routers/db_seed.py
+```py
+from fastapi import APIRouter, HTTPException
+from schemas.common import Message
+from db.seed import drop_tables, create_tables, seed_roles, seed_dummy_data
+
+router = APIRouter()
+
+@router.get("/reset_tables", response_model=Message)
+def reset_tables():
+    try:
+        drop_tables()
+        create_tables()
+        return Message(detail="All tables dropped and created successfully!")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@router.get("/seed_roles", response_model=Message)
+def seed_roles_route():
+    try:
+        seed_roles()
+        return Message(detail="Roles seeded successfully!")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@router.get("/seed_dummy_data", response_model=Message)
+def seed_dummy_data_route():
+    try:
+        seed_dummy_data()
+        return Message(detail="Dummy data seeded successfully!")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+```
+
+## create4care_docker/api/routers/log.py
+```py
+from fastapi import APIRouter, Depends
+from sqlalchemy.orm import Session as DBSession
+from typing import List
+from schemas.log import LogRequest, LogResponse, LogUpdate
+from schemas.common import Message
+from db.session import get_db
+from services import log as log_service
+
+router = APIRouter()
+
+@router.get("/", response_model=List[LogResponse])
+def list_logs(db: DBSession = Depends(get_db)):
+    return log_service.get_all_logs(db)
+
+@router.post("/", response_model=LogResponse)
+def create_new_log(log_req: LogRequest, db: DBSession = Depends(get_db)):
+    return log_service.create_log(db, log_req)
+
+@router.get("/{log_id}", response_model=LogResponse)
+def get_log(log_id: int, db: DBSession = Depends(get_db)):
+    return log_service.get_log(db, log_id)
+
+@router.patch("/{log_id}", response_model=LogResponse)
+def update_log(log_id: int, log_update: LogUpdate, db: DBSession = Depends(get_db)):
+    return log_service.update_log(db, log_id, log_update)
+
+@router.delete("/{log_id}", response_model=Message)
+def remove_log(log_id: int, db: DBSession = Depends(get_db)):
+    return log_service.delete_log(db, log_id)
+
+```
+
+## create4care_docker/api/routers/measurement.py
+```py
+from typing import List
+from fastapi import APIRouter, Depends, HTTPException, Request
+from sqlalchemy.orm import Session as DBSession
+from schemas.measurement import MeasurementRequest, MeasurementResponse, MeasurementUpdate
+from schemas.common import Message
+from db.session import get_db
+from services import measurement as measurement_service
+
+router = APIRouter()
+
+@router.get("/", response_model=List[MeasurementResponse])
+def list_measurements(db: DBSession = Depends(get_db)):
+    return measurement_service.get_all_measurements(db)
+
+@router.post("/", response_model=MeasurementResponse)
+def create_measurement(measurement: MeasurementRequest, request: Request, db: DBSession = Depends(get_db)):
+    return measurement_service.create_measurement(db, measurement, request)
+
+@router.get("/{measurement_id}", response_model=MeasurementResponse)
+def get_measurement(measurement_id: int, db: DBSession = Depends(get_db)):
+    meas_obj = measurement_service.get_measurement(db, measurement_id)
+    if not meas_obj:
+        raise HTTPException(status_code=404, detail="Measurement not found")
+    return meas_obj
+
+@router.patch("/{measurement_id}", response_model=MeasurementResponse)
+def update_measurement(measurement_id: int, measurement: MeasurementUpdate, request: Request, db: DBSession = Depends(get_db)):
+    return measurement_service.update_measurement(db, measurement_id, measurement, request)
+
+@router.delete("/{measurement_id}", response_model=Message)
+def delete_measurement(measurement_id: int, db: DBSession = Depends(get_db)):
+    return measurement_service.delete_measurement(db, measurement_id)
+```
+
+## create4care_docker/api/routers/patient.py
+```py
+from typing import List
+from fastapi import APIRouter, Depends, HTTPException
+from sqlalchemy.orm import Session as DBSession
+from schemas.patient import PatientRequest, PatientResponse, PatientUpdate
+from schemas.common import Message
+from db.session import get_db
+from services import patient as patient_service
+
+router = APIRouter()
+
+@router.get("/", response_model=List[PatientResponse])
+def list_patients(db: DBSession = Depends(get_db)):
+    return patient_service.get_all_patients(db)
+
+@router.post("/", response_model=PatientResponse)
+def create_patient(patient: PatientRequest, db: DBSession = Depends(get_db)):
+    return patient_service.create_patient(db, patient)
+
+@router.get("/{patient_id}", response_model=PatientResponse)
+def get_patient(patient_id: int, db: DBSession = Depends(get_db)):
+    patient_obj = patient_service.get_patient(db, patient_id)
+    if not patient_obj:
+        raise HTTPException(status_code=404, detail="Patient not found")
+    return patient_obj
+
+@router.patch("/{patient_id}", response_model=PatientResponse)
+def update_patient(patient_id: int, patient: PatientUpdate, db: DBSession = Depends(get_db)):
+    return patient_service.update_patient(db, patient_id, patient)
+
+@router.delete("/{patient_id}", response_model=Message)
+def delete_patient(patient_id: int, db: DBSession = Depends(get_db)):
+    return patient_service.delete_patient(db, patient_id)
+```
+
+## create4care_docker/api/routers/permission.py
+```py
+from typing import List
+from fastapi import APIRouter, Depends, HTTPException
+from sqlalchemy.orm import Session as DBSession
+from schemas.permission import PermissionRequest, PermissionUpdate, PermissionResponse
+from schemas.common import Message
+from db.session import get_db
+from services import permission as permission_service
+
+router = APIRouter()
+
+@router.get("/", response_model=List[PermissionResponse])
+def list_permissions(db: DBSession = Depends(get_db)):
+    return permission_service.get_all_permissions(db)
+
+@router.post("/", response_model=PermissionResponse)
+def create_permission(permission: PermissionRequest, db: DBSession = Depends(get_db)):
+    return permission_service.create_permission(db, permission)
+
+@router.get("/{permission_id}", response_model=PermissionResponse)
+def get_permission(permission_id: int, db: DBSession = Depends(get_db)):
+    permission_obj = permission_service.get_permission(db, permission_id)
+    if not permission_obj:
+        raise HTTPException(status_code=404, detail="Permission not found")
+    return permission_obj
+
+@router.patch("/{permission_id}", response_model=PermissionResponse)
+def update_permission(permission_id: int, permission: PermissionUpdate, db: DBSession = Depends(get_db)):
+    return permission_service.update_permission(db, permission_id, permission)
+
+@router.delete("/{permission_id}", response_model=Message)
+def delete_permission(permission_id: int, db: DBSession = Depends(get_db)):
+    return permission_service.delete_permission(db, permission_id)
+
+```
+
+## create4care_docker/api/routers/pose_detection.py
+```py
+import os
+import tempfile
+import base64
+from fastapi import APIRouter, HTTPException
+from pydantic import BaseModel
+from typing import List, Optional
+import cv2
+
+from utils.pose_decection import PoseDetector
+
+router = APIRouter()
+detector = PoseDetector()
+
+class PostureRequest(BaseModel):
+    image_base64: str
+
+class PostureResponse(BaseModel):
+    issues: Optional[List[str]] = None
+    landmark_image: Optional[str] = None
+
+@router.post("/detect_posture", response_model=PostureResponse)
+async def detect_posture(req: PostureRequest):
+    # 1. Decode base64 image
+    try:
+        header, encoded = req.image_base64.split(",", 1)
+        img_data = base64.b64decode(encoded)
+    except Exception:
+        raise HTTPException(status_code=400, detail="Invalid base64 image format")
+
+    # 2. Write to a temporary file for PoseDetector
+    with tempfile.NamedTemporaryFile(suffix=".png", delete=False) as tmp:
+        tmp.write(img_data)
+        tmp_path = tmp.name
+
+    # 3. Run posture evaluation
+    try:
+        result = detector.evaluate_image(tmp_path)
+    finally:
+        os.unlink(tmp_path)
+
+    # 4a. Return issues if found
+    if "issues" in result:
+        return PostureResponse(issues=result["issues"])
+
+    # 4b. No issues: encode overlay and save via image_utils
+    success, buffer = cv2.imencode(".png", result["landmark_image"])
+    if not success:
+        raise HTTPException(status_code=500, detail="Failed to encode landmark image")
+
+    b64_img = base64.b64encode(buffer).decode("utf-8")
+    data_url = f"data:image/png;base64,{b64_img}"
+
+    return PostureResponse(landmark_image=data_url)
+
+```
+
+## create4care_docker/api/routers/role.py
+```py
+from typing import List
+from fastapi import APIRouter, Depends, HTTPException
+from sqlalchemy.orm import Session as DBSession
+from schemas.role import RoleRequest, RoleResponse, RoleUpdate
+from schemas.common import Message
+from db.session import get_db
+from services import role as role_service
+
+router = APIRouter()
+
+@router.get("/", response_model=List[RoleResponse])
+def list_roles(db: DBSession = Depends(get_db)):
+    return role_service.get_all_roles(db)
+
+@router.post("/", response_model=RoleResponse)
+def create_role(role: RoleRequest, db: DBSession = Depends(get_db)):
+    return role_service.create_role(db, role)
+
+@router.get("/{role_id}", response_model=RoleResponse)
+def get_role(role_id: int, db: DBSession = Depends(get_db)):
+    role_obj = role_service.get_role(db, role_id)
+    if not role_obj:
+        raise HTTPException(status_code=404, detail="Role not found")
+    return role_obj
+
+@router.patch("/{role_id}", response_model=RoleResponse)
+def update_role(role_id: int, role: RoleUpdate, db: DBSession = Depends(get_db)):
+    return role_service.update_role(db, role_id, role)
+
+@router.delete("/{role_id}", response_model=Message)
+def delete_role(role_id: int, db: DBSession = Depends(get_db)):
+    return role_service.delete_role(db, role_id)
+
+```
+
+## create4care_docker/api/routers/session.py
+```py
+from fastapi import APIRouter, Depends
+from sqlalchemy.orm import Session as DBSession
+from typing import List
+from schemas.session import SessionRequest, SessionResponse, SessionUpdate
+from schemas.common import Message
+from db.session import get_db
+from services import session as session_service
+
+router = APIRouter()
+
+@router.get("/", response_model=List[SessionResponse])
+def list_sessions(db: DBSession = Depends(get_db)):
+    return session_service.get_all_sessions(db)
+
+@router.post("/", response_model=SessionResponse)
+def create_new_session(session_req: SessionRequest, db: DBSession = Depends(get_db)):
+    return session_service.create_session(db, session_req)
+
+@router.get("/{token}", response_model=SessionResponse)
+def get_session(token: str, db: DBSession = Depends(get_db)):
+    return session_service.get_session_by_token(db, token)
+
+@router.patch("/{token}", response_model=SessionResponse)
+def update_session(token: str, session_update: SessionUpdate, db: DBSession = Depends(get_db)):
+    return session_service.update_session(db, token, session_update)
+
+@router.delete("/{token}", response_model=Message)
+def remove_session(token: str, db: DBSession = Depends(get_db)):
+    return session_service.delete_session(db, token)
+
+```
+
+## create4care_docker/api/routers/user.py
+```py
+from typing import List
+from fastapi import APIRouter, Depends, HTTPException
+from sqlalchemy.orm import Session as DBSession
+from schemas.user import UserRequest, UserResponse, UserUpdate
+from schemas.common import Message
+from db.session import get_db
+from services import user as user_service
+from routers.auth import get_current_user 
+from db.models import User
+
+router = APIRouter()
+
+@router.get("/", response_model=List[UserResponse])
+def list_users(db: DBSession = Depends(get_db)):
+    return user_service.get_all_users(db)
+
+@router.post("/", response_model=UserResponse)
+def create_user(user: UserRequest, db: DBSession = Depends(get_db)):
+    return user_service.create_user(db, user)
+
+@router.get("/{uid}", response_model=UserResponse)
+def get_user(uid: int, db: DBSession = Depends(get_db), current_user: User = Depends(get_current_user)):
+    user_obj = user_service.get_user(db, uid)
+    if not user_obj:
+        raise HTTPException(status_code=404, detail="User not found")
+    return user_obj
+
+@router.patch("/{uid}", response_model=UserResponse)
+def update_user(uid: int, user: UserUpdate, db: DBSession = Depends(get_db)):
+    # Partially update the user data.
+    return user_service.update_user(db, uid, user)
+
+@router.delete("/{uid}", response_model=Message)
+def delete_user(uid: int, db: DBSession = Depends(get_db)):
+    return user_service.delete_user(db, uid)
+```
+
+## create4care_docker/api/schemas/__init__.py
+```py
+from .common import Message
+from .user import *
+from .role import *
+from .permission import *
+from .patient import *
+from .measurement import *
+from .measurement import *
+from .session import *
+from .log import *
+
+```
+
+## create4care_docker/api/schemas/common.py
+```py
+from pydantic import BaseModel
+
+class Message(BaseModel):
+    detail: str
+
+```
+
+## create4care_docker/api/schemas/log.py
+```py
+from pydantic import BaseModel
+from datetime import datetime
+from typing import Optional
+
+class LogResponse(BaseModel):
+    id: int
+    table_name: str
+    record_id: int
+    operation: str
+    changed_data: Optional[str]
+    changed_at: datetime
+
+class LogRequest(BaseModel):
+    table_name: str
+    record_id: int
+    operation: str
+    changed_data: Optional[str]
+
+class LogUpdate(BaseModel):
+    table_name: Optional[str]
+    record_id: Optional[int]
+    operation: Optional[str]
+    changed_data: Optional[str]
+
+
+```
+
+## create4care_docker/api/schemas/measurement.py
+```py
+from pydantic import BaseModel
+from typing import Optional
+from datetime import datetime
+
+class MeasurementResponse(BaseModel):
+    id: int
+    patient_id: int
+    measured_by_user_id: int
+    height_mm: float
+    weight_kg: float
+    sleep_hours: Optional[float]
+    exercise_hours: Optional[float]
+    image: str
+    date: datetime
+
+class MeasurementRequest(BaseModel):
+    patient_id: int
+    measured_by_user_id: int
+    height_mm: float
+    weight_kg: float
+    sleep_hours: Optional[float]
+    exercise_hours: Optional[float]
+    image: str
+
+class MeasurementUpdate(BaseModel):
+    patient_id: Optional[int]
+    measured_by_user_id: Optional[int]
+    height_mm: Optional[float]
+    weight_kg: Optional[float]
+    sleep_hours: Optional[float]
+    exercise_hours: Optional[float]
+    image: Optional[str]
+```
+
+## create4care_docker/api/schemas/patient.py
+```py
+from pydantic import BaseModel
+from typing import Optional
+from datetime import date
+
+class PatientResponse(BaseModel):
+    id: int
+    name: str
+    birth_date: date
+    gender: int
+    father_height_mm: float
+    mother_height_mm: float
+
+class PatientRequest(BaseModel):
+    name: str
+    birth_date: date
+    gender: int
+    father_height_mm: float
+    mother_height_mm: float
+
+class PatientUpdate(BaseModel):
+    name: Optional[str]
+    birth_date: Optional[date]
+    gender: Optional[int]
+    father_height_mm: Optional[float]
+    mother_height_mm: Optional[float]
+```
+
+## create4care_docker/api/schemas/permission.py
+```py
+from pydantic import BaseModel
+from typing import Optional
+
+class PermissionResponse(BaseModel):
+    id: int
+    name: str
+
+class PermissionRequest(BaseModel):
+    name: str
+
+class PermissionUpdate(BaseModel):
+    name: Optional[str]
+
+```
+
+## create4care_docker/api/schemas/role.py
+```py
+from pydantic import BaseModel
+from typing import Optional
+
+class RoleResponse(BaseModel):
+    id: int
+    name: str
+
+class RoleRequest(BaseModel):
+    name: str
+
+class RoleUpdate(BaseModel):
+    name: Optional[str]
+```
+
+## create4care_docker/api/schemas/session.py
+```py
+from pydantic import BaseModel
+from typing import Optional
+from datetime import datetime
+
+class SessionResponse(BaseModel):
+    user_id: int
+    session_token: str
+    expires: datetime
+
+class SessionRequest(BaseModel):
+    user_id: int
+    session_token: str
+    expires: datetime
+
+class SessionUpdate(BaseModel):
+    user_id: Optional[int]
+    session_token: Optional[str]
+    expires: Optional[datetime]
+```
+
+## create4care_docker/api/schemas/user.py
+```py
+from pydantic import BaseModel, EmailStr
+from datetime import datetime
+from typing import Optional
+
+class UserResponse(BaseModel):
+    id: int
+    name: str
+    email: EmailStr
+    password: str
+    email_verified: Optional[datetime]
+    image: Optional[str]  # Optional field for the image (if it's present)
+
+class UserRequest(BaseModel):
+    name: str
+    email: EmailStr
+    password: str  # In production, remember to hash the password!
+    email_verified: Optional[datetime]
+    image: Optional[str]
+
+class UserUpdate(BaseModel):
+    name: Optional[str]
+    email: Optional[EmailStr]
+    password: Optional[str]  # Again, hash passwords in production
+    email_verified: Optional[datetime]
+    image: Optional[str]  # Optional field for the image
+```
+
+## create4care_docker/api/services/__init__.py
+```py
+from . import user, role, permission, patient, measurement, session, log
+
+```
+
+## create4care_docker/api/services/log.py
+```py
+from typing import List
+from sqlalchemy.orm import Session as DBSession
+from fastapi import HTTPException
+from db.models import Log
+from schemas.log import LogRequest, LogUpdate
+from schemas.common import Message
+
+def get_all_logs(db: DBSession) -> List[Log]:
+    return db.query(Log).all()
+
+def get_log(db: DBSession, log_id: int) -> Log:
+    log_obj = db.query(Log).filter(Log.id == log_id).first()
+    if not log_obj:
+        raise HTTPException(status_code=404, detail="Log not found")
+    return log_obj
+
+def create_log(db: DBSession, log_in: LogRequest) -> Log:
+    log_obj = Log(
+        table_name=log_in.table_name,
+        record_id=log_in.record_id,
+        operation=log_in.operation,
+        changed_data=log_in.changed_data
+    )
+    db.add(log_obj)
+    db.commit()
+    db.refresh(log_obj)
+    return log_obj
+
+def update_log(db: DBSession, log_id: int, log_update: LogUpdate) -> Log:
+    log_obj = db.query(Log).filter(Log.id == log_id).first()
+    if not log_obj:
+        raise HTTPException(status_code=404, detail="Log not found")
+
+    update_data = log_update.dict(exclude_unset=True)
+    for key, value in update_data.items():
+        setattr(log_obj, key, value)
+    
+    db.commit()
+    db.refresh(log_obj)
+    return log_obj
+
+def delete_log(db: DBSession, log_id: int) -> Message:
+    log_obj = db.query(Log).filter(Log.id == log_id).first()
+    if not log_obj:
+        raise HTTPException(status_code=404, detail="Log not found")
+    db.delete(log_obj)
+    db.commit()
+    return Message(detail="Log deleted successfully")
+
+```
+
+## create4care_docker/api/services/measurement.py
+```py
+from typing import List
+from sqlalchemy.orm import Session
+from fastapi import HTTPException, Request
+from db.models import Measurement, Patient, User
+from schemas.measurement import MeasurementRequest, MeasurementUpdate
+from schemas.common import Message
+from utils.image_utils import save_image
+
+def get_all_measurements(db: Session) -> List[Measurement]:
+    return db.query(Measurement).all()
+
+def get_measurement(db: Session, measurement_id: int) -> Measurement:
+    measurement = db.query(Measurement).filter(Measurement.id == measurement_id).first()
+    if not measurement:
+        raise HTTPException(status_code=404, detail="Measurement not found")
+    return measurement
+
+def create_measurement(db: Session, meas_in: MeasurementRequest, request: Request) -> Measurement:
+    patient = db.query(Patient).filter(Patient.id == meas_in.patient_id).first()
+
+    if not patient:
+        raise HTTPException(status_code=400, detail="Patient does not exist")
+
+    user = db.query(User).filter(User.id == meas_in.measured_by_user_id).first()
+    if not user:
+        raise HTTPException(status_code=400, detail="Measured_by user does not exist")
+    
+    measurement = Measurement(
+        patient_id=meas_in.patient_id,
+        measured_by_user_id=meas_in.measured_by_user_id,
+        height_mm=meas_in.height_mm,
+        weight_kg=meas_in.weight_kg,
+        sleep_hours=meas_in.sleep_hours,
+        exercise_hours=meas_in.exercise_hours,
+        image=save_image(meas_in.image, meas_in.patient_id, request)
+    )
+
+    db.add(measurement)
+    db.commit()
+    db.refresh(measurement)
+    return measurement
+
+def update_measurement(db: Session, measurement_id: int, meas_in: MeasurementUpdate, request: Request) -> Measurement:
+    measurement = db.query(Measurement).filter(Measurement.id == measurement_id).first()
+
+    if not measurement:
+        raise HTTPException(status_code=404, detail="Measurement not found")
+    
+    patient = db.query(Patient).filter(Patient.id == meas_in.patient_id).first()
+    if not patient:
+        raise HTTPException(status_code=400, detail="Patient does not exist")
+
+    user = db.query(User).filter(User.id == meas_in.measured_by_user_id).first()
+    if not user:
+        raise HTTPException(status_code=400, detail="Measured_by user does not exist")
+
+    update_data = meas_in.dict(exclude_unset=True)
+
+    if "image_base64" in update_data:
+        measurement.image = save_image(update_data.pop("image_base64"), measurement.patient_id, request)
+    
+    for key, value in update_data.items():
+        setattr(measurement, key, value)
+    
+    db.commit()
+    db.refresh(measurement)
+    return measurement
+
+def delete_measurement(db: Session, measurement_id: int) -> Message:
+    measurement = db.query(Measurement).filter(Measurement.id == measurement_id).first()
+
+    if not measurement:
+        raise HTTPException(status_code=404, detail="Measurement not found")
+    
+    db.delete(measurement)
+    db.commit()
+    return Message(detail="Measurement deleted successfully")
+
+```
+
+## create4care_docker/api/services/patient.py
+```py
+from typing import List
+from sqlalchemy.orm import Session
+from fastapi import HTTPException
+from db.models import Patient
+from schemas.patient import PatientRequest, PatientUpdate
+from schemas.common import Message
+
+def get_all_patients(db: Session) -> List[Patient]:
+    return db.query(Patient).all()
+
+def get_patient(db: Session, patient_id: int) -> Patient:
+    patient = db.query(Patient).filter(Patient.id == patient_id).first()
+    if not patient:
+        raise HTTPException(status_code=404, detail="Patient not found")
+    return patient
+
+def create_patient(db: Session, patient_in: PatientRequest) -> Patient:
+    patient = Patient(
+        name=patient_in.name,
+        birth_date=patient_in.birth_date,
+        gender=patient_in.gender,
+        father_height_mm=patient_in.father_height_mm,
+        mother_height_mm=patient_in.mother_height_mm,
+    )
+    db.add(patient)
+    db.commit()
+    db.refresh(patient)
+    return patient
+
+def update_patient(db: Session, patient_id: int, patient_in: PatientUpdate) -> Patient:
+    patient = db.query(Patient).filter(Patient.id == patient_id).first()
+    if not patient:
+        raise HTTPException(status_code=404, detail="Patient not found")
+    
+    update_data = patient_in.dict(exclude_unset=True)
+
+    for key, value in update_data.items():
+        setattr(patient, key, value)
+    
+    db.commit()
+    db.refresh(patient)
+    return patient
+
+def delete_patient(db: Session, patient_id: int) -> Message:
+    patient = db.query(Patient).filter(Patient.id == patient_id).first()
+    if not patient:
+        raise HTTPException(status_code=404, detail="Patient not found")
+
+    # Optionally check associations (e.g., patient.measurements, patient.users)
+    if patient.users:
+        raise HTTPException(
+            status_code=400, 
+            detail="Patient is assigned to one or more users and cannot be deleted"
+        )
+
+    if patient.measurements:
+        raise HTTPException(
+            status_code=400, 
+            detail="Patient is assigned to measurements and cannot be deleted"
+        )
+    
+    db.delete(patient)
+    db.commit()
+    return Message(detail="Patient deleted successfully")
+
+```
+
+## create4care_docker/api/services/permission.py
+```py
+from typing import List
+from sqlalchemy.orm import Session
+from fastapi import HTTPException
+from db.models import Permission
+from schemas.permission import PermissionRequest, PermissionUpdate
+from schemas.common import Message
+
+def get_all_permissions(db: Session) -> List[Permission]:
+    return db.query(Permission).all()
+
+def get_permission(db: Session, permission_id: int) -> Permission:
+    permission = db.query(Permission).filter(Permission.id == permission_id).first()
+    if not permission:
+        raise HTTPException(status_code=404, detail="Permission not found")
+    return permission
+
+def create_permission(db: Session, permission_in: PermissionRequest) -> Permission:
+    existing = db.query(Permission).filter(Permission.name == permission_in.name).first()
+    if existing:
+        raise HTTPException(status_code=400, detail="Permission already exists")
+    
+    permission = Permission(name=permission_in.name)
+    db.add(permission)
+    db.commit()
+    db.refresh(permission)
+    return permission
+
+def update_permission(db: Session, permission_id: int, permission_in: PermissionUpdate) -> Permission:
+    permission = db.query(Permission).filter(Permission.id == permission_id).first()
+    if not permission:
+        raise HTTPException(status_code=404, detail="Permission not found")
+    
+    update_data = permission_in.dict(exclude_unset=True)
+    
+    # Check for duplicate permission names
+    if "name" in update_data and update_data["name"] != permission.name:
+        existing = db.query(Permission).filter(Permission.name == update_data["name"]).first()
+        if existing:
+            raise HTTPException(status_code=400, detail="Permission name already exists")
+    
+    for key, value in update_data.items():
+        setattr(permission, key, value)
+    
+    db.commit()
+    db.refresh(permission)
+    return permission
+
+def delete_permission(db: Session, permission_id: int) -> Message:
+    permission = db.query(Permission).filter(Permission.id == permission_id).first()
+    if not permission:
+        raise HTTPException(status_code=404, detail="Permission not found")
+    
+    db.delete(permission)
+    db.commit()
+    return Message(detail="Permission deleted successfully")
+
+```
+
+## create4care_docker/api/services/role.py
+```py
+from typing import List
+from sqlalchemy.orm import Session
+from fastapi import HTTPException
+from db.models import Role
+from schemas.role import RoleRequest, RoleUpdate
+from schemas.common import Message
+
+def get_all_roles(db: Session) -> List[Role]:
+    return db.query(Role).all()
+
+def get_role(db: Session, role_id: int) -> Role:
+    role = db.query(Role).filter(Role.id == role_id).first()
+    if not role:
+        raise HTTPException(status_code=404, detail="Role not found")
+    return role
+
+def create_role(db: Session, role_in: RoleRequest) -> Role:
+    existing = db.query(Role).filter(Role.name == role_in.name).first()
+    if existing:
+        raise HTTPException(status_code=400, detail="Role already exists")
+    
+    role = Role(name=role_in.name)
+    db.add(role)
+    db.commit()
+    db.refresh(role)
+    return role
+
+def update_role(db: Session, role_id: int, role_in: RoleUpdate) -> Role:
+    role = db.query(Role).filter(Role.id == role_id).first()
+    if not role:
+        raise HTTPException(status_code=404, detail="Role not found")
+    
+    update_data = role_in.dict(exclude_unset=True)
+
+    if "name" in update_data and update_data["name"] != role.name:
+        existing = db.query(Role).filter(Role.name == update_data["name"]).first()
+        if existing:
+            raise HTTPException(status_code=400, detail="Role name already exists")
+    
+    for key, value in update_data.items():
+        setattr(role, key, value)
+    
+    db.commit()
+    db.refresh(role)
+    return role
+
+def delete_role(db: Session, role_id: int) -> Message:
+    role = db.query(Role).filter(Role.id == role_id).first()
+    if not role:
+        raise HTTPException(status_code=404, detail="Role not found")
+
+    # Optionally check for associations (e.g., role.users) before deletion.
+    if role.users:
+        raise HTTPException(status_code=400, detail="Role is assigned to users and cannot be deleted")
+    
+    db.delete(role)
+    db.commit()
+    return Message(detail="Role deleted successfully")
+
+```
+
+## create4care_docker/api/services/session.py
+```py
+from typing import List
+from sqlalchemy.orm import Session as DBSession
+from fastapi import HTTPException
+from db.models import Session
+from schemas.session import SessionRequest, SessionUpdate
+from schemas.common import Message
+
+def get_all_sessions(db: DBSession) -> List[Session]:
+    return db.query(Session).all()
+
+def get_session_by_token(db: DBSession, token: str) -> Session:
+    session_obj = db.query(Session).filter(Session.session_token == token).first()
+    if not session_obj:
+        raise HTTPException(status_code=404, detail="Session not found")
+    return session_obj
+
+def create_session(db: DBSession, session_in: SessionRequest) -> Session:
+    existing = db.query(Session).filter(Session.session_token == session_in.session_token).first()
+    if existing:
+        raise HTTPException(status_code=400, detail="Session already exists")
+    
+    session_obj = Session(
+        user_id=session_in.user_id,
+        session_token=session_in.session_token,
+        expires=session_in.expires
+    )
+    db.add(session_obj)
+    db.commit()
+    db.refresh(session_obj)
+    return session_obj
+
+def update_session(db: DBSession, token: str, session_update: SessionUpdate) -> Session:
+    session_obj = db.query(Session).filter(Session.session_token == token).first()
+    if not session_obj:
+        raise HTTPException(status_code=404, detail="Session not found")
+
+    update_data = session_update.dict(exclude_unset=True)
+    for key, value in update_data.items():
+        setattr(session_obj, key, value)
+    
+    db.commit()
+    db.refresh(session_obj)
+    return session_obj
+
+def delete_session(db: DBSession, token: str) -> Message:
+    session_obj = db.query(Session).filter(Session.session_token == token).first()
+    if not session_obj:
+        raise HTTPException(status_code=404, detail="Session not found")
+    db.delete(session_obj)
+    db.commit()
+    return Message(detail="Session deleted successfully")
+
+```
+
+## create4care_docker/api/services/user.py
+```py
+from typing import List
+from sqlalchemy.orm import Session
+from fastapi import HTTPException
+from utils.password_hash import hash_password
+from db.models import User
+from schemas.user import UserRequest, UserUpdate
+from schemas.common import Message
+
+def get_all_users(db: Session) -> List[User]:
+    return db.query(User).all()
+
+def get_user_by_email(db: Session, email: str) -> User:
+    user = db.query(User).filter(User.email == email).first()
+    if not user:
+        raise HTTPException(status_code=404, detail="User not found")
+    return user
+
+def get_user(db: Session, uid: int) -> User:
+    user = db.query(User).filter(User.id == uid).first()
+    if not user:
+        raise HTTPException(status_code=404, detail="User not found")
+    return user
+
+def create_user(db: Session, user_in: UserRequest) -> User:
+    # Check if the email already exists
+    existing = db.query(User).filter(User.email == user_in.email).first()
+    if existing:
+        raise HTTPException(status_code=400, detail="Email already exists")
+    
+    user = User(
+        name=user_in.name,
+        email=user_in.email,
+        password=hash_password(user_in.password),
+    )
+    db.add(user)
+    db.commit()
+    db.refresh(user)
+    return user
+
+def update_user(db: Session, uid: int, user_in: UserUpdate) -> User:
+    user = db.query(User).filter(User.id == uid).first()
+    if not user:
+        raise HTTPException(status_code=404, detail="User not found")
+    
+    update_data = user_in.dict(exclude_unset=True)
+    
+    # If email is provided and it differs, check for duplicates.
+    if "email" in update_data and update_data["email"] != user.email:
+        existing = db.query(User).filter(User.email == update_data["email"]).first()
+        if existing:
+            raise HTTPException(status_code=400, detail="Email already exists")
+    
+    # If password is provided, hash it.
+    if "password" in update_data:
+        update_data["password"] = hash_password(update_data["password"])
+    
+    for key, value in update_data.items():
+        setattr(user, key, value)
+    
+    db.commit()
+    db.refresh(user)
+    return user
+
+def delete_user(db: Session, uid: int) -> Message:
+    user = db.query(User).filter(User.id == uid).first()
+    if not user:
+        raise HTTPException(status_code=404, detail="User not found")
+    
+    # Optionally, check for associations here before deleting.
+    if user.measurements_taken:
+        raise HTTPException(
+            status_code=400,
+            detail="User is assigned to measurements and cannot be deleted"
+        )
+    
+    if user.patients:
+        raise HTTPException(
+            status_code=400,
+            detail="User is assigned to one or more patients and cannot be deleted"
+        )
+
+    db.delete(user)
+    db.commit()
+    return Message(detail="User deleted successfully")
+
+```
+
+## create4care_docker/api/utils/image_utils.py
+```py
+import os
+import base64
+from datetime import datetime
+from fastapi import HTTPException, Request
+from core.config import IMAGE_DIR, IMAGES_URL
+
+ALLOWED_MIME = {"image/jpeg": "jpg", "image/png": "png", "image/gif": "gif"}
+
+def save_image(image_base64: str, patient_id: int, request: Request) -> str:
+    try:
+        header, encoded = image_base64.split(",", 1)
+        mime = header.split(";")[0].split(":")[1]
+        ext = ALLOWED_MIME[mime]
+    except Exception:
+        raise HTTPException(status_code=400, detail="Invalid image format")
+
+    try:
+        image_data = base64.b64decode(encoded)
+    except Exception:
+        raise HTTPException(status_code=400, detail="Decoding error")
+
+    file_name = f"{patient_id}{datetime.now().strftime('%Y%m%d%H%M%S')}.{ext}"
+    file_path = os.path.join(IMAGE_DIR, file_name)
+    with open(file_path, "wb") as f:
+        f.write(image_data)
+
+    return f"{request.base_url}{IMAGES_URL}/{file_name}"
+
+```
+
+## create4care_docker/api/utils/password_hash.py
+```py
+import bcrypt
+
+def hash_password(password: str) -> str:
+    """
+    Hashes a plaintext password using bcrypt and returns the hashed password as a string.
+    """
+    hashed = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
+    return hashed.decode('utf-8')
+
+def verify_password(plain_password: str, hashed_password: str) -> bool:
+    """
+    Compares a plaintext password with the hashed password.
+    Returns True if they match, False otherwise.
+    """
+    return bcrypt.checkpw(plain_password.encode('utf-8'), hashed_password.encode('utf-8'))
+
+```
+
+## create4care_docker/api/utils/pose_decection.py
+```py
+import cv2
+import math
+import mediapipe as mp
+import numpy as np
+
+class PoseDetector:
+    def __init__(self):
+        self.mp_pose = mp.solutions.pose
+        self.mp_drawing = mp.solutions.drawing_utils
+        self.pose = self.mp_pose.Pose(
+            model_complexity=2,
+            min_detection_confidence=0.5,
+            min_tracking_confidence=0.5
+        )
+
+    def evaluate_neck_alignment(self, landmarks, ear_shoulder_angle_threshold=50):
+        left_ear = landmarks[self.mp_pose.PoseLandmark.LEFT_EAR.value]
+        right_ear = landmarks[self.mp_pose.PoseLandmark.RIGHT_EAR.value]
+        left_shoulder = landmarks[self.mp_pose.PoseLandmark.LEFT_SHOULDER.value]
+        right_shoulder = landmarks[self.mp_pose.PoseLandmark.RIGHT_SHOULDER.value]
+
+        shoulder_center_x = (left_shoulder.x + right_shoulder.x) / 2
+        shoulder_center_y = (left_shoulder.y + right_shoulder.y) / 2
+        ear_center_x = (left_ear.x + right_ear.x) / 2
+        ear_center_y = (left_ear.y + right_ear.y) / 2
+
+        delta_x = shoulder_center_x - ear_center_x
+        delta_y = shoulder_center_y - ear_center_y
+        theta = math.degrees(math.atan2(delta_x, delta_y))
+        return abs(theta) < ear_shoulder_angle_threshold
+
+    def evaluate_torso_alignment(self, landmarks, alignment_factor=0.1):
+        left_shoulder = landmarks[self.mp_pose.PoseLandmark.LEFT_SHOULDER.value]
+        right_shoulder = landmarks[self.mp_pose.PoseLandmark.RIGHT_SHOULDER.value]
+        left_hip = landmarks[self.mp_pose.PoseLandmark.LEFT_HIP.value]
+        right_hip = landmarks[self.mp_pose.PoseLandmark.RIGHT_HIP.value]
+        left_knee = landmarks[self.mp_pose.PoseLandmark.LEFT_KNEE.value]
+        right_knee = landmarks[self.mp_pose.PoseLandmark.RIGHT_KNEE.value]
+
+        torso_length = abs(((left_shoulder.y + right_shoulder.y) / 2) - ((left_hip.y + right_hip.y) / 2))
+        threshold = torso_length * alignment_factor
+
+        shoulder_center_x = (left_shoulder.x + right_shoulder.x) / 2
+        hip_center_x = (left_hip.x + right_hip.x) / 2
+        knee_center_x = (left_knee.x + right_knee.x) / 2
+
+        return (abs(shoulder_center_x - hip_center_x) < threshold and
+                abs(hip_center_x - knee_center_x) < threshold)
+
+    def evaluate_knee_alignment(self, landmarks, knee_angle_threshold=160):
+        def calculate_angle(a, b, c):
+            ba = (a[0] - b[0], a[1] - b[1])
+            bc = (c[0] - b[0], c[1] - b[1])
+            dot = ba[0]*bc[0] + ba[1]*bc[1]
+            norm_ba = math.hypot(*ba)
+            norm_bc = math.hypot(*bc)
+            if norm_ba * norm_bc == 0:
+                return 0
+            angle = math.degrees(math.acos(dot / (norm_ba * norm_bc)))
+            return angle
+
+        left = [landmarks[self.mp_pose.PoseLandmark.LEFT_HIP.value],
+                landmarks[self.mp_pose.PoseLandmark.LEFT_KNEE.value],
+                landmarks[self.mp_pose.PoseLandmark.LEFT_ANKLE.value]]
+        right = [landmarks[self.mp_pose.PoseLandmark.RIGHT_HIP.value],
+                 landmarks[self.mp_pose.PoseLandmark.RIGHT_KNEE.value],
+                 landmarks[self.mp_pose.PoseLandmark.RIGHT_ANKLE.value]]
+
+        left_angle = calculate_angle((left[0].x, left[0].y),
+                                     (left[1].x, left[1].y),
+                                     (left[2].x, left[2].y))
+        right_angle = calculate_angle((right[0].x, right[0].y),
+                                      (right[1].x, right[1].y),
+                                      (right[2].x, right[2].y))
+
+        return left_angle >= knee_angle_threshold and right_angle >= knee_angle_threshold
+
+    def evaluate_feet_flat(self, landmarks, foot_y_diff_threshold=0.02):
+        left_heel = landmarks[self.mp_pose.PoseLandmark.LEFT_HEEL.value]
+        right_heel = landmarks[self.mp_pose.PoseLandmark.RIGHT_HEEL.value]
+        left_toe = landmarks[self.mp_pose.PoseLandmark.LEFT_FOOT_INDEX.value]
+        right_toe = landmarks[self.mp_pose.PoseLandmark.RIGHT_FOOT_INDEX.value]
+
+        left_flat = abs(left_heel.y - left_toe.y) < foot_y_diff_threshold
+        right_flat = abs(right_heel.y - right_toe.y) < foot_y_diff_threshold
+        return left_flat and right_flat
+
+    # ----------------------------
+    # Main Processing Functions
+    # ----------------------------
+
+    def evaluate_image(self, image_path):
+        """
+        Evaluate a single image for posture correctness.
+        Returns:
+            - {'issues': [...]} if posture is incorrect
+            - {'landmark_image': np.ndarray} if posture is correct (image with landmarks only)
+        """
+        image = cv2.imread(image_path)
+        if image is None:
+            raise FileNotFoundError(f"Cannot load image from {image_path}")
+
+        rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+        results = self.pose.process(rgb)
+
+        if not results.pose_landmarks:
+            return {'issues': ['No pose detected in the image']}
+
+        landmarks = results.pose_landmarks.landmark
+        issues = []
+
+        if not self.evaluate_neck_alignment(landmarks):
+            issues.append('Adjust neck alignment: keep ears over shoulders')
+        if not self.evaluate_torso_alignment(landmarks):
+            issues.append('Straighten torso: align shoulders, hips, and knees vertically')
+        if not self.evaluate_knee_alignment(landmarks):
+            issues.append('Extend knees: keep legs straight')
+        if not self.evaluate_feet_flat(landmarks):
+            issues.append('Place feet flat on the ground')
+
+        if issues:
+            return {'issues': issues}
+        else:
+            # Create a transparent background image (4-channel)
+            h, w = image.shape[:2]
+            transparent = np.zeros((h, w, 4), dtype=np.uint8)
+            # Draw landmarks onto a separate BGR canvas
+            canvas = np.zeros((h, w, 3), dtype=np.uint8)
+            self.mp_drawing.draw_landmarks(
+                canvas,
+                results.pose_landmarks,
+                self.mp_pose.POSE_CONNECTIONS
+            )
+            # Convert canvas to BGRA and set alpha where landmarks exist
+            canvas_bgra = cv2.cvtColor(canvas, cv2.COLOR_BGR2BGRA)
+            # Alpha channel: non-black pixels become opaque
+            alpha = np.any(canvas != 0, axis=2).astype(np.uint8) * 255
+            canvas_bgra[:, :, 3] = alpha
+            return {'landmark_image': canvas_bgra}
+
+if __name__ == "__main__":
+    detector = PoseDetector()
+    # Replace with your image path (use raw string, double backslashes, or forward slashes)
+    img_path = r'C:/Users/ardit/Documents/GitHub/School/year_3/sem6/pose_decection/dummy_correct.jpg'
+    result = detector.evaluate_image(img_path)
+    if 'issues' in result:
+        print("Posture improvements needed:")
+        for issue in result['issues']:
+            print("-", issue)
+    else:
+        landmark_img = result['landmark_image']
+        # Save landmark-only image to current working directory
+        save_filename = 'landmarks_only.png'
+        cv2.imwrite(save_filename, landmark_img)
+        print(f"Landmark image saved as {save_filename} in the current folder.")
+```
+
+## create4care_docker/api/utils/session.py
+```py
+from fastapi import Depends, HTTPException, Request
+from sqlalchemy.orm import Session
+from datetime import datetime
+from db.models import Session as SessionModel  # our Session model from SQLAlchemy
+from db.session import get_db
+
+def get_current_user(request: Request, db: Session = Depends(get_db)):
+    # Expecting a header like "Authorization: Bearer <session_token>"
+    auth_header = request.headers.get("Authorization")
+    if not auth_header:
+        raise HTTPException(status_code=401, detail="No session token provided")
+    
+    # Remove the "Bearer " prefix if present.
+    token = auth_header.replace("Bearer ", "")
+    
+    # Query the session using the provided token
+    session_obj = db.query(SessionModel).filter(SessionModel.session_token == token).first()
+    if not session_obj:
+        raise HTTPException(status_code=401, detail="Invalid session token")
+    
+    # Check if the session has expired
+    if session_obj.expires < datetime.utcnow():
+        raise HTTPException(status_code=401, detail="Session expired")
+    
+    # Return the user linked to the session
+    return session_obj.user
+
+```
+
+## pose_decection/dummy_correct.jpg
+```
+Error reading file.
+```
+
+## pose_decection/dummy_wrong.jpg
+```
+Error reading file.
+```
+
+## pose_decection/main.py
+```py
+import cv2
+import math
+import mediapipe as mp
+import numpy as np
+
+class PoseDetector:
+    def __init__(self):
+        self.mp_pose = mp.solutions.pose
+        self.mp_drawing = mp.solutions.drawing_utils
+        self.pose = self.mp_pose.Pose(
+            model_complexity=2,
+            min_detection_confidence=0.5,
+            min_tracking_confidence=0.5
+        )
+
+    def evaluate_neck_alignment(self, landmarks, ear_shoulder_angle_threshold=50):
+        left_ear = landmarks[self.mp_pose.PoseLandmark.LEFT_EAR.value]
+        right_ear = landmarks[self.mp_pose.PoseLandmark.RIGHT_EAR.value]
+        left_shoulder = landmarks[self.mp_pose.PoseLandmark.LEFT_SHOULDER.value]
+        right_shoulder = landmarks[self.mp_pose.PoseLandmark.RIGHT_SHOULDER.value]
+
+        shoulder_center_x = (left_shoulder.x + right_shoulder.x) / 2
+        shoulder_center_y = (left_shoulder.y + right_shoulder.y) / 2
+        ear_center_x = (left_ear.x + right_ear.x) / 2
+        ear_center_y = (left_ear.y + right_ear.y) / 2
+
+        delta_x = shoulder_center_x - ear_center_x
+        delta_y = shoulder_center_y - ear_center_y
+        theta = math.degrees(math.atan2(delta_x, delta_y))
+        return abs(theta) < ear_shoulder_angle_threshold
+
+    def evaluate_torso_alignment(self, landmarks, alignment_factor=0.1):
+        left_shoulder = landmarks[self.mp_pose.PoseLandmark.LEFT_SHOULDER.value]
+        right_shoulder = landmarks[self.mp_pose.PoseLandmark.RIGHT_SHOULDER.value]
+        left_hip = landmarks[self.mp_pose.PoseLandmark.LEFT_HIP.value]
+        right_hip = landmarks[self.mp_pose.PoseLandmark.RIGHT_HIP.value]
+        left_knee = landmarks[self.mp_pose.PoseLandmark.LEFT_KNEE.value]
+        right_knee = landmarks[self.mp_pose.PoseLandmark.RIGHT_KNEE.value]
+
+        torso_length = abs(((left_shoulder.y + right_shoulder.y) / 2) - ((left_hip.y + right_hip.y) / 2))
+        threshold = torso_length * alignment_factor
+
+        shoulder_center_x = (left_shoulder.x + right_shoulder.x) / 2
+        hip_center_x = (left_hip.x + right_hip.x) / 2
+        knee_center_x = (left_knee.x + right_knee.x) / 2
+
+        return (abs(shoulder_center_x - hip_center_x) < threshold and
+                abs(hip_center_x - knee_center_x) < threshold)
+
+    def evaluate_knee_alignment(self, landmarks, knee_angle_threshold=160):
+        def calculate_angle(a, b, c):
+            ba = (a[0] - b[0], a[1] - b[1])
+            bc = (c[0] - b[0], c[1] - b[1])
+            dot = ba[0]*bc[0] + ba[1]*bc[1]
+            norm_ba = math.hypot(*ba)
+            norm_bc = math.hypot(*bc)
+            if norm_ba * norm_bc == 0:
+                return 0
+            angle = math.degrees(math.acos(dot / (norm_ba * norm_bc)))
+            return angle
+
+        left = [landmarks[self.mp_pose.PoseLandmark.LEFT_HIP.value],
+                landmarks[self.mp_pose.PoseLandmark.LEFT_KNEE.value],
+                landmarks[self.mp_pose.PoseLandmark.LEFT_ANKLE.value]]
+        right = [landmarks[self.mp_pose.PoseLandmark.RIGHT_HIP.value],
+                 landmarks[self.mp_pose.PoseLandmark.RIGHT_KNEE.value],
+                 landmarks[self.mp_pose.PoseLandmark.RIGHT_ANKLE.value]]
+
+        left_angle = calculate_angle((left[0].x, left[0].y),
+                                     (left[1].x, left[1].y),
+                                     (left[2].x, left[2].y))
+        right_angle = calculate_angle((right[0].x, right[0].y),
+                                      (right[1].x, right[1].y),
+                                      (right[2].x, right[2].y))
+
+        return left_angle >= knee_angle_threshold and right_angle >= knee_angle_threshold
+
+    def evaluate_feet_flat(self, landmarks, foot_y_diff_threshold=0.02):
+        left_heel = landmarks[self.mp_pose.PoseLandmark.LEFT_HEEL.value]
+        right_heel = landmarks[self.mp_pose.PoseLandmark.RIGHT_HEEL.value]
+        left_toe = landmarks[self.mp_pose.PoseLandmark.LEFT_FOOT_INDEX.value]
+        right_toe = landmarks[self.mp_pose.PoseLandmark.RIGHT_FOOT_INDEX.value]
+
+        left_flat = abs(left_heel.y - left_toe.y) < foot_y_diff_threshold
+        right_flat = abs(right_heel.y - right_toe.y) < foot_y_diff_threshold
+        return left_flat and right_flat
+
+    # ----------------------------
+    # Main Processing Functions
+    # ----------------------------
+
+    def evaluate_image(self, image_path):
+        """
+        Evaluate a single image for posture correctness.
+        Returns:
+            - {'issues': [...]} if posture is incorrect
+            - {'landmark_image': np.ndarray} if posture is correct (image with landmarks only)
+        """
+        image = cv2.imread(image_path)
+        if image is None:
+            raise FileNotFoundError(f"Cannot load image from {image_path}")
+
+        rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+        results = self.pose.process(rgb)
+
+        if not results.pose_landmarks:
+            return {'issues': ['No pose detected in the image']}
+
+        landmarks = results.pose_landmarks.landmark
+        issues = []
+
+        if not self.evaluate_neck_alignment(landmarks):
+            issues.append('Adjust neck alignment: keep ears over shoulders')
+        if not self.evaluate_torso_alignment(landmarks):
+            issues.append('Straighten torso: align shoulders, hips, and knees vertically')
+        if not self.evaluate_knee_alignment(landmarks):
+            issues.append('Extend knees: keep legs straight')
+        if not self.evaluate_feet_flat(landmarks):
+            issues.append('Place feet flat on the ground')
+
+        if issues:
+            return {'issues': issues}
+        else:
+            # Create a transparent background image (4-channel)
+            h, w = image.shape[:2]
+            transparent = np.zeros((h, w, 4), dtype=np.uint8)
+            # Draw landmarks onto a separate BGR canvas
+            canvas = np.zeros((h, w, 3), dtype=np.uint8)
+            self.mp_drawing.draw_landmarks(
+                canvas,
+                results.pose_landmarks,
+                self.mp_pose.POSE_CONNECTIONS
+            )
+            # Convert canvas to BGRA and set alpha where landmarks exist
+            canvas_bgra = cv2.cvtColor(canvas, cv2.COLOR_BGR2BGRA)
+            # Alpha channel: non-black pixels become opaque
+            alpha = np.any(canvas != 0, axis=2).astype(np.uint8) * 255
+            canvas_bgra[:, :, 3] = alpha
+            return {'landmark_image': canvas_bgra}
+
+if __name__ == "__main__":
+    detector = PoseDetector()
+    # Replace with your image path (use raw string, double backslashes, or forward slashes)
+    img_path = r'C:/Users/ardit/Documents/GitHub/School/year_3/sem6/pose_decection/dummy_correct.jpg'
+    result = detector.evaluate_image(img_path)
+    if 'issues' in result:
+        print("Posture improvements needed:")
+        for issue in result['issues']:
+            print("-", issue)
+    else:
+        landmark_img = result['landmark_image']
+        # Save landmark-only image to current working directory
+        save_filename = 'landmarks_only.png'
+        cv2.imwrite(save_filename, landmark_img)
+        print(f"Landmark image saved as {save_filename} in the current folder.")
+
+```
+
+## pose_decection/test.py
+```py
+import cv2
+import math
+import time
+import mediapipe as mp
+import logging
+import numpy as np  # New import for handling image arrays
+
+# Configure logging
+# logging.basicConfig(level=logging.DEBUG, format='%(asctime)s [%(levelname)s] %(message)s')
+
+class PoseDetector:
+    def __init__(self):
+        logging.debug("Initializing PoseDetector.")
+        # Dictionary for all toggles.
+        self.toggles = {
+            "draw_alignment_lines": True,
+            "draw_pose_landmarks": True,
+            "neck_alignment": True,  # This toggle now handles shoulder-ear alignment.
+            "torso_alignment": True,
+            "knee_alignment": True,
+            "feet_flat": True
+        }
+        
+        # Lambda functions to toggle each flag.
+        self.toggle_draw_alignment_lines = lambda: self.toggles.update({
+            "draw_alignment_lines": not self.toggles["draw_alignment_lines"]
+        })
+        self.toggle_draw_pose_landmarks = lambda: self.toggles.update({
+            "draw_pose_landmarks": not self.toggles["draw_pose_landmarks"]
+        })
+        self.toggle_neck_alignment = lambda: self.toggles.update({
+            "neck_alignment": not self.toggles["neck_alignment"]
+        })
+        self.toggle_torso_alignment = lambda: self.toggles.update({
+            "torso_alignment": not self.toggles["torso_alignment"]
+        })
+        self.toggle_knee_alignment = lambda: self.toggles.update({
+            "knee_alignment": not self.toggles["knee_alignment"]
+        })
+        self.toggle_feet_flat = lambda: self.toggles.update({
+            "feet_flat": not self.toggles["feet_flat"]
+        })
+        
+        self.mp_pose = mp.solutions.pose
+        self.mp_drawing = mp.solutions.drawing_utils
+        try:
+            self.pose = self.mp_pose.Pose(min_detection_confidence=0.5,
+                                          min_tracking_confidence=0.5)
+            logging.debug("Mediapipe Pose model loaded successfully.")
+        except Exception as e:
+            logging.error("Error initializing Mediapipe Pose model: %s", e)
+            raise e
+        
+        # To avoid saving multiple screenshots
+        self.image_saved = False
+        self.landmark_image_saved = False  # New flag for landmark-only screenshot.
+        self.correct_start_time = None  # To track when correct posture started
+
+    # ----------------------------
+    # Individual Check Functions
+    # ----------------------------
+    
+    def evaluate_neck_alignment(self, landmarks, image, draw=True, ear_shoulder_angle_threshold=10):
+        """
+        Evaluates the alignment between the shoulder center and the average ear center.
+        """
+        logging.debug("Evaluating shoulder-ear alignment.")
+        if not self.toggles["neck_alignment"]:
+            logging.debug("Shoulder-ear alignment check is toggled off.")
+            return True
+
+        try:
+            # Get ear landmarks.
+            left_ear = landmarks[self.mp_pose.PoseLandmark.LEFT_EAR.value]
+            right_ear = landmarks[self.mp_pose.PoseLandmark.RIGHT_EAR.value]
+            # Get shoulder landmarks.
+            left_shoulder = landmarks[self.mp_pose.PoseLandmark.LEFT_SHOULDER.value]
+            right_shoulder = landmarks[self.mp_pose.PoseLandmark.RIGHT_SHOULDER.value]
+
+            # Compute centers: average of shoulders and average of ears.
+            shoulder_center_x = (left_shoulder.x + right_shoulder.x) / 2
+            shoulder_center_y = (left_shoulder.y + right_shoulder.y) / 2
+            ear_center_x = (left_ear.x + right_ear.x) / 2
+            ear_center_y = (left_ear.y + right_ear.y) / 2
+
+            # Compute the angle between the line connecting ear center and shoulder center relative to the vertical.
+            delta_x = shoulder_center_x - ear_center_x
+            delta_y = shoulder_center_y - ear_center_y
+            theta = math.degrees(math.atan2(delta_x, delta_y))
+            alignment_ok = abs(theta) < ear_shoulder_angle_threshold
+
+            if draw:
+                h, w, _ = image.shape
+                ear_center_px = (int(ear_center_x * w), int(ear_center_y * h))
+                shoulder_center_px = (int(shoulder_center_x * w), int(shoulder_center_y * h))
+                cv2.line(image, ear_center_px, shoulder_center_px, (0, 165, 255), 2)  # Orange line.
+                cv2.putText(image, f"Shoulder-Ear angle: {theta:.1f} deg", 
+                            (shoulder_center_px[0] + 10, shoulder_center_px[1] + 10),
+                            cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 165, 255), 2)
+            logging.debug("Shoulder-ear alignment: %.1f deg, OK: %s", theta, alignment_ok)
+            return alignment_ok
+        except Exception as e:
+            logging.error("Error in evaluate_neck_alignment: %s", e)
+            return False
+
+    def evaluate_torso_alignment(self, landmarks, image, draw=True, alignment_factor=0.1):
+        logging.debug("Evaluating torso alignment.")
+        if not self.toggles["torso_alignment"]:
+            logging.debug("Torso alignment check is toggled off.")
+            return True
+
+        try:
+            left_shoulder = landmarks[self.mp_pose.PoseLandmark.LEFT_SHOULDER.value]
+            right_shoulder = landmarks[self.mp_pose.PoseLandmark.RIGHT_SHOULDER.value]
+            left_hip = landmarks[self.mp_pose.PoseLandmark.LEFT_HIP.value]
+            right_hip = landmarks[self.mp_pose.PoseLandmark.RIGHT_HIP.value]
+            left_knee = landmarks[self.mp_pose.PoseLandmark.LEFT_KNEE.value]
+            right_knee = landmarks[self.mp_pose.PoseLandmark.RIGHT_KNEE.value]
+
+            torso_length = abs(((left_shoulder.y + right_shoulder.y) / 2) - ((left_hip.y + right_hip.y) / 2))
+            threshold = torso_length * alignment_factor
+
+            shoulder_center_x = (left_shoulder.x + right_shoulder.x) / 2
+            hip_center_x = (left_hip.x + right_hip.x) / 2
+            knee_center_x = (left_knee.x + right_knee.x) / 2
+
+            alignment_ok = (abs(shoulder_center_x - hip_center_x) < threshold and
+                            abs(hip_center_x - knee_center_x) < threshold)
+
+            if draw:
+                h, w, _ = image.shape
+                # Convert normalized coordinates to pixels.
+                left_shoulder_px = (int(left_shoulder.x * w), int(left_shoulder.y * h))
+                right_shoulder_px = (int(right_shoulder.x * w), int(right_shoulder.y * h))
+                left_hip_px = (int(left_hip.x * w), int(left_hip.y * h))
+                right_hip_px = (int(right_hip.x * w), int(right_hip.y * h))
+                left_knee_px = (int(left_knee.x * w), int(left_knee.y * h))
+                right_knee_px = (int(right_knee.x * w), int(right_knee.y * h))
+                # Compute midpoints.
+                shoulder_center_px = ((left_shoulder_px[0] + right_shoulder_px[0]) // 2,
+                                      (left_shoulder_px[1] + right_shoulder_px[1]) // 2)
+                hip_center_px = ((left_hip_px[0] + right_hip_px[0]) // 2,
+                                 (left_hip_px[1] + right_hip_px[1]) // 2)
+                knee_center_px = ((left_knee_px[0] + right_knee_px[0]) // 2,
+                                  (left_knee_px[1] + right_knee_px[1]) // 2)
+                # Draw lines connecting the midpoints.
+                cv2.line(image, shoulder_center_px, hip_center_px, (0, 255, 0), 2)
+                cv2.line(image, hip_center_px, knee_center_px, (0, 255, 0), 2)
+            logging.debug("Torso alignment OK: %s", alignment_ok)
+            return alignment_ok
+        except Exception as e:
+            logging.error("Error in evaluate_torso_alignment: %s", e)
+            return False
+
+    def evaluate_knee_alignment(self, landmarks, image, draw=True, knee_angle_threshold=160):
+        logging.debug("Evaluating knee alignment.")
+        if not self.toggles["knee_alignment"]:
+            logging.debug("Knee alignment check is toggled off.")
+            return True
+
+        try:
+            # Left knee angle.
+            left_hip = landmarks[self.mp_pose.PoseLandmark.LEFT_HIP.value]
+            left_knee = landmarks[self.mp_pose.PoseLandmark.LEFT_KNEE.value]
+            left_ankle = landmarks[self.mp_pose.PoseLandmark.LEFT_ANKLE.value]
+            # Right knee angle.
+            right_hip = landmarks[self.mp_pose.PoseLandmark.RIGHT_HIP.value]
+            right_knee = landmarks[self.mp_pose.PoseLandmark.RIGHT_KNEE.value]
+            right_ankle = landmarks[self.mp_pose.PoseLandmark.RIGHT_ANKLE.value]
+
+            def calculate_angle(a, b, c):
+                # a, b, c are (x, y) tuples; angle at b.
+                ba = (a[0] - b[0], a[1] - b[1])
+                bc = (c[0] - b[0], c[1] - b[1])
+                dot_product = ba[0]*bc[0] + ba[1]*bc[1]
+                norm_ba = math.sqrt(ba[0]**2 + ba[1]**2)
+                norm_bc = math.sqrt(bc[0]**2 + bc[1]**2)
+                if norm_ba * norm_bc == 0:
+                    return 0
+                angle_rad = math.acos(dot_product / (norm_ba * norm_bc))
+                return math.degrees(angle_rad)
+
+            left_hip_coord = (left_hip.x, left_hip.y)
+            left_knee_coord = (left_knee.x, left_knee.y)
+            left_ankle_coord = (left_ankle.x, left_ankle.y)
+
+            right_hip_coord = (right_hip.x, right_hip.y)
+            right_knee_coord = (right_knee.x, right_knee.y)
+            right_ankle_coord = (right_ankle.x, right_ankle.y)
+
+            left_angle = calculate_angle(left_hip_coord, left_knee_coord, left_ankle_coord)
+            right_angle = calculate_angle(right_hip_coord, right_knee_coord, right_ankle_coord)
+
+            knees_ok = (left_angle >= knee_angle_threshold and right_angle >= knee_angle_threshold)
+
+            if draw:
+                h, w, _ = image.shape
+                left_knee_px = (int(left_knee.x * w), int(left_knee.y * h))
+                right_knee_px = (int(right_knee.x * w), int(right_knee.y * h))
+                cv2.putText(image, f"L Knee: {left_angle:.1f} deg", (left_knee_px[0] - 50, left_knee_px[1] - 10),
+                            cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 0), 2)
+                cv2.putText(image, f"R Knee: {right_angle:.1f} deg", (right_knee_px[0] - 50, right_knee_px[1] - 10),
+                            cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 0), 2)
+            logging.debug("Knee angles: L=%.1f, R=%.1f; OK: %s", left_angle, right_angle, knees_ok)
+            return knees_ok
+        except Exception as e:
+            logging.error("Error in evaluate_knee_alignment: %s", e)
+            return False
+
+    def evaluate_feet_flat(self, landmarks, image, draw=True, foot_y_diff_threshold=0.02):
+        logging.debug("Evaluating feet flatness.")
+        if not self.toggles["feet_flat"]:
+            logging.debug("Feet flat check is toggled off.")
+            return True
+
+        try:
+            left_heel = landmarks[self.mp_pose.PoseLandmark.LEFT_HEEL.value]
+            right_heel = landmarks[self.mp_pose.PoseLandmark.RIGHT_HEEL.value]
+            left_toe = landmarks[self.mp_pose.PoseLandmark.LEFT_FOOT_INDEX.value]
+            right_toe = landmarks[self.mp_pose.PoseLandmark.RIGHT_FOOT_INDEX.value]
+
+            left_flat = abs(left_heel.y - left_toe.y) < foot_y_diff_threshold
+            right_flat = abs(right_heel.y - right_toe.y) < foot_y_diff_threshold
+            feet_flat_ok = left_flat and right_flat
+
+            if draw:
+                h, w, _ = image.shape
+                left_heel_px = (int(left_heel.x * w), int(left_heel.y * h))
+                left_toe_px = (int(left_toe.x * w), int(left_toe.y * h))
+                right_heel_px = (int(right_heel.x * w), int(right_heel.y * h))
+                right_toe_px = (int(right_toe.x * w), int(right_toe.y * h))
+                cv2.line(image, left_heel_px, left_toe_px, (0, 255, 255), 2)
+                cv2.line(image, right_heel_px, right_toe_px, (0, 255, 255), 2)
+            logging.debug("Feet flat check: OK: %s", feet_flat_ok)
+            return feet_flat_ok
+        except Exception as e:
+            logging.error("Error in evaluate_feet_flat: %s", e)
+            return False
+
+    def evaluate_posture(self, landmarks, image, draw=True,
+                         alignment_factor=0.1, foot_y_diff_threshold=0.02,
+                         neck_angle_threshold=10, knee_angle_threshold=160):
+        logging.debug("Evaluating overall posture.")
+        torso_ok = self.evaluate_torso_alignment(landmarks, image, draw, alignment_factor)
+        feet_ok = self.evaluate_feet_flat(landmarks, image, draw, foot_y_diff_threshold)
+        # Note: evaluate_neck_alignment now uses ear and shoulder positions.
+        neck_ok = self.evaluate_neck_alignment(landmarks, image, draw, neck_angle_threshold)
+        knee_ok = self.evaluate_knee_alignment(landmarks, image, draw, knee_angle_threshold)
+        overall_ok = torso_ok and feet_ok and neck_ok and knee_ok
+        logging.debug("Posture evaluation: torso=%s, feet=%s, shoulder-ear=%s, knees=%s => Overall OK=%s",
+                      torso_ok, feet_ok, neck_ok, knee_ok, overall_ok)
+        return overall_ok
+
+    # ----------------------------
+    # Main Processing Functions
+    # ----------------------------
+
+    def process_frame(self, frame):
+        logging.debug("Processing a new frame.")
+        try:
+            image_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+        except Exception as e:
+            logging.error("Error converting frame to RGB: %s", e)
+            return frame
+
+        image_rgb.flags.writeable = False
+        try:
+            results = self.pose.process(image_rgb)
+        except Exception as e:
+            logging.error("Error processing frame with Mediapipe: %s", e)
+            return frame
+        image_rgb.flags.writeable = True
+        try:
+            image = cv2.cvtColor(image_rgb, cv2.COLOR_RGB2BGR)
+        except Exception as e:
+            logging.error("Error converting image_rgb back to BGR: %s", e)
+            return frame
+
+        if results.pose_landmarks:
+            logging.debug("Pose landmarks detected.")
+            if self.toggles["draw_pose_landmarks"]:
+                self.mp_drawing.draw_landmarks(image, results.pose_landmarks, self.mp_pose.POSE_CONNECTIONS)
+            posture_ok = self.evaluate_posture(results.pose_landmarks.landmark, image, draw=self.toggles["draw_alignment_lines"])
+            current_time = time.time()
+            # If posture is correct, start or continue the timer.
+            if posture_ok:
+                if self.correct_start_time is None:
+                    self.correct_start_time = current_time
+                    logging.info("Correct posture detected; starting timer.")
+                # Calculate how long the posture has been correct.
+                elapsed = current_time - self.correct_start_time
+                cv2.putText(image, f"Good posture: {elapsed:.1f}s", (30, 50),
+                            cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 0), 2)
+                logging.debug("Posture has been correct for %.1f seconds.", elapsed)
+                # Once correct for 5 seconds, take screenshots if not already saved.
+                if elapsed >= 5:
+                    if not self.image_saved:
+                        filename = f"standing_straight_{int(time.time())}.png"
+                        try:
+                            cv2.imwrite(filename, image)
+                            self.image_saved = True
+                            logging.info("Screenshot saved as %s", filename)
+                        except Exception as e:
+                            logging.error("Error saving screenshot: %s", e)
+                    
+                    if not self.landmark_image_saved:
+                        # Create a blank (black) image of the same shape.
+                        blank = np.zeros_like(image)
+                        # Draw only the pose landmarks on the blank image.
+                        self.mp_drawing.draw_landmarks(blank, results.pose_landmarks, self.mp_pose.POSE_CONNECTIONS)
+                        landmark_filename = f"landmarks_only_{int(time.time())}.png"
+                        try:
+                            cv2.imwrite(landmark_filename, blank)
+                            self.landmark_image_saved = True
+                            logging.info("Landmark screenshot saved as %s", landmark_filename)
+                        except Exception as e:
+                            logging.error("Error saving landmark screenshot: %s", e)
+            else:
+                logging.info("Posture not correct; timer reset.")
+                # Reset timer if posture is not correct.
+                self.correct_start_time = None
+                cv2.putText(image, "Please stand straight", (30, 50),
+                            cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
+        else:
+            logging.debug("No pose landmarks detected in this frame.")
+
+        return image
+
+    def run(self):
+        logging.info("Starting video capture.")
+        cap = cv2.VideoCapture(0)
+        if not cap.isOpened():
+            logging.error("Error: Could not open webcam.")
+            return
+
+        # Setting up resolution and FPS.
+        cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
+        cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
+        cap.set(cv2.CAP_PROP_FPS, 60)
+        
+        while cap.isOpened():
+            ret, frame = cap.read()
+            if not ret:
+                logging.error("Error: Failed to capture frame.")
+                break
+
+            annotated_image = self.process_frame(frame)
+            cv2.imshow('Pose Detection', annotated_image)
+
+            # Key controls:
+            # 'o' toggles custom alignment lines drawing.
+            # 'p' toggles built-in pose landmarks.
+            # 'n' toggles shoulder-ear alignment check (formerly neck alignment).
+            # 'r' toggles torso alignment check.
+            # 'e' toggles feet flat check.
+            # 'k' toggles knee alignment check.
+            # 'q' quits.
+            key = cv2.waitKey(10) & 0xFF
+            if key == ord('o'):
+                self.toggle_draw_alignment_lines()
+                logging.debug("Toggled draw_alignment_lines: %s", self.toggles["draw_alignment_lines"])
+            elif key == ord('p'):
+                self.toggle_draw_pose_landmarks()
+                logging.debug("Toggled draw_pose_landmarks: %s", self.toggles["draw_pose_landmarks"])
+            elif key == ord('n'):
+                self.toggle_neck_alignment()
+                logging.debug("Toggled neck_alignment: %s", self.toggles["neck_alignment"])
+            elif key == ord('r'):
+                self.toggle_torso_alignment()
+                logging.debug("Toggled torso_alignment: %s", self.toggles["torso_alignment"])
+            elif key == ord('e'):
+                self.toggle_feet_flat()
+                logging.debug("Toggled feet_flat: %s", self.toggles["feet_flat"])
+            elif key == ord('k'):
+                self.toggle_knee_alignment()
+                logging.debug("Toggled knee_alignment: %s", self.toggles["knee_alignment"])
+            elif key == ord('q'):
+                logging.info("Quit key pressed. Exiting.")
+                break
+
+        cap.release()
+        cv2.destroyAllWindows()
+        logging.info("Video capture ended.")
+
+if __name__ == "__main__":
+    # try:
+        detector = PoseDetector()
+        detector.run()
+    # except Exception as e:
+    #     logging.critical("Fatal error in main execution: %s", e)
+
+```
+
+## readme.md
+```md
+# Create4Care App
+
+Een cross-platform applicatie voor het meten en visualiseren van lichaamsgroei bij kinderen. De applicatie is ontwikkeld als onderdeel van een project in semester 6 van de opleiding Informatica aan de Hogeschool Rotterdam.
+
+## 📦 Projectstructuur
+
+```
+├── create4care_app       # MAUI Blazor client-app
+├── create4care_docker    # FastAPI backend met Docker ondersteuning
+├── pose_decection        # Pose detection scripts en testafbeeldingen
+└── sensor_meter          # Arduino-code voor de sensor
+````
+
+## 🌐 Frontend: `create4care_app`
+
+Een .NET MAUI Blazor-applicatie met ondersteuning voor Android, iOS, Windows, MacCatalyst en Tizen. Bevat:
+
+- Pagina’s: `Home`, `Bluetooth`, `Instruction`, `Measuring`, `Settings`
+- Bluetooth-integratie via `Plugin.BLE`
+- Data-opslag via `Preferences`
+- Visualisaties met Chart.js
+- 3D walkthrough-instructies met animaties
+
+### Starten (voor developers)
+
+```bash
+cd create4care_app
+dotnet build
+dotnet run
+````
+
+## 🔧 Backend: `create4care_docker/api`
+
+Een FastAPI-backend met:
+
+* Authenticatie
+* Gebruikersbeheer
+* Pose detectie via base64-afbeeldingen
+* Meting-opslag
+* Dockerfile beschikbaar
+
+### Starten (met Docker)
+
+```bash
+cd create4care_docker/api
+docker build -t create4care-api .
+docker run -p 8000:8000 create4care-api
+```
+
+## 🧠 Pose Detection: `pose_decection`
+
+Scripts om pose-detectie lokaal te testen.
+
+### Bestand
+
+* `mian.py`: hoofdscript voor het uitvoeren van detectie
+* `dummy_correct.jpg` / `dummy_wrong.jpg`: testafbeeldingen
+
+## 🔌 Sensor: `sensor_meter`
+
+Arduino `.ino` bestand dat op de sensor wordt geïnstalleerd om afstandsmetingen te verrichten (bijv. via een ultrasone sensor).
+
+---
+
+## 📚 Benodigdheden
+
+* .NET MAUI workload
+* Docker
+* Python 3.10+
+* Arduino IDE (voor `sensor_meter.ino`)
+* BLE-compatibele Arduino (bijv. Arduino R4 WiFi)
+
+## 👥 Team
+
+* INF: Ardit, Ayoeb
+* CMGT: Salma
+* ADS & AI: Narjiss, Jesse
+
+---
+
+## 📃 Licentie
+
+MIT License – vrij te gebruiken voor educatieve doeleinden.
+
+```
+MIT License
+
+Copyright (c) 2025 The Blokk
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights  
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell      
+copies of the Software, and to permit persons to whom the Software is         
+furnished to do so, subject to the following conditions:                       
+
+The above copyright notice and this permission notice shall be included in    
+all copies or substantial portions of the Software.                           
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR    
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,      
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE   
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER        
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, 
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN     
+THE SOFTWARE.
+```
+```
+
+## sensor_meter/sensor_meter.ino
+```ino
+#include <ArduinoBLE.h>
+#include <ArduinoJson.h>
+#include "Ultrasonic.h"
+
+Ultrasonic ultrasonic(7);  // Ultrasonic sensor on pin 7
+
+// Define a BLE service and characteristic
+BLEService distanceService("180C"); // Custom service
+BLECharacteristic distanceCharacteristic("2A56", BLERead | BLENotify, 50); // Increase buffer for JSON data
+
+void setup() {
+  Serial.begin(9600);
+  
+  if (!BLE.begin()) {
+    Serial.println("Failed to initialize BLE!");
+    while (1);
+  }
+
+  setupBluetooth(); // Set up BLE
+}
+
+void loop() {
+  handleBluetooth(); // Continuously handle BLE communication
+}
+
+// Function to measure distance using the ultrasonic sensor
+long getUltrasonicDistance() {
+  return ultrasonic.MeasureInMillimeters();
+}
+
+// Function to generate JSON data and return a buffer
+size_t generateJsonData(char *jsonBuffer, size_t bufferSize) {
+  StaticJsonDocument<50> jsonDoc;
+  jsonDoc["distance"] = getUltrasonicDistance();
+  jsonDoc["unit"] = "mm";
+
+  return serializeJson(jsonDoc, jsonBuffer, bufferSize);
+}
+
+// Function to set up Bluetooth (BLE) service and characteristic
+void setupBluetooth() {
+  BLE.setLocalName("Arduino_R4_WiFi");
+  BLE.setAdvertisedService(distanceService);
+  distanceService.addCharacteristic(distanceCharacteristic);
+  BLE.addService(distanceService);
+  
+  BLE.advertise(); // Make the device discoverable
+  Serial.println("BLE Device Ready! Connect to receive JSON data.");
+}
+
+// Function to handle Bluetooth communication and send JSON data
+void handleBluetooth() {
+  BLEDevice central = BLE.central(); // Wait for a BLE device to connect
+
+  if (central) {
+    Serial.print("Connected to: ");
+    Serial.println(central.address());
+
+    while (central.connected()) {
+      char jsonBuffer[50]; // Buffer to store JSON
+      size_t jsonLength = generateJsonData(jsonBuffer, sizeof(jsonBuffer));
+
+      // Send JSON data as binary over BLE
+      bool sent = distanceCharacteristic.writeValue((uint8_t*)jsonBuffer, jsonLength);
+
+      delay(1000);  // Send data every second
+    }
+    Serial.println("Disconnected.");
+  }
+}
 
 ```

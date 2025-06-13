@@ -109,8 +109,8 @@ a {
 }
 
 .btn-secondary {
-    background-color: transparent;
-    color: var(--clr-btn-text-secondary);
+    background-color: transparent !important;
+    color: var(--clr-btn-text-secondary) !important;
 }
 
 .valid.modified:not([type=checkbox]) {

@@ -56,6 +56,7 @@
                     new NavItem { Name = "Bluetooth", Href = "/bluetooth", Icon = @<IconBluetooth /> },
                     new NavItem { Name = "Instruction", Href = "/instruction", Icon = @<IconInstruction /> },
                     new NavItem { Name = "Measuring", Href = "/measuring", Icon =  @<IconMeasuring /> },
+                    new NavItem { Name = "Finish", Href = "/finish", Icon =  @<IconMeasuring /> },
                     new NavItem { Name = "Settings", Href = "/settings", Icon = @<IconSettings /> },
                 }
             }
@@ -200,13 +201,13 @@
 
 /* Images and Hover/Active States */
 .sidebar a:hover,
-.active {
+.sidebar .active {
     background-color: var(--clr-link);
     color: var(--clr-text) !important;
 }
 
 .sidebar a:hover svg,
-.active svg {
+.sidebar .active svg {
     fill: var(--clr-text) !important;
 }
 </style>

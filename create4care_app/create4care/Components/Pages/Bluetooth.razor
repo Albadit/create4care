@@ -4,13 +4,26 @@
 <NavMenu Name="Bluetooth"/>
 
 <main>
-    <label>Connect to Arduino BLE:</label>
-    <button class="btn" @onclick="ConnectToDevice" disabled="@(isConnecting || isConnected)">
-        @(isConnected ? "Connected" : (isConnecting ? "Connecting..." : "Connect"))
-    </button>
+    <section>
+        <label>Connect to Arduino BLE:</label>
+        <button class="btn" @onclick="ConnectToDevice" disabled="@(isConnecting || isConnected)">
+            @(isConnected ? "Connected" : (isConnecting ? "Connecting..." : "Connect"))
+        </button>
 
-    <p>@statusMessage</p>
-    <p>@dataMessage</p>
+        <p>@statusMessage</p>
+        <p>@dataMessage</p>
+    </section>
+
+    @if (isConnected)
+    {
+        <section>
+            <label>Calibrate:</label>
+            <button class="btn" @onclick="Calibrate">Calibrate</button>
+
+            <p>@statusMessagCalibrate</p>
+            <p>@dataMessageCalibrate</p>
+        </section>
+    }
 </main>
 
 @code {
@@ -18,31 +31,60 @@
     private bool isConnected = false;
     private string statusMessage = "Status: Not connected";
     private string dataMessage = "No data yet";
+    private string statusMessagCalibrate = "Status: Not Save";
+    private string dataMessageCalibrate = "No data yet";
 
     protected override void OnInitialized()
     {
         BluetoothService.OnStatusChanged += UpdateStatus;
         BluetoothService.OnDataReceived += UpdateData;
+
+        if (BluetoothService.IsConnected)
+        {
+            isConnected = true;
+            statusMessage = "Connected to BLE.";
+        }
+
+        if (Preferences.ContainsKey("CalibrationData"))
+        {
+            dataMessageCalibrate = Preferences.Get("CalibrationData", "No data found.");
+            statusMessagCalibrate = "Calibration data loaded from storage.";
+        }
     }
 
     private async Task ConnectToDevice()
     {
-        if (isConnected) return;
+        if (BluetoothService.IsConnected)
+        {
+            // Already connected
+            isConnected = true;
+            return;
+        }
 
         isConnecting = true;
         statusMessage = "Scanning for devices...";
         StateHasChanged();
 
         await BluetoothService.ConnectAsync();
-
         isConnecting = false;
-        StateHasChanged();
+
+        if (BluetoothService.IsConnected)
+        {
+            isConnected = true;
+            statusMessage = "Connected to BLE.";
+            StateHasChanged();
+        }
+        else
+        {
+            isConnected = false;
+            statusMessage = "Failed to connect. Try again.";
+            StateHasChanged();
+        }
     }
 
     private void UpdateStatus(string status)
     {
         statusMessage = status;
-
         if (status.Contains("Connected"))
         {
             isConnected = true;
@@ -51,7 +93,6 @@
         {
             isConnected = false;
         }
-
         InvokeAsync(StateHasChanged);
     }
 
@@ -60,10 +101,25 @@
         dataMessage = data;
         InvokeAsync(StateHasChanged);
     }
+
+    private void Calibrate()
+    {
+        // Save the latest dataMessage into MAUI Preferences under the key "CalibrationData"
+        Preferences.Set("CalibrationData", dataMessage);
+        statusMessagCalibrate = "Calibration saved to local storage.";
+        dataMessageCalibrate = dataMessage;
+        StateHasChanged();
+    }
 }
 
 <style>
 main {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+section {
     display: flex;
     flex-direction: column;
     gap: 20px;

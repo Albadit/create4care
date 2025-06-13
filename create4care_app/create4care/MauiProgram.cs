@@ -24,7 +24,7 @@ namespace create4care
             {
                 handlers.AddHandler<BlazorWebView, CustomBlazorWebViewHandler>();
             });
-#endif
+            #endif
 
 #if DEBUG
             builder.Services.AddBlazorWebViewDeveloperTools();

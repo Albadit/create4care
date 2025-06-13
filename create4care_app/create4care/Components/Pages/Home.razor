@@ -1,9 +1,10 @@
 ﻿@page "/"
+@inject IJSRuntime JS
 
 <NavMenu Name="Home"/>
 
 <main>
-    <h1>Hello, world!</h1>
+    <h1>Create4Care</h1>
 
     <span>Welcome to your new app.</span>
 
@@ -12,62 +13,18 @@
     </div>
 </main>
 
-<script>
-    // 1) Replace Utils.months(...)
-    const labels = ['Week 1','Week 2','Week 3','Week 4','Week 5','Week 6','Week 7'];
-
-    // 2) Your data
-    const data = {
-        labels,
-        datasets: [{
-            label: 'Measurement',
-            data: [130,133,137,142,145,148,150],
-            fill: true,
-            borderColor: 'rgb(75,192,192)',
-            backgroundColor: 'rgba(75,192,192,0.2)',
-            tension: 0.1
-        }]
-    };
-
-    // 3) Your config
-    const config = {
-        type: 'line',
-        data,
-        options: {
-            scales: {
-                y: {
-                    min: 130,
-                    max: 150,
-                    ticks: {
-                    stepSize: 1,
-                    callback: v => v + ' cm'
-                    },
-                    title: {
-                    display: true,
-                    text: 'Height (cm)'
-                    }
-                },
-                x: {
-                    title: {
-                    display: true,
-                    text: 'Week'
-                    }
-                }
-            },
-            plugins: {
-                legend: { display: false },
-                tooltip: {
-                    callbacks: {
-                    label: ctx => ctx.parsed.y + ' cm'
-                    }
-                }
-            }
+@code {
+    private bool _chartInitialized;
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            // This will invoke window.createHomeChart() in wwwroot/js/home-chart.js
+            await JS.InvokeVoidAsync("createHomeChart");
+            _chartInitialized = true;
         }
-    };
-
-    // 4) Instantiate the chart
-    new Chart(document.getElementById('myChart'), config);
-</script>
+    }
+}
 
 <style>
 main {

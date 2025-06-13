@@ -1,17 +1,23 @@
 ﻿@page "/measuring"
+@using Microsoft.Maui.Storage
+@implements IAsyncDisposable
+@inject IJSRuntime JS
+@inject BluetoothService BluetoothService
+@inject NavigationManager NavigationManager
 
 <NavMenu Name="Measuring" />
 
 <main>
     <!-- <h1>Pose Measuring</h1> -->
 
-    <span id="loading" class="center">Loading camera...</span>
+    <span id="loading" class="center" hidden>Loading camera...</span>
     <span id="error" class="center error" hidden></span>
+
     <div id="container">
         <span id="notification" class="center" hidden></span>
         <video id="videoInput" muted autoplay playsinline></video>
         <canvas id="output"></canvas>
-        <button id="snapshotButton" class="btn" hidden>Take Picture</button>
+        <button id="snapshotButton" class="btn" hidden disabled="@(!BluetoothService.IsConnected)">Take Picture</button>
     </div>
     <div id="issuePopup" class="modal" hidden>
         <div class="modal-content">
@@ -20,167 +26,75 @@
             <button id="retryButton" class="btn">Retry</button>
         </div>
     </div>
+
+    @* <div class="bluetooth-status" style="padding:1rem; border-top:1px solid #ccc;">
+        <p>BLE Status: @BluetoothService.IsConnected</p>
+        <p>Last Data: @_btPayloadJson</p>
+        <p>current Data: @_savedBtPayload</p>
+    </div> *@
+
+    <div id="issuePopup" class="modal" hidden="@(BluetoothService.IsConnected)">
+        <div class="modal-content">
+            <h2>Please connect the device</h2>
+            <button class="btn" @onclick="GoToBluetooth">Connect here</button>
+        </div>
+    </div>
 </main>
 
-<script>
-(() => {
-    // ---- Cached DOM & State ----
-    const $ = id => document.getElementById(id);
-    const video      = $('videoInput');
-    const canvas     = $('output');
-    const loading    = $('loading');
-    const errorMsg   = $('error');
-    const notify     = $('notification');
-    const btn        = $('snapshotButton');
-    const popup      = $('issuePopup');
-    const issueList  = $('issueList');
-    const retryBtn   = $('retryButton');
-    let capabilities = {};
-    let videoDims    = { width: 1280, height: 720 };
+@code {
+    private DotNetObjectReference<Measuring>? _dotNetRef;
+    private bool _cameraInitialized = false;
+    private string _btPayloadJson = "(none)";
+    private string _savedBtPayload = "(none)";
 
-    // ---- Generic POST helper ----
-    async function postData(url, payload) {
-        try {
-            const res = await fetch(url, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
-            });
-            if (!res.ok) throw new Error(`HTTP ${res.status}`);
-            return await res.json();
-        } catch (err) {
-            console.error(`Error POST ${url}:`, err);
-            return null;
-        }
+    protected override void OnInitialized()
+    {
+        BluetoothService.OnDataReceived += data => {
+            _btPayloadJson = data;
+            InvokeAsync(StateHasChanged);
+        };
     }
 
-    // ---- Camera Setup ----
-    async function setupCamera() {
-        try {
-            const stream = await navigator.mediaDevices.getUserMedia({
-                video: { facingMode: 'environment', width: 1280, height: 720 }
-            });
-            const track = stream.getVideoTracks()[0];
-            const caps  = track.getCapabilities?.() || {};
-            capabilities = caps;
-
-            // Try max resolution
-            if (caps.width?.max && caps.height?.max) {
-                await track.applyConstraints({
-                    width: caps.width.max,
-                    height: caps.height.max
-                });
-                videoDims = { width: caps.width.max, height: caps.height.max };
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {   
+            if (BluetoothService.IsConnected) {
+                _dotNetRef = DotNetObjectReference.Create(this);
+                await JS.InvokeVoidAsync("initializeCamera", _dotNetRef);
+                _cameraInitialized = true;
+                StateHasChanged();
             }
-
-            video.srcObject = stream;
-            await new Promise(r => video.onloadedmetadata = r);
-
-            loading.hidden = true;
-            adjustCanvas();
-            btn.hidden = false;
-        } catch (err) {
-            console.error('Camera error:', err);
-            loading.hidden = true;
-            errorMsg.hidden = false;
-            errorMsg.textContent = `Error accessing camera: ${err.message}`;
         }
     }
 
-    // ---- Canvas Sizing ----
-    function adjustCanvas() {
-        const { width: vw, height: vh } = videoDims;
-        const CW = container.clientWidth;
-        const CH = container.clientHeight;
-        const scale = Math.min(CW / vw, CH / vh);
-        canvas.width  = vw;
-        canvas.height = vh;
-        [video, canvas].forEach(el => {
-            el.style.width  = `${vw * scale}px`;
-            el.style.height = `${vh * scale}px`;
-        });
+    [JSInvokable]
+    public void OnMeasurementSave()
+    {
+        Preferences.Set("UserData", _btPayloadJson);
+        _savedBtPayload = Preferences.Get("UserData", "(none)");
+    }
+    [JSInvokable]
+    public void OnMeasurementSuccess()
+    {
+        NavigationManager.NavigateTo("/finish");
     }
 
-    // ---- Snapshot Flow ----
-    btn.addEventListener('click', async () => {
-        if (!video.paused) {
-        // Capture
-        video.pause();
-        btn.textContent = 'Processing...';
-        notify.hidden = true;
-
-        // Draw & encode
-        const ctx = canvas.getContext('2d');
-        ctx.drawImage(video, 0, 0, videoDims.width, videoDims.height);
-        const imageBase64 = canvas.toDataURL();
-
-        // 1) Pose detection
-        const pose = await postData(
-            'https://api.blokk.duckdns.org/pose_detection/',
-            { image_base64: imageBase64 }
-        );
-        if (!pose) {
-            notify.textContent = 'Pose detection failed.';
-            notify.hidden = false;
-            return btn.textContent = 'Retry';
+    public async ValueTask DisposeAsync()
+    {
+        if (_dotNetRef != null)
+        {
+            _dotNetRef.Dispose();
         }
 
-        // 2) Show issues
-        if (pose.issues?.length) {
-            issueList.innerHTML = pose.issues.map(i => `<span>- ${i}</span>`).join('');
-            popup.hidden = false;
-            retryBtn.onclick = reset;
-            return;
-        }
-
-        // 3) Save measurement
-        if (pose.landmark_image) {
-            const measurement = {
-                patient_id: 1,
-                measured_by_user_id: 1,
-                height_mm: 1,
-                weight_kg: 1,
-                sleep_hours: 1,
-                exercise_hours: 1,
-                image: pose.landmark_image
-            };
-            const result = await postData(
-                'https://api.blokk.duckdns.org/measurements/',
-                measurement
-            );
-            notify.textContent = result
-                ? 'Measurement saved!'
-                : 'Failed to save measurement.';
-        } else {
-            notify.textContent = 'No landmark image returned.';
-        }
-
-        notify.hidden = false;
-        btn.textContent = 'Retry';
-
-        } else {
-            reset();
-        }
-    });
-
-    function reset() {
-        popup.hidden = true;
-        video.play();
-        notify.hidden = true;
-        btn.textContent = 'Take Picture';
+        await JS.InvokeVoidAsync("stopCamera");
     }
 
-    // ---- (Optional) Handle resize ----
-    // let resizeTimeout;
-    // window.addEventListener('resize', () => {
-    //   clearTimeout(resizeTimeout);
-    //   resizeTimeout = setTimeout(adjustCanvas, 200);
-    // });
-
-    // ---- Init ----
-    setupCamera();
-})();
-</script>
+    private void GoToBluetooth()
+    {
+        NavigationManager.NavigateTo("/bluetooth");
+    }
+}
 
 <style>
 .center { display: block; text-align: center; }
@@ -250,11 +164,15 @@ canvas {
 }
 
 .modal-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
     background: var(--clr-background);
     padding: 1.5rem;
+    margin: 1rem;
     border-radius: 8px;
-    max-width: 90%;
-    width: 300px;
+    width: 100%;
+    max-width: 400px;
     text-align: center;
 }
 

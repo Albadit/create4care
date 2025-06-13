@@ -1,0 +1,146 @@
+﻿@page "/finish"
+@using System.Text.Json
+@using Microsoft.Maui.Storage
+@inject NavigationManager NavigationManager
+
+<NavMenu Name="Finish"/>
+
+<main>
+    <div class="slider">
+        <IconBackgroundShape />
+        <div class="slides">
+            <div class="slide active">
+                <img src="images/step_5.png" alt="step_5" />
+                <h2>Goed gedaan!</h2>
+                <p>Gemeten lengte: @ConvertDistance(_difference, _userData.Unit, "cm") cm</p>
+            </div>
+        </div>
+        <div class="controls">
+            <button class="btn" @onclick="GoToHome">Home</button>
+        </div>
+    </div>
+</main>
+
+@code {
+    private MeasuringResult _userData        = new MeasuringResult { Distance = 0, Unit = "mm" };
+    private MeasuringResult _calibrationData = new MeasuringResult { Distance = 0, Unit = "mm" };
+    private double          _difference;
+
+    void GoToHome() => NavigationManager.NavigateTo("/");
+
+    protected override void OnInitialized()
+    {
+        _userData        = Load("UserData");
+        _calibrationData = Load("CalibrationData");
+        _difference      = _calibrationData.Distance - _userData.Distance;
+    }
+
+    static MeasuringResult Load(string key)
+    {
+        // De fallback-json hier is het dummy-object dat je terugkrijgt als de key niet bestaat
+        var defaultJson = "{\"distance\":0,\"unit\":\"mm\"}";
+        var json = Preferences.Get(key, defaultJson);
+        try
+        {
+            // Let op: standaard is System.Text.Json case-sensitive
+            var opts = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+            return JsonSerializer.Deserialize<MeasuringResult>(json, opts)
+                ?? new MeasuringResult { Distance = 0, Unit = "mm" };
+        }
+        catch (Exception ex)
+        {
+            return new MeasuringResult { Distance = 0, Unit = "mm" };
+        }
+    }
+
+    static double ConvertDistance(double value, string fromUnit, string toUnit)
+    {
+        // Eerst: breng de invoer‐waarde om naar millimeter (mm)
+        double valueInMm = fromUnit.ToLower() switch
+        {
+            "mm"   => value,
+            "cm"   => value * 10.0,       // 1 cm = 10 mm
+            "dm"   => value * 100.0,      // 1 dm = 0,1 m = 100 mm
+            "m"    => value * 1000.0,     // 1 m = 1000 mm
+            "dam"  => value * 10000.0,    // 1 dam = 10 m = 10 × 1000 mm = 10000 mm
+            "hm"   => value * 100000.0,   // 1 hm = 100 m = 100 × 1000 mm = 100000 mm
+            "km"   => value * 1000000.0,  // 1 km = 1000 m = 1000 × 1000 mm = 1 000 000 mm
+            "inch" => value * 25.4,       // 1 inch = 25.4 mm
+            _      => throw new ArgumentException($"Niet-ondersteunde bron-eenheid: '{fromUnit}'")
+        };
+
+        // Vervolgens: zet van millimeter (mm) om naar de doeleenheid
+        return toUnit.ToLower() switch
+        {
+            "mm"   => valueInMm,
+            "cm"   => valueInMm / 10.0,       // 10 mm = 1 cm
+            "dm"   => valueInMm / 100.0,      // 100 mm = 1 dm
+            "m"    => valueInMm / 1000.0,     // 1000 mm = 1 m
+            "dam"  => valueInMm / 10000.0,    // 10000 mm = 1 dam
+            "hm"   => valueInMm / 100000.0,   // 100000 mm = 1 hm
+            "km"   => valueInMm / 1000000.0,  // 1000000 mm = 1 km
+            "inch" => valueInMm / 25.4,       // 25.4 mm = 1 inch
+            _      => throw new ArgumentException($"Niet-ondersteunde doel-eenheid: '{toUnit}'")
+        };
+    }
+}
+
+
+<style>
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.slider {
+    width: 100%;
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: var(--padding-body-y) 0;
+}
+.slider svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-58%, -66%);
+    fill: var(--clr-primary);
+    z-index: -1;
+}
+.slides {
+    display: flex;
+    flex-grow: 1;
+}
+.slide {
+    display: none;
+}
+.slide.active {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    text-align: center;
+}
+.slide img {
+    height: 320px;
+}
+.slide h2 {
+    color: var(--clr-text);
+    font-size: 26px;
+}
+.slide p {
+    color: var(--clr-accent);
+    font-size: 25px;
+}
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+    max-width: 500px;
+}
+</style>
